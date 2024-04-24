@@ -1,15 +1,20 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import path from "path"
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
 
-// https://vitejs.dev/config/
+import tailwind from "tailwindcss"
+import autoprefixer from "autoprefixer"
+
 export default defineConfig({
-  plugins: [vue()],
-  server: {
-    watch: {
-     usePolling: true,
+  css: {
+    postcss: {
+      plugins: [tailwind(), autoprefixer()],
     },
-    host: true, // Here
-    strictPort: true,
-    port: 8080
-  }
+  },
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 })
