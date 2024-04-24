@@ -1,9 +1,11 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <RouterView></RouterView>
+  this is faqs detailed
 </template>
 
 <style scoped>
+
 </style>

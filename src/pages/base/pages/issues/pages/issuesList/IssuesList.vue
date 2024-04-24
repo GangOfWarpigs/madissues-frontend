@@ -1,9 +1,11 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <RouterView></RouterView>
+  this is issues list
 </template>
 
 <style scoped>
+
 </style>

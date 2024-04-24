@@ -1,9 +1,11 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <RouterView></RouterView>
+  this is profile information
 </template>
 
 <style scoped>
+
 </style>
