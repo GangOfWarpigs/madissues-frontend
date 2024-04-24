@@ -1,9 +1,14 @@
 <script setup lang="ts">
-  // import HeaderComponent from '../../components/shared/HeaderComponent.vue';
+  import NavBar from '../../components/shared/NavBar.vue';
+
+  const paths: Map<string, string> = new Map();
+  paths.set("Home", "#")
+  paths.set("Issues", "#")
+  paths.set("FAQs", "#")
 </script>
 
 <template>
-  <p>this is the header</p>
+  <NavBar name="Delegación de Estudiantes EII" :paths="paths" />
   <div>
     <RouterView/>
   </div>
