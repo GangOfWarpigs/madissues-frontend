@@ -2,6 +2,7 @@
 
 </script>
 <template>
+  Sign up
 </template>
 
 <style scoped>
