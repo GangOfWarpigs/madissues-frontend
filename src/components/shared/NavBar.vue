@@ -1,9 +1,21 @@
 <script setup lang="ts">
+    import {
+      DropdownMenu,
+      DropdownMenuContent,
+      DropdownMenuItem,
+      DropdownMenuLabel,
+      DropdownMenuSeparator,
+      DropdownMenuTrigger,
+    } from '../../../@/components/ui/dropdown-menu';
+
     interface Props {
         name: string,
-        paths: Map<string, string>
     }
-    const { name, paths } = defineProps<Props>();
+    const { name } = defineProps<Props>();
+    const username: string = "Jose Peña Seco";
+    const userpath: string = "josepenaseco"; 
+
+
 </script>
 
 <template>
@@ -22,11 +34,20 @@
                     </ul>
                 </nav>
             </div>
-            <div class="flex items-center cursor-pointer">
-                <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.png" alt="Foto de Perfil"> 
-                <p class="text-white font-semibold mr-3">Jose Peña Seco</p>
-                <b-icon-chevron-down class="text-white"/>
-            </div>
+            <DropdownMenu>
+                <DropdownMenuTrigger>
+                    <div class="flex items-center cursor-pointer box-border">
+                        <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.png" alt="Foto de Perfil"> 
+                        <p class="text-white font-semibold mr-3">{{ username }}</p>
+                        <b-icon-chevron-down class="text-white"/>
+                    </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent class="w-56 mt-5 py-4 px-4 border-2 border-sky-500 rounded-xl h-60 bg-white text-black shadow-lg">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem class="cursor-pointer">Profile</DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
         </div>
     </header>
 </template>
