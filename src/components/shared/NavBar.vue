@@ -1,6 +1,5 @@
 <script setup lang="ts">
-    import { IoChevronDown } from "oh-vue-icons/icons";
-    
+
     interface Props {
         name: string,
         paths: Map<string, string>
@@ -27,7 +26,6 @@
             <div class="flex items-center">
                 <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.png" alt="Foto de Perfil"> 
                 <p class="text-white font-semibold">Jose Peña Seco</p>
-                <v-icon name=""/>
             </div>
         </div>
     </header>
