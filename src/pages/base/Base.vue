@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <NavBar name="Delegación de Estudiantes EII"/>
+  <NavBar name="Delegación de Estudiantes EII" username="Jose Peña Seco"/>
   <div>
     <RouterView/>
   </div>

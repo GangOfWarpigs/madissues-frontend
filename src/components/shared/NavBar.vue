@@ -11,13 +11,10 @@
 
     interface Props {
         name: string,
+        username: string
     }
-    const { name } = defineProps<Props>();
-    const username: string = "Jose Peña Seco";
-    const userpath: string = "josepenaseco"; 
-
-    const route = useRoute();
-    const id = route.params.id;
+    const { name, username } = defineProps<Props>();
+    const basePath = "/organizations/" + useRoute().params.id + "/base/";
 </script>
 
 <template>
@@ -30,9 +27,9 @@
                 </div>
                 <nav>
                     <ul class="flex">
-                        <li class="mr-14"><p class="text-white font-semibold"><router-link :to="{ path: '/organizations/' + id + '/base/home' }" replace>Home</router-link></p></li>
-                        <li class="mr-14"><p class="text-white font-semibold"><router-link :to="{ path: '/organizations/' + id + '/base/issues' }" replace>Issues</router-link></p></li>
-                        <li><p class="text-white font-semibold"><router-link :to="{ path: '/organizations/' + id + '/base/faqs' }" replace>FAQs</router-link></p></li>
+                        <li class="mr-14"><p class="text-white font-semibold"><router-link :to="{ path: basePath + 'home' }" replace>Home</router-link></p></li>
+                        <li class="mr-14"><p class="text-white font-semibold"><router-link :to="{ path: basePath + 'issues' }" replace>Issues</router-link></p></li>
+                        <li><p class="text-white font-semibold"><router-link :to="{ path: basePath + 'faqs' }" replace>FAQs</router-link></p></li>
                     </ul>
                 </nav>
             </div>
@@ -47,7 +44,9 @@
                 <DropdownMenuContent class="w-56 mt-5 py-4 px-4 border-2 border-sky-500 rounded-xl h-60 bg-white text-black shadow-lg">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem class="cursor-pointer"><router-link :to="{ path: '/organizations/' + id + '/base/profile/information' }" replace>Profile</router-link></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
