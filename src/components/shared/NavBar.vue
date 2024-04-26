@@ -1,4 +1,5 @@
 <script setup lang="ts">
+    import { ref, onMounted } from 'vue';
     import { useRoute } from 'vue-router';
     import {
         DropdownMenu,
@@ -27,9 +28,21 @@
                 </div>
                 <nav>
                     <ul class="flex">
-                        <li class="mr-14"><p class="text-white font-semibold"><router-link :to="{ path: basePath + 'home' }" replace>Home</router-link></p></li>
-                        <li class="mr-14"><p class="text-white font-semibold"><router-link :to="{ path: basePath + 'issues' }" replace>Issues</router-link></p></li>
-                        <li><p class="text-white font-semibold"><router-link :to="{ path: basePath + 'faqs' }" replace>FAQs</router-link></p></li>
+                        <li class="mr-14">
+                            <p class="text-white font-semibold underline-offset-4 decoration-2" :class="[ useRoute().fullPath === basePath + 'home' ? 'underline' : 'no-underline']">
+                                <router-link :to="{ path: basePath + 'home' }" replace>Home</router-link>
+                            </p>
+                        </li>
+                        <li class="mr-14">
+                            <p class="text-white font-semibold underline-offset-4 decoration-2" :class="[ useRoute().fullPath === basePath + 'issues' ? 'underline' : 'no-underline']">
+                                <router-link :to="{ path: basePath + 'issues' }" replace>Issues</router-link>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-white font-semibold underline-offset-4 decoration-2" :class="[ useRoute().fullPath === basePath + 'faqs' ? 'underline' : 'no-underline']">
+                                <router-link :to="{ path: basePath + 'faqs' }" replace>FAQs</router-link>
+                            </p>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -41,12 +54,12 @@
                         <b-icon-chevron-down class="text-white"/>
                     </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent class="w-56 mt-5 py-4 px-4 border-2 border-sky-500 rounded-xl h-60 bg-white text-black shadow-lg">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem class="cursor-pointer"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></DropdownMenuItem>
-                  <DropdownMenuItem class="cursor-pointer"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></DropdownMenuItem>
-                  <DropdownMenuItem class="cursor-pointer"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></DropdownMenuItem>
+                <DropdownMenuContent class="w-56 mt-5 py-4 px-6 border-2 border-sky-500 rounded-xl h-60 bg-white text-sky-600 shadow-lg">
+                  <DropdownMenuLabel class="text-base">Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator class="mb-3"/>
+                  <DropdownMenuItem class="cursor-pointer mb-3"><b-icon-person-circle class="text-base"/><p class="text-slate-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer mb-3"><b-icon-chat-left-text-fill class="text-base"/><p class="text-slate-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer mb-3"><b-icon-question-square-fill class="text-base"/><p class="text-slate-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
