@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import PageBanner from "../../components/shared/PageBanner.vue";
 </script>
 
 <template>
@@ -7,6 +8,7 @@
   <div>
     <RouterView/>
   </div>
+
 </template>
 
 <style scoped>
