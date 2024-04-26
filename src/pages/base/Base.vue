@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
-import PageBanner from "../../components/shared/PageBanner.vue";
+  import NavBar from '../../components/shared/NavBar.vue';
 </script>
 
 <template>
-  Here is the header
+  <NavBar name="Delegación de Estudiantes EII" username="Jose Peña Seco"/>
   <div>
     <RouterView/>
   </div>
