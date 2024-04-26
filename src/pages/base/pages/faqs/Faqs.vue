@@ -7,8 +7,6 @@
 <template>
   <RouterView></RouterView>
   <PageBanner></PageBanner>
-  <IncidentChild></IncidentChild>
-  <SearchBarChild></SearchBarChild>
 </template>
 
 
