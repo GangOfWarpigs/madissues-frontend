@@ -1,6 +1,11 @@
 <script setup lang="ts">
+  import FaqCard from "../../../../../../components/business/faqs/FaqCard.vue";
+  import PageBanner from "../../../../../../components/shared/PageBanner.vue";
 
-import PageBanner from "../../../../../../components/shared/PageBanner.vue";
+  const faqData = {
+    question: "Hey una pregunta",
+    date: '2024-04-23'
+  }
 </script>
 
 <template>
@@ -9,6 +14,7 @@ import PageBanner from "../../../../../../components/shared/PageBanner.vue";
     <PageBanner title="FAQs" subtitle="Ask what you want, we listen to you" primaryColor="#1986E3"
                 secondaryColor="#978EFF" current-page="faqs"></PageBanner>
   </div>
+  <FaqCard :faq="faqData"></FaqCard>
 </template>
 
 <style scoped>
