@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import InputEmail  from "../../components/InputEmail.vue";
 
-
 </script>
 
 <template>
