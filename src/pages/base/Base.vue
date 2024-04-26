@@ -7,6 +7,7 @@
   <div>
     <RouterView/>
   </div>
+
 </template>
 
 <style scoped>
