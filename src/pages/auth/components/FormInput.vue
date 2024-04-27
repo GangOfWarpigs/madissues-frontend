@@ -7,7 +7,6 @@ const props = defineProps<{
   placeholder: string,
 }>()
 
-
 const { value, errorMessage } = useField<string>(() => props.name);
 </script>
 

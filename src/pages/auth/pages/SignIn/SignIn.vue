@@ -33,7 +33,7 @@ const submit = handleSubmit((values) => {
 
 <template>
     <div class="items-start w-full">
-      <p>Logo uni</p>
+      <img src="../../../../../src/assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="100" height="100">
     </div>
     <h2 class="w-full text-center text-[#505050] font-bold">Join our community of MadIssues</h2>
     <article class="w-full px-20  text-[0.50rem] space-y-2">
@@ -51,7 +51,7 @@ const submit = handleSubmit((values) => {
           <button class="bg-[#404040] text-white font-medium px-3 py-1 rounded-3xl w-full">Access with Microsoft</button>
         </div>
         <div class="w-full">
-          <button class="bg-[#F5F5F5] text-[#505050] font-medium px-3 py-1 rounded-3xl w-full">Access with Google</button>
+          <button class="bg-[#F5F5F5]   font-medium px-3 py-1 rounded-3xl w-full">Access with Google</button>
         </div>
       </section>
     </article>
