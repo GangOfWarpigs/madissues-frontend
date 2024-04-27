@@ -32,12 +32,11 @@ const submit = handleSubmit((values) => {
 </script>
 
 <template>
-  <main class="flex flex-col items-center space-y-10 text-xs">
     <div class="items-start w-full">
       <p>Logo uni</p>
     </div>
     <h2 class="w-full text-center text-[#505050] font-bold">Join our community of MadIssues</h2>
-    <article class="w-full px-20  text-[0.55rem] space-y-2">
+    <article class="w-full px-20  text-[0.50rem] space-y-2">
       <form @submit.prevent="submit">
         <div class="flex flex-col w-full space-y-1.5">
           <FormInput name="email" type="email" placeholder="Email"/>
@@ -47,17 +46,15 @@ const submit = handleSubmit((values) => {
         </div>
       </form>
       <p class="text-center text-[#ADADAD]">o tambien puedes</p>
-      <section>
-        <div>
-          <button class="bg-gray-900 text-white font-medium px-3 py-1 rounded-3xl w-full">Access with Microsoft</button>
+      <section class="flex flex-col space-y-2 items-center mx-7">
+        <div class="w-full">
+          <button class="bg-[#404040] text-white font-medium px-3 py-1 rounded-3xl w-full">Access with Microsoft</button>
         </div>
-        <div>
+        <div class="w-full">
           <button class="bg-[#F5F5F5] text-[#505050] font-medium px-3 py-1 rounded-3xl w-full">Access with Google</button>
         </div>
       </section>
     </article>
-
-  </main>
 
 
 </template>
