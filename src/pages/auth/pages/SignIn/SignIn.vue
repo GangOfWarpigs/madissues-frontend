@@ -2,7 +2,7 @@
 import FormInput  from "../../components/FormInput.vue";
 import * as yup from 'yup';
 import {useForm} from "vee-validate";
-
+import FormButton from "../../components/FormButton.vue"
 
 const schema = yup.object({
   email: yup.string().required().email(),
@@ -32,14 +32,32 @@ const submit = handleSubmit((values) => {
 </script>
 
 <template>
-  <form @submit.prevent="submit">
-    <div class="flex flex-col w-full space-y-3">
-      <FormInput name="email" type="email" placeholder="Email"/>
-      <FormInput name="password" type="password" placeholder="Password"/>
-      <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
-      <button>Submit</button>
+  <main class="flex flex-col items-center space-y-10 text-xs">
+    <div class="items-start w-full">
+      <p>Logo uni</p>
     </div>
+    <h2 class="w-full text-center text-[#505050] font-bold">Join our community of MadIssues</h2>
+    <article class="w-full px-20  text-[0.55rem] space-y-2">
+      <form @submit.prevent="submit">
+        <div class="flex flex-col w-full space-y-1.5">
+          <FormInput name="email" type="email" placeholder="Email"/>
+          <FormInput name="password" type="password" placeholder="Password"/>
+          <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
+          <FormButton text="Sign up" type="submit"/>
+        </div>
+      </form>
+      <p class="text-center text-[#ADADAD]">o tambien puedes</p>
+      <section>
+        <div>
+          <button class="bg-gray-900 text-white font-medium px-3 py-1 rounded-3xl w-full">Access with Microsoft</button>
+        </div>
+        <div>
+          <button class="bg-[#F5F5F5] text-[#505050] font-medium px-3 py-1 rounded-3xl w-full">Access with Google</button>
+        </div>
+      </section>
+    </article>
 
-  </form>
+  </main>
+
 
 </template>
