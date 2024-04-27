@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import InputEmail  from "../../components/InputEmail.vue";
-import InputPassword from "../../components/InputPassword.vue";
+import FormInput  from "../../components/FormInput.vue";
 import * as yup from 'yup';
 import {useForm} from "vee-validate";
+
 
 const schema = yup.object({
   email: yup.string().required().email(),
@@ -16,25 +16,30 @@ const schema = yup.object({
 });
 
 
-const { handleSubmit } = useForm<{email : string, password : string}>({
+const { handleSubmit } = useForm<{email : string, password : string, passwordConfirmation: string}>({
   validationSchema: schema,
   initialValues: {
     email: "",
-    password: ""
+    password: "",
+    passwordConfirmation: ""
   }
 })
 
 const submit = handleSubmit((values) => {
-  console.log(values.email, values.password)
+  console.log(values.email, values.password, values.passwordConfirmation)
 });
 
 </script>
 
 <template>
   <form @submit.prevent="submit">
-    <InputEmail email="email" placeholder="Email"/>
-    <InputPassword password="password" placeholder="Password"/>
-    <button>Submit</button>
+    <div class="flex flex-col w-full space-y-3">
+      <FormInput name="email" type="email" placeholder="Email"/>
+      <FormInput name="password" type="password" placeholder="Password"/>
+      <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
+      <button>Submit</button>
+    </div>
+
   </form>
 
 </template>
