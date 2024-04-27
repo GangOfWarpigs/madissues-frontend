@@ -26,7 +26,7 @@
 
 <template>
   <div :style="gradientStyle" class="h-60  w-full mx-auto mt-6 bg-gray-100 rounded-3xl flex flex-col justify-center items-center" >
-    <h2 class="text-4xl font-bold mt-7 mb-8 text-white font-sans">{{ title }}</h2>
+    <p class="text-4xl font-bold mt-7 mb-8 text-white font-sans">{{ title }}</p>
     <p class="text-xl text-white font-sans">{{ subtitle }}</p>
     <IncidentChild v-if="currentPage === 'issues'" class="relative translate-y-14"/>
     <SearchBarChild v-if="currentPage === 'faqs'" class="relative translate-y-14"/>
