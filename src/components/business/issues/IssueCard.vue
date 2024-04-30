@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { PropType } from 'vue';
-    import { useRouter, useRoute } from 'vue-router'
+    import { useRouter, useRoute } from 'vue-router';
 
     export interface IssueCardProps {
         id: string,
