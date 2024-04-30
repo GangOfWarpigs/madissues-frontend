@@ -42,7 +42,7 @@
         <b-icon-x-circle class="text-rose-500 text-2xl mr-6" :class="[ props.issue.status === 'Not solved' ? 'block' : 'hidden']"/>
         <div class="flex flex-col w-full">
             <section class="flex items-center justify-between w-100">
-                <h1 class="font-semibold text- max-w-6xl whitespace-nowrap text-ellipsis overflow-hidden">{{ props.issue.title }}</h1>
+                <h1 class="font-semibold text-base max-w-6xl whitespace-nowrap text-ellipsis overflow-hidden">{{ props.issue.title }}</h1>
                 <div class="flex text-slate-400 items-center text-center justify-center">
                     <b-icon-chat-left-text-fill/>
                     <p class="ml-2 mb-1">{{ props.issue.comments_id != null ? props.issue.comments_id.length : 0 }}</p>
