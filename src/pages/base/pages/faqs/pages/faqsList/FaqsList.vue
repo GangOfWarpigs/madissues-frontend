@@ -4,6 +4,7 @@
   import InfoDialog from "@/components/shared/InfoDialog.vue";
 
   const faqData = {
+    id: "1",
     question: "Hey una pregunta",
     date: '2024-04-23'
   }
