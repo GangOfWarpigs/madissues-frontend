@@ -33,6 +33,11 @@
   <div :style="gradientStyle" class="w-full">
     <p class="text-2xl">{{subject.title}}</p>
     <p> {{subject.icon}} </p>
+    <v-stage ref="stage" :config="stageSize">
+      <v-layer>
+        <v-shape :config="shapeConfig"/>
+      </v-layer>
+    </v-stage>
   </div>
 </template>
 
