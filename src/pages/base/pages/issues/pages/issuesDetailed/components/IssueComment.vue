@@ -31,7 +31,7 @@
 </script>
 
 <template>
-    <article class="flex flex-col w-full my-5 py-8 px-12 bg-gray-100 rounded-lg text-slate-500 hover:shadow-gray-200 relative">
+    <article class="flex flex-col w-full mt-5 py-8 px-12 bg-gray-100 rounded-lg text-slate-500 hover:shadow-gray-200 relative">
         <section class="flex items-center">
             <div class="flex items-center mr-4">
                 <img class="w-9 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/profile_picture_test.png" alt="Foto de perfil del usuario"/>
