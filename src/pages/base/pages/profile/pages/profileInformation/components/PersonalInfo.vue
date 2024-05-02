@@ -87,7 +87,7 @@
                             </SelectContent>
                         </Select>
                     </div>
-                    <div class="flex flex-col items-start mb-5">
+                    <div class="flex flex-col items-start">
                         <Label for="email" class="text-sm font-medium text-gray-400 mb-1">Email Adress</Label>
                         <p id="email" class="text-base">{{ props.user.email }}</p>
                     </div>
@@ -97,7 +97,7 @@
                         <Label for="last_name" class="text-sm font-medium text-gray-400 mb-1">Last Name</Label>
                         <p id="last_name" class="text-base">{{ props.user.first_name }}</p>
                     </div>
-                    <div class="flex flex-col items-start mb-5">
+                    <div class="flex flex-col items-start">
                         <Label for="year" class="text-sm font-medium text-gray-400 mb-1">Last School Year</Label>
                         <Select id="year" :default-value="props.user.last_school_year" :on-update:model-value="handleYearChange">
                             <SelectTrigger class=" bg-white">

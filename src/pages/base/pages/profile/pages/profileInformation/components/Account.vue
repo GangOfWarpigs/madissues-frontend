@@ -15,16 +15,16 @@
         <CardContent>
             <form class="flex items-start">
                 <div class="flex flex-col items-start mr-20">
-                    <div class="flex flex-col items-start mb-5">
+                    <div class="flex flex-col items-start">
                         <Label for="logout" class="text-sm font-medium text-gray-400 mb-1">Log Out</Label>
-                        <button id="logout" @click="$emit('logOut')" class="bg-blue-500 text-white items-center justify-center font-semibold px-2 text-sm py-1">Log Out</button>
+                        <button id="logout" @click="$emit('logOut')" class="bg-blue-500 text-white items-center justify-center font-medium px-2 text-sm py-1">Log Out</button>
                     </div>
                     
                 </div>
                 <div class="flex flex-col items-start mr-20">
-                    <div class="flex flex-col items-start mb-5">
+                    <div class="flex flex-col items-start">
                         <Label for="delete" class="text-sm font-medium text-gray-400 mb-1">Delete Account</Label>
-                        <button id="delete" @click="$emit('deleteAccount')" class="bg-red-500 text-white items-center justify-center font-semibold px-2 text-sm py-1">Delete your account</button>
+                        <button id="delete" @click="$emit('deleteAccount')" class="bg-red-500 text-white items-center justify-center font-medium px-2 text-sm py-1">Delete your account</button>
                     </div>
                 </div>
             </form>
