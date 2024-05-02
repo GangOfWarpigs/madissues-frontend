@@ -61,7 +61,7 @@
 </script>
 
 <template>
-    <Card class="w-full mb-2 rounded-lg bg-gray-100 px-10 py-6 box-border flex flex-col items-start text-gray-800">
+    <Card class="w-full mb-5 rounded-lg bg-gray-100 px-10 py-6 box-border flex flex-col items-start text-gray-800">
         <CardHeader>
             <CardTitle class="text-lg mb-5">Personal Information</CardTitle>
         </CardHeader>
@@ -116,35 +116,6 @@
             </form>
         </CardContent>
     </Card>
-    <!-- <article class="w-full mb-2 rounded-lg bg-gray-100 px-10 py-6 box-border flex flex-col items-start text-gray-800">
-        <h3 class="font-semibold text-lg mb-6">Personal Information</h3>
-        <section class="flex items-start">
-            <div class="flex flex-col items-start mr-20">
-                <div class="flex flex-col items-start mb-5">
-                    <h4 class="text-sm font-medium text-gray-400 mb-1">First Name</h4>
-                    <p class="text-lg">{{ props.user.first_name }}</p>
-                </div>
-                <div class="flex flex-col items-start mb-5">
-                    <h4 class="text-sm font-medium text-gray-400 mb-1">Degree</h4>
-                    <p class="text-lg">{{ props.user.degree }}</p>
-                </div>
-                <div class="flex flex-col items-start">
-                    <h4 class="text-sm font-medium text-gray-400 mb-1">Email Address</h4>
-                    <p class="text-lg">{{ props.user.email }}</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-start">
-                <div class="flex flex-col items-start mb-5">
-                    <h4 class="text-sm font-medium text-gray-400 mb-1">Last Name</h4>
-                    <p class="text-lg">{{ props.user.last_name }}</p>
-                </div>
-                <div class="flex flex-col items-start mb-5">
-                    <h4 class="text-sm font-medium text-gray-400 mb-1">Last School Year</h4>
-                    <p class="text-lg">{{ props.user.last_school_year }}</p>
-                </div>
-            </div>
-        </section>
-    </article> -->
 </template>
 
 <style scoped>
