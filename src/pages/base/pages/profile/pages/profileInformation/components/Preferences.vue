@@ -58,7 +58,7 @@
         <CardContent>
             <form class="flex items-start">
                 <div class="flex flex-col items-start mr-20">
-                    <div class="flex flex-col items-start mb-5">
+                    <div class="flex flex-col items-start">
                         <Label for="theme" class="text-sm font-medium text-gray-400 mb-3">Theme</Label>
                         <div id="theme" class="flex items-center">
                             <p class="text-base mr-2">Dark Theme</p>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-start">
-                    <div class="flex flex-col items-start mb-5">
+                    <div class="flex flex-col items-start">
                         <Label for="language" class="text-sm font-medium text-gray-400 mb-1">Language</Label>
                         <Select id="language" :default-value="props.preferences.language" :on-update:model-value="handleLanguageChange">
                             <SelectTrigger class=" bg-white w-40">

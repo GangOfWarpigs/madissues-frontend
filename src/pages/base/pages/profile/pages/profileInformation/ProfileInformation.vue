@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import PersonalInfo from './components/PersonalInfo.vue';
     import Preferences from './components/Preferences.vue';
+    import Account from './components/Account.vue';
 
     const userData1 = {
         first_name: "Jose Ricardo",
@@ -39,6 +40,7 @@
     <div class="mx-40">
         <PersonalInfo :user="userData1" :degrees="degreesData" :years="yearsData"/>
         <Preferences :preferences="preferencesData" :languages="languagesData"/>
+        <Account/>
     </div>
 </template>
 
