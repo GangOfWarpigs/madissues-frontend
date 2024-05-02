@@ -15,9 +15,10 @@
     "bootstrap-icons-vue": "^1.11.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.376.0",
     "oh-vue-icons": "^1.0.0-rc3",
     "path": "^0.12.7",
-    "radix-vue": "^1.7.2",
+    "radix-vue": "^1.7.3",
     "shadcn-vue": "^0.10.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
@@ -27,7 +28,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.12.8",
     "@vitejs/plugin-vue": "^4.5.2",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
