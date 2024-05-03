@@ -23,7 +23,9 @@
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vee-validate": "^4.12.6",
+    "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.3.11",
+    "vue-konva": "^3.0.2",
     "vue-router": "^4.3.2",
     "yup": "^1.4.0"
   },
