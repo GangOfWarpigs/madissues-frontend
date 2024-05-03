@@ -4,26 +4,30 @@
 
   const issueData1 = {
     id: "1",
-    question: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-    state: "Solved",
-    comments: 7,
-    teacher: "Domingo",
-    subject: "Arquitectura de Computadores",
-    username: "Jose Peña Seco",
-    useryear: "3rd year",
-    date: "a minute ago"
+    title: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
+    description: "hola caracola",
+    details: "",
+    proofs: [],
+    status: "Solved",
+    date_time: "a minute ago",
+    course: "Arquitectura de Computadores",    
+    teachers: ["Domingo"],
+    student: "josepenaseco101",
+    comments_id: ["1", "2", "3", "4"]
   }
 
   const issueData2 = {
-    id: "2",
-    question: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-    state: "Queued",
-    comments: 7,
-    teacher: "Domingo",
-    subject: "Arquitectura de Computadores",
-    username: "Jose Peña Seco",
-    useryear: "3rd year",
-    date: "a minute ago"
+    id: "1",
+    title: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
+    description: "hola caracola",
+    details: "",
+    proofs: [],
+    status: "Queued",
+    date_time: "a minute ago",
+    course: "Arquitectura de Computadores",    
+    teachers: ["Domingo", "Ricardo"],
+    student: "josepenaseco101",
+    comments_id: []
   }
 </script>
 
