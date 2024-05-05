@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import FaqCard from "../../../../../../components/business/faqs/FaqCard.vue";
   import PageBanner from "../../../../../../components/shared/PageBanner.vue";
-  import InfoDialog from "@/components/shared/InfoDialog.vue";
+  import InfoDialog from "../../../../../../components/shared/InfoDialog.vue";
 
   const faqData = {
     id: "1",
@@ -17,7 +17,7 @@
                 secondaryColor="#978EFF" current-page="faqs"></PageBanner>
   </div>
   <div class="mx-24">
-    <InfoDialog title="Hi, this is an information dialog" description="This is the text of the information dialog"/>
+    <InfoDialog title="Hi, this is an information dialog" content="This is the text of the information dialog"/>
   </div>
   <FaqCard :faq="faqData"></FaqCard>
 </template>

@@ -3,6 +3,14 @@
   import SearchCourseNav from './components/SearchCourseNav.vue';
 
   const n_years: number = 4;
+
+  const subjectCardData = {
+    icon: "",
+    title: "Aquí va el título de la asignatura",
+    primaryColor: "#1986E3",
+    secondaryColor: "#978EFF",
+    numOfIssues: 0
+  }
 </script>
   
 <template>
@@ -11,7 +19,7 @@
         <SearchCourseNav :n_years="n_years"/>
     </div>
     <div class="w-full p-14">
-        <SubjectCard title="Fundamentos Fisicos de la Informatica" num-of-issues="4"/>
+        <SubjectCard :subjectCard="subjectCardData" />
     </div>
 </template>
 
