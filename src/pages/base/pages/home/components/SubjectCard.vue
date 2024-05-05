@@ -9,14 +9,6 @@
     numOfIssues: number
   }
 
-  // const {icon, title, primaryColor, secondaryColor, numOfIssues} = withDefaults(defineProps<Props>(), {
-  //   icon: "",
-  //   title:"Aquí va el título de la asignatura",
-  //   primaryColor:"#1986E3",
-  //   secondaryColor:"#978EFF",
-  //   numOfIssues: 0
-  // })
-
   const props = defineProps({
     subjectCard: {
       type: Object as PropType<subjectCardProps>,
