@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import SubjectCard from "./components/SubjectCard.vue";
   import SearchCourseNav from './components/SearchCourseNav.vue';
+  import IssueCarousel from "./components/carousel/IssueCarousel.vue";
 
   const n_years: number = 4;
 
@@ -15,6 +16,9 @@
   
 <template>
     <p>this is the home</p>
+    <div class="w-full py-20 px-80">
+      <IssueCarousel></IssueCarousel>
+    </div>
     <div class="w-full h-full flex flex-col items-center justify-center">
         <SearchCourseNav :n_years="n_years"/>
     </div>
