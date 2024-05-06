@@ -6,7 +6,8 @@
     title: string,
     primaryColor: string,
     secondaryColor: string,
-    numOfIssues: number
+    numOfIssues: number,
+    curse: number
   }
 
   const props = defineProps({
@@ -23,7 +24,7 @@
   });
 </script>
 <template>
-  <div :style="gradientStyle" class="flex flex-col justify-center relative w-1/4 rounded-2xl p-5 overflow-hidden h-[10em]">
+  <div :style="gradientStyle" class="flex flex-col justify-center relative w-1/4 max-w-[20em] rounded-2xl p-5 overflow-hidden h-[10em]">
     <img src="../../../../../assets/images/subject_card_icon.svg" class="w-[2.4em] mb-1"/>
     <p class="text-white text-xl mb-1">{{props.subjectCard.title}}</p>
     <p class="text-white">{{props.subjectCard.numOfIssues}} issues</p>
