@@ -2,6 +2,7 @@
   import FaqCard from "../../../../../../components/business/faqs/FaqCard.vue";
   import PageBanner from "../../../../../../components/shared/PageBanner.vue";
   import InfoDialog from "../../../../../../components/shared/InfoDialog.vue";
+
   const faqPageData = {
     title: "FAQs",
     subtitle: "Ask what you want, we listen to you",
@@ -16,6 +17,7 @@
     last_school_year: "4",
     email: "jose.pena101@alu.ulpgc.es"
   }
+  
   const faqData = {
     id: "1",
     question: "Hey una pregunta",
@@ -29,7 +31,7 @@
     <PageBanner :data="faqPageData" :user="userData1" ></PageBanner>
   </div>
   <div class="mx-24">
-    <InfoDialog title="Hi, this is an information dialog" description="This is the text of the information dialog"/>
+    <InfoDialog title="Hi, this is an information dialog" content="This is the text of the information dialog"/>
   </div>
   <FaqCard :faq="faqData"></FaqCard>
 </template>
