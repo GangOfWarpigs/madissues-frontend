@@ -2,6 +2,7 @@
 
 import IssueInput from "../components/IssueInput.vue";
 import IssueTextArea from "../components/IssueTextArea.vue";
+import IssueTagSelector from "../components/IssueTagsInput.vue";
 </script>
 
 <template>
@@ -20,7 +21,7 @@ import IssueTextArea from "../components/IssueTextArea.vue";
     </div>
     <div>
       <p class="rounded-2xl">Teachers Implicated</p>
-
+      <IssueTagSelector></IssueTagSelector>
     </div>
   </section>
 </template>
