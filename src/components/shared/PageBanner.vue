@@ -44,7 +44,10 @@
       <p class="text-xl text-white font-sans">{{ props.data.subtitle}}</p>
       <IncidentChild v-if="props.data?.currentPage === 'issues'" class="relative translate-y-14"/>
       <SearchBarChild v-if="props.data?.currentPage === 'faqs'" class="relative translate-y-14"/>
-      <ProfileChild v-if="props.data?.currentPage === 'profile'" class="relative translate-y-20 -translate-x-[27em]" :user="props.user"/>
+      <div class="w-full p-16">
+        <ProfileChild v-if="props.data?.currentPage === 'profile'" class="relative translate-y-20" :user="props.user"/>
+      </div>
+
     </div>
   </template>
 

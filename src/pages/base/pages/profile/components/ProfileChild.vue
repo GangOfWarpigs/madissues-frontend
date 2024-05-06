@@ -22,7 +22,7 @@
     </div>
     <div>
       <p class="text-3xl font-semibold">{{props.user.first_name}} {{props.user.last_name}}</p>
-      <p class="text-xl text-gray-500">{{props.user.degree}}, {{props.user.last_school_year}} curso</p>
+      <p class="text-xl text-gray-500">{{props.user.degree}}, {{props.user.last_school_year}}º curso</p>
     </div>
   </div>
 </template>
