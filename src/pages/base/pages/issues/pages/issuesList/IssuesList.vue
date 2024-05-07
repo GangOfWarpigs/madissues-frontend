@@ -2,6 +2,22 @@
   import PageBanner from "../../../../../../components/shared/PageBanner.vue";
   import IssueCard from "../../../../../../components/business/issues/IssueCard.vue";
 
+  const userData = {
+    first_name: "Jose Ricardo",
+    last_name: "Peña Seco",
+    degree: "Ingeniería Informática",
+    last_school_year: "4th year",
+    email: "jose.pena101@alu.ulpgc.es"
+  }
+
+  const pageProps = {
+    title: "Incidents",
+    subtitle: "Here you can report an incident",
+    primaryColor: "#1986E3",
+    secondaryColor: "#978EFF", 
+    currentPage: "issues"
+  }
+
   const issueData1 = {
     id: "1",
     title: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
@@ -34,8 +50,7 @@
 <template>
   this is issues list
   <div class="mx-16">
-    <PageBanner title="Incidents" subtitle="Here you can report an incident" primaryColor="#1986E3"
-                secondaryColor="#978EFF" current-page="issues"></PageBanner>
+    <PageBanner :data="pageProps" :user="userData"></PageBanner>
     <IssueCard :issue="issueData1"/>
     <IssueCard :issue="issueData2"/>
   </div>

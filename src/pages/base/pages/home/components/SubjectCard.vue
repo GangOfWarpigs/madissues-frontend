@@ -7,7 +7,7 @@
     primaryColor: string,
     secondaryColor: string,
     numOfIssues: number,
-    curse: number
+    course: number
   }
 
   const props = defineProps({
