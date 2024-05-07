@@ -37,8 +37,8 @@
   </script>
 
   <template>
-    <div :style="gradientStyle" class="w-full mx-auto min-h-[300px] bg-gray-100 rounded-3xl flex flex-col justify-center items-center" >
-      <p class="text-4xl font-bold text-white font-sans">{{ props.data?.title }}</p>
+    <div :style="gradientStyle" class="h-60  w-full mx-auto mt-6 pt-32 rounded-3xl flex flex-col justify-center items-center" >
+      <p class="text-4xl font-bold mt-7 mb-8 text-white font-sans">{{ props.data?.title }}</p>
       <p class="text-xl text-white font-sans">{{ props.data.subtitle}}</p>
       <div class="relative w-full">
         <slot></slot>
