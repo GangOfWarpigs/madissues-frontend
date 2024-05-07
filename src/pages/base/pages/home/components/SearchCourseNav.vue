@@ -49,13 +49,3 @@
         </nav>
     </div>
 </template>
-
-<style scoped>
-    .slide-enter-active, .slide-leave-active {
-        transition: left 0.5s;
-    }
-    
-    .slide-enter, .slide-leave-to {
-        left: 0;
-    }
-</style>

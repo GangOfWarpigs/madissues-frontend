@@ -1,8 +1,5 @@
   <script lang="ts" setup>
-  import {defineProps, defineEmits, computed, PropType, SetupContext } from "vue";
-    import IncidentChild from "./IncidentChild.vue";
-    import SearchBarChild from "./SearchBarChild.vue";
-    import ProfileChild from "../../pages/base/pages/profile/components/ProfileChild.vue";
+  import {defineProps, defineEmits, computed, PropType } from "vue";
 
     interface UserDataProps {
       first_name: string,
@@ -37,21 +34,22 @@
       };
     });
     const emits = defineEmits(['search']);
-    const handleSearch = (query: string) => {
-      emits('search', query);
-    };
   </script>
 
   <template>
-    <div :style="gradientStyle" class="h-60  w-full mx-auto mt-6 bg-gray-100 rounded-3xl flex flex-col justify-center items-center" >
-      <p class="text-4xl font-bold mt-7 mb-8 text-white font-sans">{{ props.data?.title }}</p>
+    <div :style="gradientStyle" class="w-full mx-auto min-h-[300px] bg-gray-100 rounded-3xl flex flex-col justify-center items-center" >
+      <p class="text-4xl font-bold text-white font-sans">{{ props.data?.title }}</p>
       <p class="text-xl text-white font-sans">{{ props.data.subtitle}}</p>
-      <IncidentChild v-if="props.data?.currentPage === 'issues'" class="relative translate-y-14"/>
-      <SearchBarChild @search="handleSearch" v-if="props.data?.currentPage === 'faqs'" class="relative translate-y-14"/>
-      <div class="w-full p-16">
-        <ProfileChild v-if="props.data?.currentPage === 'profile'" class="relative translate-y-20" :user="props.user"/>
+      <div class="relative w-full">
+        <slot></slot>
       </div>
-
+      <!-- 
+        <IncidentChild v-if="props.data?.currentPage === 'issues'" class="relative translate-y-14"/>
+        <SearchBarChild @search="handleSearch" v-if="props.data?.currentPage === 'faqs'" class="relative translate-y-14"/>
+        <div class="w-full">
+          <ProfileChild v-if="props.data?.currentPage === 'profile'" class="relative translate-y-20" :user="props.user"/>
+        </div>
+      -->
     </div>
   </template>
 

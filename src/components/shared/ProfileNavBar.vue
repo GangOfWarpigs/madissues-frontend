@@ -27,18 +27,11 @@ watch(() => route.path, (newPath) => {
 </script>
 
 <template>
-  <nav class="w-full  px-10 text-[#A5A5A5] text-xs font-normal">
-
-    <ul class="flex border-b-[1.5px] border-gray-200 space-x-5">
-      <li :class="{'pb-1.5': true, 'text-[#1986E3] border-b-[1.5px] border-[#1986E3]': endpointName ==='information'}">
-        <router-link :to="{ path: basePath + 'profile/information' }" replace>Information</router-link>
-      </li>
-      <li :class="{'pb-1.5': true, 'text-[#1986E3] border-b-[1.5px] border-[#1986E3]': endpointName ==='issues'}">
-        <router-link :to="{ path: basePath + 'profile/issues' }" replace>Issues</router-link>
-      </li>
-      <li :class="{'pb-1.5': true, 'text-[#1986E3] border-b-[1.5px] border-[#1986E3]': endpointName ==='faqs'}">
-        <router-link :to="{ path: basePath + 'profile/faqs' }" replace>Faqs</router-link>
-      </li>
+  <nav class="w-full text-[#A5A5A5] text-lg my-4 font-normal">
+    <ul class="flex border-b-[1.5px] border-gray-200 gap-6">
+        <router-link class="min-w-[80px] text-center" active-class="font-semibold pb-1.5 text-[#1986E3] border-b-[2px] border-[#1986E3]" :to="{ path: basePath + 'profile/information' }" replace>Information</router-link>
+        <router-link class="min-w-[80px] text-center" active-class="font-semibold pb-1.5 text-[#1986E3] border-b-[2px] border-[#1986E3]" :to="{ path: basePath + 'profile/issues' }" replace>Issues</router-link>
+        <router-link class="min-w-[80px] text-center" active-class="font-semibold pb-1.5 text-[#1986E3] border-b-[2px] border-[#1986E3]" :to="{ path: basePath + 'profile/faqs' }" replace>Faqs</router-link>
     </ul>
 
   </nav>

@@ -63,39 +63,8 @@
 </script>
 
 <template>
-  this is faqs list
-  <div class="mx-16 mb-12">
-    <PageBanner @search="handleSearch" :data="faqPageData" :user="userData1" ></PageBanner>
-  </div>
-  <div class="mx-24">
-    <InfoDialog title="Hi, this is an information dialog" content="This is the text of the information dialog"/>
-  </div>
-  <div class="mx-24 mt-5 flex-wrap-container">
-    <FaqCard v-for="faq in filteredFaqData" :key="faq.id" :faq="faq" />
-  </div>
+    <PageBanner @search="handleSearch" :data="faqPageData" :user="userData1"></PageBanner>
+    <div class="grid grid-cols-3 gap-4 mt-10">
+      <FaqCard v-for="faq in filteredFaqData" :key="faq.id" :faq="faq" />
+    </div>
 </template>
-
-<style scoped>
-.flex-wrap-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem; /* Espacio entre las tarjetas */
-}
-
-@media (max-width: 768px) {
-  .flex-wrap-container {
-    gap: 0.5rem; /* Espacio reducido para dispositivos móviles */
-  }
-}
-
-.faq-card {
-  flex: 1 0 calc(45% - 0.5rem); /* Ajusta el ancho de la tarjeta para que ocupe aproximadamente el 45% del contenedor */
-  /* Elimina los márgenes */
-}
-
-@media (max-width: 768px) {
-  .faq-card {
-    flex: 1 0 calc(100% - 0.5rem); /* En dispositivos móviles, cada tarjeta ocupará una fila completa */
-  }
-}
-</style>

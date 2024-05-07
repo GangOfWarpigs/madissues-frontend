@@ -34,15 +34,11 @@
 </script>
 
 <template>
-  this is issues detailed
-  <section class="mx-[450px]">
     <IssueDetails :issue="issueData1"/>
     <section class="w-full flex flex-col">
       <IssueComment :comment="commentData1" />
       <IssueComment :comment="commentData2"/>
     </section>
-  </section>
-  
 </template>
 
 <style scoped>

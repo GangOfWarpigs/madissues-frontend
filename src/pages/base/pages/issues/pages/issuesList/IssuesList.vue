@@ -48,12 +48,9 @@
 </script>
 
 <template>
-  this is issues list
-  <div class="mx-16">
-    <PageBanner :data="pageProps" :user="userData"></PageBanner>
-    <IssueCard :issue="issueData1"/>
-    <IssueCard :issue="issueData2"/>
-  </div>
+  <PageBanner :data="pageProps" :user="userData"></PageBanner>
+  <IssueCard :issue="issueData1"/>
+  <IssueCard :issue="issueData2"/>
 </template>
 
 <style scoped>
