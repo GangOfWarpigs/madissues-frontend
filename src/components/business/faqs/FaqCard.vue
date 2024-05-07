@@ -50,5 +50,14 @@
 </template>
 
 <style scoped>
+  .faq-card {
+    flex: 1 0 calc(45% - 1rem); /* Ajusta el ancho de la tarjeta para que ocupe aproximadamente el 45% del contenedor */
+     /* Ajusta el margen entre las tarjetas */
+  }
 
+  @media (max-width: 768px) {
+    .faq-card {
+      flex: 1 0 calc(100% - 1rem); /* En dispositivos móviles, cada tarjeta ocupará una fila completa */
+    }
+  }
 </style>
