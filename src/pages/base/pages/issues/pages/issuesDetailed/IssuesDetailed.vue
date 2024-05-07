@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import IssueComment from './components/IssueComment.vue';
   import IssueDetails from './components/IssueDetails.vue';
+  import CommentBox from './components/CommentBox.vue';
   
   const issueData1 = {
     id: "1",
@@ -36,6 +37,7 @@
 <template>
     <IssueDetails :issue="issueData1"/>
     <section class="w-full flex flex-col">
+      <CommentBox />
       <IssueComment :comment="commentData1" />
       <IssueComment :comment="commentData2"/>
     </section>
