@@ -32,14 +32,10 @@
 </script>
 
 <template>
-	this is faqs detailed
-	<div class="mx-[450px]">
-		<FaqDetails :faq="faqData1"/>
-		<FaqComment :comment="faqCommentData1"/>
-		<FaqComment :comment="faqCommentData2"/>
-	</div>
+	<FaqDetails :faq="faqData1"/>
+	<FaqComment :comment="faqCommentData1"/>
+	<FaqComment :comment="faqCommentData2"/>
 </template>
 
 <style scoped>
-
 </style>

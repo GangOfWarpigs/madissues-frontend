@@ -47,15 +47,9 @@
 </script>
 
 <template>
-    this is profile information
-    <div class="mx-40 mb-24">
-      <PageBanner :data="profilePageData" :user="userData1"/>
-    </div>
-    <div class="mx-40">
-        <PersonalInfo :user="userData1" :degrees="degreesData" :years="yearsData"/>
-        <Preferences :preferences="preferencesData" :languages="languagesData"/>
-        <Account/>
-    </div>
+    <PersonalInfo :user="userData1" :degrees="degreesData" :years="yearsData"/>
+    <Preferences :preferences="preferencesData" :languages="languagesData"/>
+    <Account/>
 </template>
 
 <style scoped>

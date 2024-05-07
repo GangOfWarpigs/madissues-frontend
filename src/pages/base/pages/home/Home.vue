@@ -71,15 +71,14 @@
 </script>
   
 <template>
-    <p>this is the home</p>
-    <div class="w-full py-20 px-80">
+    <div class="w-full mb-10">
       <IssueCarousel></IssueCarousel>
     </div>
     <div class="w-full h-full flex flex-col items-center justify-center">
         <SearchCourseNav :n_years="n_years" @updatedFilter="updateFilteredSubjects"/>
     </div>
-    <div class="w-full p-14 flex-wrap">
-        <SubjectCard class="m-2" v-for="subject in filteredSubjects" :key="subject.title" :subjectCard="subject" />
+    <div class="w-full grid grid-cols-4 mt-4 gap-4">
+        <SubjectCard v-for="subject in filteredSubjects" :key="subject.title" :subjectCard="subject" />
     </div>
 </template>
 

@@ -35,7 +35,7 @@
 </script>
 
 <template>
-    <article @click="goToIssue" class="flex w-full px-8 py-5 bg-gray-100 rounded-lg mt-5 text-slate-600 cursor-pointer hover:shadow-lg hover:shadow-gray-200">
+    <article @click="goToIssue" class="flex w-full px-8 py-5 bg-gray-100 rounded-xl mt-5 text-slate-600 cursor-pointer hover:shadow-sm hover:shadow-[#f5f5f5c9] transition-all">
         <b-icon-record-circle class="text-teal-500 text-2xl mr-6" :class="[ props.issue.status === 'Queued' ? 'block' : 'hidden']"/>
         <b-icon-arrow-right-circle class="text-amber-500 text-2xl mr-6" :class="[ props.issue.status === 'In progress' ? 'block' : 'hidden']"/>
         <b-icon-check-circle class="text-green-500 text-2xl mr-6" :class="[ props.issue.status === 'Solved' ? 'block' : 'hidden']"/>
