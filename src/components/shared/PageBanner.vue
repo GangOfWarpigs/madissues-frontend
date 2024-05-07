@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import {defineProps, defineEmits, computed, PropType } from "vue";
+  import {computed, PropType } from "vue";
   import IncidentChild from "./IncidentChild.vue";
   import SearchBarChild from "./SearchBarChild.vue";
   import ProfileChild from "../../pages/base/pages/profile/components/ProfileChild.vue";

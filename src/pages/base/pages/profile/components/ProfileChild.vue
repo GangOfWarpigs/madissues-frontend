@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import {defineProps, PropType} from 'vue';
+  import {PropType} from 'vue';
   interface UserDataProps {
     first_name: string,
     last_name: string,

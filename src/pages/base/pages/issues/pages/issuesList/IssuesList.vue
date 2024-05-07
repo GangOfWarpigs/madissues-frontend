@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import PageBanner from "../../../../../../components/shared/PageBanner.vue";
-  import IssueCard from "../../../../../../components/business/issues/IssueCard.vue";
+  import IssueWrapper from "./components/IssueWrapper.vue";
 
   const userData = {
     first_name: "Jose Ricardo",
@@ -17,40 +17,13 @@
     secondaryColor: "#978EFF", 
     currentPage: "issues"
   }
-
-  const issueData1 = {
-    id: "1",
-    title: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-    description: "hola caracola",
-    details: "",
-    proofs: [],
-    status: "Solved",
-    date_time: "a minute ago",
-    course: "Arquitectura de Computadores",    
-    teachers: ["Domingo"],
-    student: "josepenaseco101",
-    comments_id: ["1", "2", "3", "4"]
-  }
-
-  const issueData2 = {
-    id: "1",
-    title: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-    description: "hola caracola",
-    details: "",
-    proofs: [],
-    status: "Queued",
-    date_time: "a minute ago",
-    course: "Arquitectura de Computadores",    
-    teachers: ["Domingo", "Ricardo"],
-    student: "josepenaseco101",
-    comments_id: []
-  }
 </script>
 
 <template>
   <PageBanner :data="pageProps" :user="userData"></PageBanner>
-  <IssueCard :issue="issueData1"/>
-  <IssueCard :issue="issueData2"/>
+  <div class="w-full mt-10 px-10">
+    <IssueWrapper/>
+  </div>
 </template>
 
 <style scoped>
