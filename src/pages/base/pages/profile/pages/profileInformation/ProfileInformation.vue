@@ -2,8 +2,6 @@
     import PersonalInfo from './components/PersonalInfo.vue';
     import Preferences from './components/Preferences.vue';
     import Account from './components/Account.vue';
-    import PageBanner from "../../../../../../components/shared/PageBanner.vue";
-
 
     const userData1 = {
         first_name: "Jose Ricardo",
