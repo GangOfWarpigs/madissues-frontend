@@ -29,7 +29,6 @@
         <img src="../../../../../assets/icons/subjects/subject_card_icon.svg" class="w-10 mb-1"/>
         <p class="text-white text-xl mb-1 font-semibold mt-4">{{ props.subjectCard.title }}</p>
         <p class="text-white">{{props.subjectCard.numOfIssues}} issues</p>
-        <img src="../../../../../assets/images/subject_card_vectorA.svg" class="absolute -bottom-0 right-0 z-0 w-full"/>
-        <img src="../../../../../assets/images/subject_card_vectorB.svg" class="absolute -bottom-0 left-0 w-full" />
+        <img src="../../../../../assets/images/subject_bg.webp" class="absolute bottom-0 left-0 z-0 w-full">
     </div>
 </template>

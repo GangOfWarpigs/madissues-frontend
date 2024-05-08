@@ -35,7 +35,3 @@ watch(() => route.path, (newPath) => {
     </ul>
   </nav>
 </template>
-
-<style scoped>
-
-</style>
