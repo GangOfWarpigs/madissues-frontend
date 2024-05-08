@@ -51,7 +51,7 @@
         <section class="w-full flex flex-col justify-center">
             <p class="text-base font-semibold">Proofs</p>
             <div class="w-full flex flex-wrap items-center">
-                <img v-for="(_, index) in proofs" @click="$emit('openImage', index)" class="w-72 h-auto mr-5 mt-5 cursor-pointer rounded-lg hover:shadow-lg hover:shadow-gray-200" src="../../../../../../../assets/images/proofs_test.png" alt="Foto de una prueba"/>
+                <img v-for="(_, index) in proofs" @click="$emit('openImage', index)" class="w-72 h-auto mr-5 mt-5 cursor-pointer rounded-lg hover:shadow-lg hover:shadow-gray-200" src="../../../../../../../assets/images/proofs_test.webp" alt="Foto de una prueba"/>
             </div>
         </section>
         <section class="mb-5 mt-10">

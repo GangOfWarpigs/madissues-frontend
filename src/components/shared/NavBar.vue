@@ -52,7 +52,7 @@
             <DropdownMenu>
                 <DropdownMenuTrigger>
                     <div class="flex items-center cursor-pointer box-border">
-                        <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.png" alt="Foto de Perfil"> 
+                        <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.webp" alt="Foto de Perfil"> 
                         <p class="text-white font-semibold mr-3">{{ username }}</p>
                         <vue-icon name="fa-chevron-down" scale="1" class="text-white"/>
                     </div>

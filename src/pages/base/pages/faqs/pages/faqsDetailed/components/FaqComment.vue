@@ -49,7 +49,7 @@
             <p class="ml-3 font-semibold">Official answer</p>
         </section>
         <section class="flex items-center">
-            <img class="w-8 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/profile_picture_test.png" alt="Foto de perfil del usuario"/>
+            <img class="w-8 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/profile_picture_test.webp" alt="Foto de perfil del usuario"/>
             <h3 class="font-semibold text-sm mr-4">{{ student }}</h3>
             <p class="text-xs">Commented {{ props.comment.date_time }}</p>
         </section>
