@@ -25,7 +25,7 @@
 </script>
 
 <template>
-    <div :style="gradientStyle" class="flex flex-col justify-center relative rounded-2xl p-5 py-6 overflow-hidden">
+    <div :style="gradientStyle" class="flex flex-col justify-center relative rounded-xl p-5 py-6 overflow-hidden">
         <img src="../../../../../assets/images/subject_card_icon.svg" class="w-10 mb-1"/>
         <p class="text-white text-xl mb-1 font-semibold mt-4">{{ props.subjectCard.title }}</p>
         <p class="text-white">{{props.subjectCard.numOfIssues}} issues</p>
