@@ -1,9 +1,9 @@
 <script setup lang="ts">
-    import { PropType, ref, onMounted } from 'vue';
+    import { ref, onMounted } from 'vue';
 
     const props = defineProps({
-        n_years: {
-            type: Object as PropType<number>,
+        years: {
+            type: Number,
             required: true
         }
     });
@@ -33,14 +33,14 @@
 
 <template>
     <div class="flex flex-col items-center">
-        <h2 class="text-2xl font-semibold text-slate-700 select-none">Search by course</h2>
+        <h2 class="text-2xl font-semibold text-gray-700 select-none">Search by course</h2>
         <nav class="bg-gray-100 rounded-full px-5 py-2 mt-8 relative overflow-hidden">
-            <ul class="flex items-center z-10 relative"> <!-- Ensure the ul has a position of relative -->
+            <ul class="flex items-center z-10 relative">
                 <li class="mr-6 cursor-pointer nav-item" :key="0" @click="handleClick(0)">
-                    <p @click="$emit('updatedFilter', 0)" class="hover:text-slate-700 font-medium text-slate-500 transition duration-300 select-none">All courses</p>
+                    <p @click="$emit('updatedFilter', 0)" class="hover:text-gray-700 font-medium text-gray-500 transition duration-300 select-none">All courses</p>
                 </li>
-                <li v-for="(n, index) in props.n_years" :key="index+1" class="mr-6 last:mr-0 cursor-pointer nav-item" @click="handleClick(index + 1)">
-                    <p @click="$emit('updatedFilter', index+1)" class="hover:text-slate-700 font-medium text-slate-500 transition duration-300 select-none">{{ n }}º course</p>
+                <li v-for="(n, index) in props.years" :key="index+1" class="mr-6 last:mr-0 cursor-pointer nav-item" @click="handleClick(index + 1)">
+                    <p @click="$emit('updatedFilter', index+1)" class="hover:text-gray-700 font-medium text-gray-500 transition duration-300 select-none">{{ n }}º course</p>
                 </li>
             </ul>
             <transition name="slide">

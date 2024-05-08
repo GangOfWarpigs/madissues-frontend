@@ -103,12 +103,12 @@
     <div class="w-full flex flex-col">
         <div class="flex items-center mb-5">
             <div class="relative">
-                <b-icon-search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+                <b-icon-search class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                 <input 
                     type="text" 
                     v-model="searchQuery" 
-                    class="pl-9 pr-4 py-1 text-base rounded-xl border border-gray-300 focus:outline-none focus:border-blue-500" 
-                    placeholder="Search..." 
+                    class="pl-10 pr-4 py-1 text-base rounded-full border border-gray-300 focus:outline-none focus:border-blue-500" 
+                    placeholder="Search by title..." 
                 />
             </div>
         </div>
@@ -141,6 +141,8 @@
                 </div>
             </div>
         </div>
-        <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
+        <div class="w-full flex flex-col space-y-4 mt-4">
+            <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
+        </div>
     </div>
 </template>

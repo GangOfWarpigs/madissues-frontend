@@ -61,7 +61,7 @@
 </script>
 
 <template>
-    <Card class="w-full mb-5 rounded-lg bg-gray-100 px-10 py-6 box-border flex flex-col items-start text-gray-800">
+    <Card class="w-full rounded-lg bg-gray-100 px-8 py-6 box-border flex flex-col items-start text-gray-700">
         <CardHeader>
             <CardTitle class="text-lg mb-5">Personal Information</CardTitle>
         </CardHeader>
@@ -75,7 +75,7 @@
                     <div class="flex flex-col items-start mb-5">
                         <Label for="degree" class="text-sm font-medium text-gray-400 mb-1">Degree</Label>
                         <Select id="degree" :default-value="props.user.degree" :on-update:model-value="handleDegreeChange">
-                            <SelectTrigger class=" bg-white w-60">
+                            <SelectTrigger class=" bg-white w-60"> 
                               <SelectValue :placeholder="degree?.name" />
                             </SelectTrigger>
                             <SelectContent class="bg-white">
@@ -117,7 +117,3 @@
         </CardContent>
     </Card>
 </template>
-
-<style scoped>
-
-</style>

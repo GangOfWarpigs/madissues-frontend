@@ -7,9 +7,4 @@
   <body class="conainer max-w-[1480px] mx-auto mt-14">
     <RouterView/>
   </body>
-
 </template>
-
-<style scoped>
-
-</style>
