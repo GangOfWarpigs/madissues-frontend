@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    import PageBanner from '../../../../components/shared/PageBanner.vue';
-    import ProfileNavBar from '../../../../components/shared/ProfileNavBar.vue';
-    import ProfileChild from './components/ProfileChild.vue';
+    import PageBanner from '../../../../components/shared/pageBanner/PageBanner.vue';
+    import ProfileNavBar from './components/ProfileNavBar.vue';
+    import ProfileChild from '../../../../components/shared/pageBanner/childs/ProfileChild.vue';
 
     const userData1 = {
         first_name: "Jose Ricardo",

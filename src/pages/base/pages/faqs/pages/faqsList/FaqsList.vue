@@ -1,6 +1,6 @@
 <script setup lang="ts">
-    import FaqCard from "../../../../../../components/business/faqs/FaqCard.vue";
-    import PageBanner from "../../../../../../components/shared/PageBanner.vue";
+    import FaqCard from "../../../../../../components/business/FaqCard.vue";
+    import PageBanner from "../../../../../../components/shared/pageBanner/PageBanner.vue";
     import { ref } from "vue";
 
     const faqPageData = {

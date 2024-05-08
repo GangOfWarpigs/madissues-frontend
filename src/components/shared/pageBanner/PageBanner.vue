@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   import {computed, PropType } from "vue";
-  import IncidentChild from "./IncidentChild.vue";
-  import SearchBarChild from "./SearchBarChild.vue";
-  import ProfileChild from "../../pages/base/pages/profile/components/ProfileChild.vue";
+  import IncidentChild from "./childs/IncidentChild.vue";
+  import SearchBarChild from "./childs/SearchBarChild.vue";
+  import ProfileChild from "./childs/ProfileChild.vue";
 
   interface UserDataProps {
     first_name: string,

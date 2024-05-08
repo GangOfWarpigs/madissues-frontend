@@ -50,7 +50,7 @@
             </section>
             <section class="flex items-end justify-between w-100 mt-4">
                 <div class="flex items-center text-gray-500">
-                    <img class="w-10 border-2 border-white rounded-full" src="../../../assets/images/profile_picture_test.png" alt="Foto de perfil del usuario"/>
+                    <img class="w-10 border-2 border-white rounded-full" src="../../assets/images/profile_picture_test.png" alt="Foto de perfil del usuario"/>
                     <div class="flex flex-col mx-4 mb-2">
                         <p class="font-semibold text-base">{{ student_name }}</p>
                         <p class="text-xs">{{ student_year }}</p>
