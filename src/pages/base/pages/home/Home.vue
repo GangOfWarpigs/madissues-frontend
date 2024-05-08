@@ -2,7 +2,7 @@
     import SubjectCard from "./components/SubjectCard.vue";
     import SearchCourseNav from './components/SearchCourseNav.vue';
     import IssueCarousel from "./components/carousel/IssueCarousel.vue";
-    import {ref} from "vue";
+    import { ref } from "vue";
 
     const subjectCardData = [
         {
@@ -60,13 +60,17 @@
 </script>
   
 <template>
-    <div class="w-full mb-10">
-        <IssueCarousel></IssueCarousel>
-    </div>
-    <div class="w-full h-full flex flex-col items-center justify-center">
-        <SearchCourseNav :years="years" @updatedFilter="updateFilteredSubjects"/>
-    </div>
-    <div class="w-full grid grid-cols-4 mt-4 gap-4">
-        <SubjectCard v-for="subject in filteredSubjects" :key="subject.title" :subjectCard="subject" />
-    </div>
+    <main class="w-full flex flex-col">
+        <section class="w-full flex flex-col">
+            <h1 class="text-3xl font-semibold self-center text-gray-700 select-none">Discover the most recent issues</h1>
+            <IssueCarousel></IssueCarousel>
+        </section>
+        <section class="w-full flex flex-col justify-start items-center mt-20 min-h-[36rem]">
+            <h1 class="text-3xl font-semibold text-gray-700 select-none">Search by course</h1>
+            <SearchCourseNav :years="years" @updatedFilter="updateFilteredSubjects"/>
+            <div class="w-full grid grid-cols-4 mt-10 gap-5">
+                <SubjectCard v-for="subject in filteredSubjects" :key="subject.title" :subjectCard="subject"/>
+            </div>
+        </section>
+    </main>
 </template>
