@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import PageBanner from "../../../../../../components/shared/PageBanner.vue";
+    import PageBanner from "../../../../../../components/shared/pageBanner/PageBanner.vue";
     import IssueWrapper from "./components/IssueWrapper.vue";
 
     const userData = {

@@ -26,7 +26,7 @@
 
 <template>
     <div :style="gradientStyle" class="flex flex-col justify-center relative rounded-xl p-5 py-6 overflow-hidden">
-        <img src="../../../../../assets/images/subject_card_icon.svg" class="w-10 mb-1"/>
+        <img src="../../../../../assets/icons/subjects/subject_card_icon.svg" class="w-10 mb-1"/>
         <p class="text-white text-xl mb-1 font-semibold mt-4">{{ props.subjectCard.title }}</p>
         <p class="text-white">{{props.subjectCard.numOfIssues}} issues</p>
         <img src="../../../../../assets/images/subject_card_vectorA.svg" class="absolute -bottom-0 right-0 z-0 w-full"/>
