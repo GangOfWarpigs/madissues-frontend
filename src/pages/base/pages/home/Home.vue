@@ -65,7 +65,7 @@
             <h1 class="text-3xl font-semibold self-center text-gray-700 select-none">Discover the most recent issues</h1>
             <IssueCarousel></IssueCarousel>
         </section>
-        <section class="w-full flex flex-col justify-start items-center mt-20 min-h-[36rem]">
+        <section class="w-full flex flex-col justify-start items-center mt-14 min-h-[36rem]">
             <h1 class="text-3xl font-semibold text-gray-700 select-none">Search by course</h1>
             <SearchCourseNav :years="years" @updatedFilter="updateFilteredSubjects"/>
             <div class="w-full grid grid-cols-4 mt-10 gap-5">

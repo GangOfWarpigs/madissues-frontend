@@ -72,7 +72,7 @@
 
 <style scoped>
     .carousel {
-        margin-inline: 8em;
+        margin-inline: 1em;
     }
 
     .carousel__slide {
