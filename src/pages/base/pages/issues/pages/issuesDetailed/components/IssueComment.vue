@@ -31,7 +31,7 @@
 </script>
 
 <template>
-    <article class="flex flex-col w-full mt-5 py-8 px-12 bg-gray-100 rounded-lg text-slate-500 hover:shadow-gray-200 relative">
+    <article class="flex flex-col w-full mt-5 py-5 px-8 bg-gray-100 rounded-lg text-gray-500 hover:shadow-gray-200 relative">
         <section class="flex items-center">
             <div class="flex items-center mr-4">
                 <img class="w-9 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/profile_picture_test.png" alt="Foto de perfil del usuario"/>
@@ -39,16 +39,16 @@
             </div>
             <p class="text-xs">Commented {{ props.comment.date_time }}</p>
         </section>
-        <p class="mt-4 text-base w-4/5">
+        <p class="mt-3 text-base w-4/5">
             {{ props.comment.content }}
         </p>
         <div class="flex items-center absolute bottom-4 right-6">
             <div class="flex items-center mt-px mr-5">
                 <p role="alert" class="mr-2 select-none">{{ likes.length }}</p>
-                <b-icon-heart-fill @click="toggleLike" class="text-slate-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ liked == true ? 'block' : 'hidden']"></b-icon-heart-fill>
-                <b-icon-heart @click="toggleLike"class="text-slate-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ liked == true ? 'hidden' : 'block']"></b-icon-heart>
+                <b-icon-heart-fill @click="toggleLike" class="text-gray-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" v-if="liked"></b-icon-heart-fill>
+                <b-icon-heart @click="toggleLike"class="text-gray-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" v-if="!liked"></b-icon-heart>
             </div>
-            <b-icon-chat @click="$emit('openCommentBox')" class="text-slate-600 cursor-pointer hover:scale-110 active:scale-100"></b-icon-chat>
+            <b-icon-chat @click="$emit('openCommentBox')" class="text-gray-600 cursor-pointer hover:scale-110 active:scale-100"></b-icon-chat>
         </div>
     </article>
 </template>
