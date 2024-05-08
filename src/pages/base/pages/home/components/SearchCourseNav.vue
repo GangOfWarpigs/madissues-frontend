@@ -32,20 +32,17 @@
 </script>
 
 <template>
-    <div class="flex flex-col items-center">
-        <h2 class="text-2xl font-semibold text-gray-700 select-none">Search by course</h2>
-        <nav class="bg-gray-100 rounded-full px-5 py-2 mt-8 relative overflow-hidden">
-            <ul class="flex items-center z-10 relative">
-                <li class="mr-6 cursor-pointer nav-item" :key="0" @click="handleClick(0)">
-                    <p @click="$emit('updatedFilter', 0)" class="hover:text-gray-700 font-medium text-gray-500 transition duration-300 select-none">All courses</p>
-                </li>
-                <li v-for="(n, index) in props.years" :key="index+1" class="mr-6 last:mr-0 cursor-pointer nav-item" @click="handleClick(index + 1)">
-                    <p @click="$emit('updatedFilter', index+1)" class="hover:text-gray-700 font-medium text-gray-500 transition duration-300 select-none">{{ n }}º course</p>
-                </li>
-            </ul>
-            <transition name="slide">
-                <div class="bg-white rounded-full h-[80%] my-1 mx-3 z-0 left-0 absolute top-0" :style="{ left: selectedOffset + 'px', width: width + 'px' }"></div>
-            </transition>
-        </nav>
-    </div>
+    <nav class="bg-gray-100 rounded-full px-5 py-2 mt-8 relative overflow-hidden">
+        <ul class="flex items-center z-10 relative">
+            <li class="mr-6 cursor-pointer nav-item" :key="0" @click="handleClick(0)">
+                <p @click="$emit('updatedFilter', 0)" class="hover:text-gray-700 font-medium text-gray-500 transition duration-300 select-none">All courses</p>
+            </li>
+            <li v-for="(n, index) in props.years" :key="index+1" class="mr-6 last:mr-0 cursor-pointer nav-item" @click="handleClick(index + 1)">
+                <p @click="$emit('updatedFilter', index+1)" class="hover:text-gray-700 font-medium text-gray-500 transition duration-300 select-none">{{ n }}º course</p>
+            </li>
+        </ul>
+        <transition name="slide">
+            <div class="bg-white rounded-full h-[80%] my-1 mx-3 z-0 left-0 absolute top-0" :style="{ left: selectedOffset + 'px', width: width + 'px' }"></div>
+        </transition>
+    </nav>
 </template>

@@ -71,6 +71,10 @@
 </template>
 
 <style scoped>
+    .carousel {
+        margin-inline: 8em;
+    }
+
     .carousel__slide {
         margin-block: 1em;
     }
