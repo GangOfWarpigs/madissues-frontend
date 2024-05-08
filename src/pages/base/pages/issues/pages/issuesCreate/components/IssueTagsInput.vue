@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import { TagsInputItem, TagsInputItemDelete, TagsInputItemText, TagsInputRoot } from 'radix-vue'
-import {Ref, ref} from "vue";
+  import { TagsInputItem, TagsInputItemDelete, TagsInputItemText, TagsInputRoot } from 'radix-vue'
+  import {Ref, ref} from "vue";
 
-import { Icon } from '@iconify/vue'
+  import { Icon } from '@iconify/vue'
 
-const modelValue:Ref<string[]> = ref([])
-const allowedTags = ['Marilola', 'Domingo', 'Carmelo']
-const selectedTag = ref('')
+  const modelValue:Ref<string[]> = ref([])
+  const allowedTags = ['Marilola', 'Domingo', 'Carmelo']
+  const selectedTag = ref('')
 
-const addTag = () => {
-  if (selectedTag.value && !modelValue.value.includes(selectedTag.value)) {
-    modelValue.value.push(selectedTag.value)
+  const addTag = () => {
+    if (selectedTag.value && !modelValue.value.includes(selectedTag.value)) {
+      modelValue.value.push(selectedTag.value)
+    }
   }
-}
 
-const deleteTag = () => {
-  selectedTag.value = ''
-}
-
+  const deleteTag = () => {
+    selectedTag.value = ''
+  }
 </script>
 
 <template>
@@ -38,9 +37,4 @@ const deleteTag = () => {
       <option v-for="tag in allowedTags" :key="tag" :value="tag">{{ tag }}</option>
     </select>
   </div>
-
 </template>
-
-<style scoped>
-
-</style>
