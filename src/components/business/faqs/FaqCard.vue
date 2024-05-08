@@ -6,6 +6,7 @@
         id: string,
         question: string,
         date: string,
+        label: string
     }
 
     const props = defineProps({
@@ -36,7 +37,7 @@
     </section>
     <section class="flex justify-between items-end content-center w-full">
         <div class="bg-green-200 rounded-lg py-1 px-1">
-            <p class="text-xs font-medium text-green-500">Administrativo</p>
+            <p class="text-xs font-medium text-green-500">{{ props.faq.label }}</p>
         </div>
         <div class="flex flex-col font-medium">
             <div class="py-1 px-2 flex text-center space-x-1 items-center">
