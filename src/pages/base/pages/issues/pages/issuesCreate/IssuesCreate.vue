@@ -5,14 +5,14 @@ import IssueProofs from "../issuesCreate/components/IssueProofs.vue";
 </script>
 
 <template>
-  <main class="flex flex-col gap-10 ">
+  <main class="flex flex-col space-y-5">
     <WriteIssueContent></WriteIssueContent>
     <IssueProofs></IssueProofs>
-    <div class="flex justify-between text-white font-medium text-sm">
-      <button class="rounded-lg bg-[#FF7D7D] py-1 px-5">
+    <div class="flex justify-between text-white font-medium text-base">
+      <button class="rounded bg-rose-500 py-1 px-3">
         Discard
       </button>
-      <button class="rounded-lg bg-[#1986E3] py-1 px-5">
+      <button class="rounded bg-blue-500 py-1 px-3">
         Post the issue
       </button>
     </div>
