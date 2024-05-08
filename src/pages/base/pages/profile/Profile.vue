@@ -30,7 +30,7 @@
 
 <template>
     <PageBanner :data="profilePageData" :user="userData1">
-        <div class="w-full flex justify-start translate-y-36 px-10">
+        <div class="w-full flex justify-start translate-y-36 pl-10">
             <ProfileChild :user="user"/>
         </div>
     </PageBanner>

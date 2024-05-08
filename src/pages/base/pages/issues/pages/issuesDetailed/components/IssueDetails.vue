@@ -59,7 +59,3 @@
         </section>
     </article>
 </template>
-
-<style scoped>
-
-</style>
