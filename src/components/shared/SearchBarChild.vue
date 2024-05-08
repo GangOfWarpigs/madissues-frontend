@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { defineEmits } from 'vue';
-
   const emits = defineEmits(['search']);
 
   const handleSearch = (event: Event) => {

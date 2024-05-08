@@ -34,14 +34,13 @@
         { name: "Español, ES", value: "spanish" }
     ]
 
-    const profilePageData = {
-      title: "",
-      subtitle: "",
-      primaryColor: "#1986E3",
-      secondaryColor:"#978EFF",
-      currentPage: "profile"
-    }
-
+    // const profilePageData = {
+    //   title: "",
+    //   subtitle: "",
+    //   primaryColor: "#1986E3",
+    //   secondaryColor:"#978EFF",
+    //   currentPage: "profile"
+    // }
 </script>
 
 <template>
