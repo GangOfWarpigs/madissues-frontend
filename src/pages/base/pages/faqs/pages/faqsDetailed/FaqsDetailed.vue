@@ -1,7 +1,6 @@
 <script setup lang="ts">
 	import FaqDetails from './components/FaqDetails.vue';
 	import FaqComment from './components/FaqComment.vue';
-  import IssueDetails from "../../../issues/pages/issuesDetailed/components/IssueDetails.vue";
 
 	const faqData1 = {
 		id: "1",
