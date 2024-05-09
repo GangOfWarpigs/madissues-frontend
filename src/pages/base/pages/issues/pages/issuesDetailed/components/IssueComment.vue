@@ -39,7 +39,7 @@
             </div>
             <p class="text-xs">Commented {{ props.comment.date_time }}</p>
         </section>
-        <p class="mt-3 text-base w-4/5">
+        <p class="mt-3 text-base w-4/5 text-justify">
             {{ props.comment.content }}
         </p>
         <div class="flex items-center absolute bottom-4 right-6">
