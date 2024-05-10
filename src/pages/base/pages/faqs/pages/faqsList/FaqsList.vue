@@ -96,8 +96,8 @@
         <button v-for="(label, index) in labels" 
             :key="index" 
             @click="toggleSelection(index)"
-            :class="[ isSelected(index) ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700' ]"
-            class="px-3 py-1 text-sm rounded transition-colors duration-300 hover:bg-blue-600 hover:text-white focus:outline-none">
+            :class="[ isSelected(index) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700' ]"
+            class="px-4 py-2 text-sm rounded-full transition-colors duration-300 hover:bg-blue-600 hover:text-white focus:outline-none">
             {{ label }}
         </button>
     </div>

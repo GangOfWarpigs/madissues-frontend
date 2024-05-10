@@ -1,7 +1,8 @@
 import {RouteRecordRaw} from "vue-router";
+import SignIn from "../pages/auth/pages/SignIn/SignIn.vue";
+import SignUp from "../pages/auth/pages/SignUp/SignUp.vue";
 import Auth from "../pages/auth/Auth.vue";
-import SignIn from "../pages/auth/pages/signIn/SignIn.vue";
-import SignUp from "../pages/auth/pages/signUp/SignUp.vue";
+
 
 export const auth : RouteRecordRaw[] =
     [{
