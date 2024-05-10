@@ -33,10 +33,10 @@
 <template>
     <article class="w-full flex flex-col text-gray-600">
         <div class="flex items-center text-lg mb-3" :class="color">
-            <b-icon-record-circle v-if="status === 'Queued'"/>
-            <b-icon-arrow-right-circle v-if="status === 'In progress'"/>
-            <b-icon-check-circle v-if="status === 'Solved'"/>
-            <b-icon-x-circle v-if="status === 'Not solved'"/>
+            <b-icon-record-circle-fill v-if="status === 'Queued'"/>
+            <b-icon-arrow-right-circle-fill v-if="status === 'In progress'"/>
+            <b-icon-check-circle-fill v-if="status === 'Solved'"/>
+            <b-icon-x-circle-fill v-if="status === 'Not solved'"/>
             <p class="ml-2 text-base">{{ status }}</p>
         </div>
         <section class="flex flex-col w-full">
