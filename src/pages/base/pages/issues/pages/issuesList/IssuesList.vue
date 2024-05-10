@@ -21,7 +21,7 @@
 
 <template>
     <PageBanner :data="pageProps" :user="userData"></PageBanner>
-    <div class="w-full mt-10 px-10">
+    <div class="w-full mt-10">
         <IssueWrapper/>
     </div>
 </template>
