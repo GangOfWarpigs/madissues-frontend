@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@canopassoftware/vue-file-upload": "^1.0.8",
+    "@headlessui/vue": "^1.7.22",
     "@iconify/vue": "^4.1.2",
     "@mdi/js": "^7.4.47",
     "@radix-icons/vue": "^1.0.0",
