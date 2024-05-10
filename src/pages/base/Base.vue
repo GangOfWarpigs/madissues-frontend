@@ -4,12 +4,7 @@
 
 <template>
   <NavBar name="Delegación de Estudiantes EII" username="Jose Peña Seco"/>
-  <body class="conainer max-w-[1480px] mx-auto mt-14">
+  <body class="w-full box-border px-44 min-h-screen py-12">  
     <RouterView/>
   </body>
-
 </template>
-
-<style scoped>
-
-</style>

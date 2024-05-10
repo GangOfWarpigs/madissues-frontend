@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-  import {defineProps, defineEmits, computed, PropType } from "vue";
-  import IncidentChild from "./IncidentChild.vue";
-  import SearchBarChild from "./SearchBarChild.vue";
-  import ProfileChild from "../../pages/base/pages/profile/components/ProfileChild.vue";
+  import {computed, PropType } from "vue";
+  import IncidentChild from "./childs/IncidentChild.vue";
+  import SearchBarChild from "./childs/SearchBarChild.vue";
+  import ProfileChild from "./childs/ProfileChild.vue";
 
   interface UserDataProps {
     first_name: string,
@@ -45,7 +45,7 @@
 </script>
 
 <template>
-  <div :style="gradientStyle" class="h-60 w-full mx-auto mt-6 pt-32 mb-5 rounded-3xl flex flex-col justify-center items-center" >
+  <div :style="gradientStyle" class="h-60 w-full mx-auto pt-32 mb-5 rounded-3xl flex flex-col justify-center items-center" >
     <p class="text-4xl font-bold mt-7 mb-8 text-white font-sans">{{ props.data?.title }}</p>
     <p class="text-xl text-white font-sans">{{ props.data.subtitle}}</p>
     <IncidentChild v-if="props.data?.currentPage === 'issues'" class="relative translate-y-14"/>

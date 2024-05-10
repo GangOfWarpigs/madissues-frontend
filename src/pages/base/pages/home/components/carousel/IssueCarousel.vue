@@ -16,8 +16,7 @@
             teachers: ["Domingo"],
             student: "josepenaseco101",
             comments_id: ["1", "2", "3", "4"]
-        },
-        {
+        }, {
             id: "2",
             title: "2) El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
             description: "hola caracola",
@@ -29,8 +28,7 @@
             teachers: ["Domingo", "Ricardo"],
             student: "josepenaseco101",
             comments_id: []
-        },
-        {
+        }, {
             id: "3",
             title: "3) El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
             description: "hola caracola",
@@ -42,8 +40,7 @@
             teachers: ["Domingo", "Ricardo"],
             student: "josepenaseco101",
             comments_id: []
-        },
-        {
+        }, {
             id: "4",
             title: "4) El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
             description: "hola caracola",
@@ -56,7 +53,7 @@
             student: "josepenaseco101",
             comments_id: []
         }
-    ]
+    ];
 </script>
 
 <template>
@@ -74,42 +71,39 @@
 </template>
 
 <style scoped>
+    .carousel {
+        margin-inline: 1em;
+    }
+
     .carousel__slide {
-      padding-block: 10px;
+        margin-block: 1em;
     }
 
     .carousel__track {
-      transform-style: preserve-3d;
+        transform-style: preserve-3d;
     }
 
     .carousel__slide--sliding {
-      transition: 0.5s;
+        transition: 0.5s;
     }
 
-    .carousel__slide {
-      opacity: 1;
-      transform: rotateY(-20deg) scale(0.9);
-    }
-
+    .carousel__slide,
     .carousel__slide--active ~ .carousel__slide {
-      transform: rotateY(20deg) scale(0.9);
+        transform: scale(0.85);
     }
 
-    .carousel__slide--prev {
-      opacity: 0.6;
-      z-index: 0;
-      transform: rotateY(-10deg) scale(0.95);
-    }
-
+    .carousel__slide--prev,
     .carousel__slide--next {
-      opacity: 0.6;
-      z-index: 0;
-      transform: rotateY(10deg) scale(0.95);
+        opacity: 0.6;
+        z-index: 0;
+        pointer-events: none;
+        transform: scale(0.85);
     }
 
     .carousel__slide--active {
-      opacity: 1;
-      z-index: 1;
-      transform: rotateY(0) scale(1.1);
+        opacity: 1;
+        z-index: 1;
+        pointer-events: auto;
+        transform: rotateY(0) scale(1);
     }
 </style>

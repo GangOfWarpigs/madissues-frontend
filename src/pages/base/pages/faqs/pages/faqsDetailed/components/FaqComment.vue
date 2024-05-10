@@ -43,26 +43,26 @@
 </script>
 
 <template>
-    <article class="rounded-2xl flex flex-col w-full mt-8 px-10 py-5 bg-gray-100 text-slate-500" :class="[ props.comment.isOfficial == true ? 'border-2 border-blue-600' : '']">
+    <article class="rounded-2xl flex flex-col w-full mt-8 px-10 py-5 bg-gray-100 text-gray-500" :class="[ props.comment.isOfficial == true ? 'border-2 border-blue-600' : '']">
         <section class="flex items-center text-blue-600 mb-3" :class="[ props.comment.isOfficial == true ? 'block' : 'hidden' ]">
             <b-icon-star-fill></b-icon-star-fill>
             <p class="ml-3 font-semibold">Official answer</p>
         </section>
         <section class="flex items-center">
-            <img class="w-8 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/profile_picture_test.png" alt="Foto de perfil del usuario"/>
+            <img class="w-8 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/profile_picture_test.webp" alt="Foto de perfil del usuario"/>
             <h3 class="font-semibold text-sm mr-4">{{ student }}</h3>
             <p class="text-xs">Commented {{ props.comment.date_time }}</p>
         </section>
         <p class="w-full my-3 text-base">{{ props.comment.content }}</p>
         <section class="w-full flex items-center justify-start">
             <div class="flex items-center mr-4">
-                <b-icon-heart @click="toggleLike" class="text-slate-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ liked == true ? 'hidden' : 'block' ]"></b-icon-heart>
-                <b-icon-heart-fill @click="toggleLike" class="text-slate-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ liked == true ? 'block' : 'hidden' ]"></b-icon-heart-fill>
+                <b-icon-heart @click="toggleLike" class="text-gray-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ liked == true ? 'hidden' : 'block' ]"></b-icon-heart>
+                <b-icon-heart-fill @click="toggleLike" class="text-gray-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ liked == true ? 'block' : 'hidden' ]"></b-icon-heart-fill>
                 <p role="alert" class="ml-2 select-none">{{ likes.length }}</p>
             </div>
             <div class="flex items-center">
-                <b-icon-bookmark @click="toggleBookmark" class="text-slate-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ marked == true ? 'hidden' : 'block' ]"></b-icon-bookmark>
-                <b-icon-bookmark-fill @click="toggleBookmark" class="text-slate-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ marked == true ? 'block' : 'hidden' ]"></b-icon-bookmark-fill>
+                <b-icon-bookmark @click="toggleBookmark" class="text-gray-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ marked == true ? 'hidden' : 'block' ]"></b-icon-bookmark>
+                <b-icon-bookmark-fill @click="toggleBookmark" class="text-gray-600 cursor-pointer hover:scale-110 active:scale-100" role="alert" :class="[ marked == true ? 'block' : 'hidden' ]"></b-icon-bookmark-fill>
                 <p role="alert" class="ml-2 select-none">{{ marks.length }}</p>
             </div>
         </section>

@@ -51,7 +51,7 @@
 </script>
 
 <template>
-    <Card class="w-full mb-5 rounded-lg bg-gray-100 px-10 py-6 box-border flex flex-col items-start text-gray-800">
+    <Card class="w-full rounded-lg bg-gray-100 px-8 py-5 box-border flex flex-col items-start text-gray-700">
         <CardHeader>
             <CardTitle class="text-lg mb-5">Preferences</CardTitle>
         </CardHeader>
@@ -87,6 +87,3 @@
         </CardContent>
     </Card>
 </template>
-
-<style scoped>
-</style>

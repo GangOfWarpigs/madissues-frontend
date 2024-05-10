@@ -34,8 +34,8 @@
 </script>
 
 <template>
-    <header class="w-full p-4 z-50 sticky top-0 left-0">
-        <div class="px-7 py-6 box-border bg-sky-500 rounded-xl flex items-center justify-between">
+    <header class="w-full bg-white px-4 pt-3 z-50 sticky top-0 left-0">
+        <div class="px-7 py-6 box-border bg-blue-500 rounded-lg flex items-center justify-between">
             <div class="flex items-center">
                 <div class="mr-20 flex items-center">
                     <img class="w-10 mr-5" src="../../assets/icons/madissues/logo_hamster.svg" alt="Logo de MadIssues">
@@ -52,23 +52,19 @@
             <DropdownMenu>
                 <DropdownMenuTrigger>
                     <div class="flex items-center cursor-pointer box-border">
-                        <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.png" alt="Foto de Perfil"> 
+                        <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.webp" alt="Foto de Perfil"> 
                         <p class="text-white font-semibold mr-3">{{ username }}</p>
                         <vue-icon name="fa-chevron-down" scale="1" class="text-white"/>
                     </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent class="w-56 mt-5 py-4 px-6 border-2 border-sky-500 rounded-xl h-60 bg-white text-sky-600 shadow-lg">
+                <DropdownMenuContent class="w-56 mt-5 py-4 px-6 border-2 border-blue-500 rounded-xl h-60 bg-white text-blue-600 shadow-lg">
                   <DropdownMenuLabel class="text-base">Account</DropdownMenuLabel>
                   <DropdownMenuSeparator class="mb-3"/>
-                  <DropdownMenuItem class="cursor-pointer mb-3"><b-icon-person-circle class="text-base"/><p class="text-slate-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class="cursor-pointer mb-3"><b-icon-chat-left-text-fill class="text-base"/><p class="text-slate-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class="cursor-pointer mb-3"><b-icon-question-square-fill class="text-base"/><p class="text-slate-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer mb-1"><b-icon-person-circle class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class="cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
     </header>
 </template>
-
-<style scoped>
-
-</style>
