@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref, watch, onMounted } from 'vue';
-    import IssueCard from '../../../../../../../components/business/IssueCard.vue';
+    import IssueCard from './IssueCard.vue';
 
     const issues = [
         {
