@@ -49,9 +49,9 @@
     <p class="text-4xl font-bold mt-7 mb-8 text-white font-sans">{{ props.data?.title }}</p>
     <p class="text-xl text-white font-sans">{{ props.data.subtitle}}</p>
     <IncidentChild v-if="props.data?.currentPage === 'issues'" class="relative translate-y-14"/>
-    <SearchBarChild @search="handleSearch" v-if="props.data?.currentPage === 'faqs'" class="relative translate-y-14"/>
-    <div class="w-full px-10 pb-36">
-      <ProfileChild v-if="props.data?.currentPage === 'profile'" class="relative translate-y-20" :user="props.user"/>
+    <SearchBarChild @search="handleSearch" v-if="props.data?.currentPage === 'faqs'" class="relative translate-y-[3.9em]"/>
+    <div class="w-full px-10 pb-36 ">
+      <ProfileChild v-if="props.data?.currentPage === 'profile'" class="relative translate-y-24" :user="props.user"/>
     </div>
   </div>
 </template>
