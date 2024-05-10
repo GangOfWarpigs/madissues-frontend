@@ -43,7 +43,9 @@
   </div>
 	<FaqComment :comment="faqCommentData1"/>
 	<FaqComment :comment="faqCommentData2"/>
+
 </template>
+
 
 <style scoped>
 </style>
