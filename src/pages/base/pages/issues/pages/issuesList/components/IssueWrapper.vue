@@ -97,6 +97,10 @@
         handleTeacherOrder(false);
         handleStatusOrder(false);
     });
+
+    function loadMore() {
+        // aquí se escribe la lógica para cargar más issues
+    }
 </script>
 
 <template>
@@ -143,6 +147,9 @@
         </div>
         <div class="w-full flex flex-col space-y-4 mt-4">
             <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
+        </div>
+        <div class="w-full flex flex-col justify-center items-center mt-10">
+            <button class="border rounded-lg px-5 py-2 font-semibold" @click="loadMore">Load more</button>
         </div>
     </div>
 </template>
