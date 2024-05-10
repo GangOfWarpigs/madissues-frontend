@@ -36,29 +36,23 @@ const submit = handleSubmit((values) => {
 </script>
 
 <template>
-
   <main class="w-full h-[100vh] grid grid-cols-2">
+
     <section class="h-[100vh] flex flex-col justify-center items-center">
       <div class="flex w-full flex-col max-w-[500px] gap-2">
         <div>
-          <h1 class="text-center  font-semibold text-xl text-gray-500">Join our community of MadIssues</h1>
+          <h1 class="text-center  font-semibold text-xl text-gray-500">Welcome back</h1>
+          <p class="text-center  font-medium text-sm text-gray-400">Please enter your data for log in</p>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <FormInput name="firstName" type="text" placeholder="First name"/>
-          <FormInput name="lastName" type="text" placeholder="Last name"/>
-          <FormInput name="phoneNumber" type="text" placeholder="Phone number"/>
-          <FormInput name="startedStudiesDate" type="date" placeholder="Date you started your studies"/>
-        </div>
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
-        <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
         <FormButton text="Sign up" type="submit" @click="submit"/>
-        <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Log in</button>
+        <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
       </div>
     </section>
     <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3">
-      <div class="flex w-full  p-4 justify-start">
+      <div class="flex w-full  p-4 justify-end">
         <img src="../../../src/assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="150" height="150">
       </div>
       <div class="flex  justify-center px-10 justify-center">

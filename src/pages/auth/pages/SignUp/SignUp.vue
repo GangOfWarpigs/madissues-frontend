@@ -36,6 +36,7 @@ const submit = handleSubmit((values) => {
 </script>
 
 <template>
+
   <main class="w-full h-[100vh] grid grid-cols-2">
     <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3">
       <div class="flex w-full  p-4 justify-start">
@@ -53,15 +54,18 @@ const submit = handleSubmit((values) => {
           <h1 class="text-center  font-semibold text-xl text-gray-500">Join our community of MadIssues</h1>
         </div>
 
+        <div class="grid grid-cols-2 gap-4">
+          <FormInput name="firstName" type="text" placeholder="First name"/>
+          <FormInput name="lastName" type="text" placeholder="Last name"/>
+          <FormInput name="phoneNumber" type="text" placeholder="Phone number"/>
+          <FormInput name="startedStudiesDate" type="date" placeholder="Date you started your studies"/>
+        </div>
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
+        <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
         <FormButton text="Sign up" type="submit" @click="submit"/>
-        <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
-
+        <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Log in</button>
       </div>
-
-
     </section>
-
   </main>
 </template>
