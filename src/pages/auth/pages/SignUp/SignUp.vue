@@ -3,6 +3,10 @@ import FormInput  from "../../components/FormInput.vue";
 import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
+import {useRoute, useRouter} from "vue-router";
+
+const router = useRouter()
+const basePath = "/organizations/" + useRoute().params.id
 
 const schema = yup.object({
   email: yup.string().required().email(),
@@ -32,32 +36,32 @@ const submit = handleSubmit((values) => {
 </script>
 
 <template>
-  <div class="items-start w-full">
-    <img src="../../../../../src/assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="100" height="100">
-  </div>
-  <h2 class="w-full text-center text-[#505050] font-bold">Join our community of MadIssues</h2>
-  <article class="flex flex-col w-full px-20  text-[0.50rem] flex-grow space-y-2">
-    <form @submit.prevent="submit">
-      <div class="flex flex-col w-full space-y-1.5">
-        <FormInput name="email" type="email" placeholder="Email"/>
-        <FormInput name="password" type="password" placeholder="Password"/>
-        <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
-        <FormButton text="Sign up" type="submit"/>
+  <main class="w-full h-[100vh] grid grid-cols-2">
+    <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3">
+      <div class="flex w-full  p-4 justify-start">
+        <img src="../../../src/assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="150" height="150">
       </div>
-    </form>
-    <p class="text-center text-[#ADADAD]">o también puedes</p>
-    <section class="flex flex-col space-y-2 items-center mx-7">
-      <div class="w-full">
-        <button class="bg-[#404040] text-white font-medium px-3 py-1 rounded-3xl w-full">
-
-          Access with Microsoft
-        </button>
-      </div>
-      <div class="w-full">
-        <button class="bg-[#F5F5F5]   font-medium px-3 py-1 rounded-3xl w-full">Access with Google</button>
+      <div class="flex  justify-center px-10 justify-center">
+        <p class="text-white font-semibold text-xl">
+          Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
+        </p>
       </div>
     </section>
-  </article>
+    <section class="h-[100vh] flex flex-col justify-center items-center">
+      <div class="flex w-full flex-col max-w-[500px] gap-2">
+        <div>
+          <h1 class="text-center  font-semibold text-xl text-gray-500">Join our community of MadIssues</h1>
+        </div>
+
+        <FormInput name="email" type="email" placeholder="Email"/>
+        <FormInput name="password" type="password" placeholder="Password"/>
+        <FormButton text="Sign up" type="submit" @click="submit"/>
+        <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
+
+      </div>
 
 
+    </section>
+
+  </main>
 </template>

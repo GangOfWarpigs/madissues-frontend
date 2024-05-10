@@ -3,6 +3,11 @@ import FormInput  from "../../components/FormInput.vue";
 import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
+import {useRoute, useRouter} from "vue-router";
+
+
+const router = useRouter()
+const basePath = "/organizations/" + useRoute().params.id
 
 const schema = yup.object({
   email: yup.string().required().email(),
@@ -32,37 +37,36 @@ const submit = handleSubmit((values) => {
 
 <template>
 
-    <div class="items-start w-full p-2">
-      <img src="../../../../../src/assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="200" height="200">
-    </div>
-    <div class="w-full h-full flex flex-col justify-center items-center">
-      <div class="-translate-y-16">
-        <h2 class="w-full text-center text-[2.5em] text-black font-bold mb-3">Welcome back</h2>
-        <h4 class="w-full text-center text-[1.2em] text-[#505050]">please enter your data for log in</h4>
+  <main class="w-full h-[100vh] grid grid-cols-2">
+    <section class="h-[100vh] flex flex-col justify-center items-center">
+      <div class="flex w-full flex-col max-w-[500px] gap-2">
+        <div>
+          <h1 class="text-center  font-semibold text-xl text-gray-500">Join our community of MadIssues</h1>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <FormInput name="firstName" type="text" placeholder="First name"/>
+          <FormInput name="lastName" type="text" placeholder="Last name"/>
+          <FormInput name="phoneNumber" type="text" placeholder="Phone number"/>
+          <FormInput name="startedStudiesDate" type="date" placeholder="Date you started your studies"/>
+        </div>
+        <FormInput name="email" type="email" placeholder="Email"/>
+        <FormInput name="password" type="password" placeholder="Password"/>
+        <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
+        <FormButton text="Sign up" type="submit" @click="submit"/>
+        <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Log in</button>
       </div>
-      <article class="w-full max-w-[70%] px-20  text-[0.50rem] space-y-5">
-        <form @submit.prevent="submit">
-          <div class="flex flex-col text-xs w-full space-y-2.5">
-            <FormInput name="email" type="email" placeholder="Email"/>
-            <FormInput name="password" type="password" placeholder="Password"/>
-            <FormButton text="Sign in" type="submit"/>
-          </div>
-        </form>
-        <p class="text-center text-[#ADADAD] text-[1.5em]">o tambien puedes</p>
-        <section class="flex flex-col space-y-2 items-center mx-7">
-          <div class="w-full">
-            <button class="bg-[#404040] h-9 text-[1.7em] text-white font-medium px-3 py-1 rounded-3xl w-full">Access with Microsoft</button>
-          </div>
-          <div class="w-full">
-            <button class="bg-[#F5F5F5] h-9 text-[1.7em] font-medium px-3 py-1 rounded-3xl w-full">Access with Google</button>
-          </div>
-        </section>
+    </section>
+    <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3">
+      <div class="flex w-full  p-4 justify-start">
+        <img src="../../../src/assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="150" height="150">
+      </div>
+      <div class="flex  justify-center px-10 justify-center">
+        <p class="text-white font-semibold text-xl">
+          Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
+        </p>
+      </div>
+    </section>
 
-      </article>
-    </div>
-
-  <div class="flex-row flex items-end justify-center pb-12">
-    <p class="text-xs">Not registered yet? <a href="#" style="color: blue;">Get Started</a></p>
-  </div>
-
+  </main>
 </template>
