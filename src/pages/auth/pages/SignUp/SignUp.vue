@@ -7,6 +7,13 @@ import {useRoute, useRouter} from "vue-router";
 
 const router = useRouter()
 const basePath = "/organizations/" + useRoute().params.id
+const routeId = useRoute().params.id;
+const organizationId = Array.isArray(routeId) ? routeId[0] : routeId || "";
+
+const degrees = [
+  { id: '1', name: 'Grado en Ingeniería Informática' },
+  { id: '2', name: 'Grado en Ciencias de Datos' },
+];
 
 const schema = yup.object({
   email: yup.string().required().email(),
@@ -19,10 +26,14 @@ const schema = yup.object({
       )
 });
 
-
-const { handleSubmit } = useForm<{email : string, password : string, passwordConfirmation: string}>({
+const { handleSubmit } = useForm<{organization_id:string, firstName:string, lastName:string, phoneNumber:string, startedStudiesDate:string, email : string, password : string, passwordConfirmation: string }>({
   validationSchema: schema,
   initialValues: {
+    organization_id: organizationId,
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    startedStudiesDate: "",
     email: "",
     password: "",
     passwordConfirmation: ""
@@ -30,7 +41,11 @@ const { handleSubmit } = useForm<{email : string, password : string, passwordCon
 })
 
 const submit = handleSubmit((values) => {
-  console.log(values.email, values.password, values.passwordConfirmation)
+  try{
+  console.log(values)
+  }catch(error){
+    console.log(error)
+  }
 });
 
 </script>
@@ -38,9 +53,9 @@ const submit = handleSubmit((values) => {
 <template>
 
   <main class="w-full h-[100vh] grid grid-cols-2">
-    <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3">
-      <div class="flex w-full  p-4 justify-start">
-        <img src="../../../src/assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="150" height="150">
+    <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3 items-start">
+      <div class="flex w-full p-4 justify-start">
+        <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="250" height="250">
       </div>
       <div class="flex  justify-center px-10">
         <p class="text-white font-semibold text-xl">
@@ -50,7 +65,7 @@ const submit = handleSubmit((values) => {
     </section>
     <section class="w-full h-full col-span-1 grid grid-rows-3 items-start">
       <div class="flex justify-end">
-        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="200" height="200">
+        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="300" height="300">
       </div>
       <div class="flex  justify-center flex-col items-center gap-4">
         <div>
@@ -64,6 +79,9 @@ const submit = handleSubmit((values) => {
             <FormInput name="phoneNumber" type="text" placeholder="Phone number"/>
             <FormInput name="startedStudiesDate" type="date" placeholder="Date you started your studies"/>
           </div>
+          <select id="degreeSelect" v-model="selectedDegree" @change="handleChange" class="flex space-x-2 items-center rounded-3xl bg-gray-100 py-1 text-[#7C7C7C]">
+            <option v-for="degree in degrees" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
+          </select>
           <FormInput name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>
           <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>

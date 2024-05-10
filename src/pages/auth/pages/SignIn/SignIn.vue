@@ -38,8 +38,8 @@ const submit = handleSubmit((values) => {
 <template>
   <main class="w-full h-[100vh] grid grid-cols-2">
     <section class="w-full h-full col-span-1 grid grid-rows-3 items-start">
-      <div class="flex justify-end">
-        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="200" height="200">
+      <div class="flex justify-start">
+        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="300" height="300">
       </div>
       <div class="flex  justify-center flex-col items-center px-2 gap-4">
         <div>
@@ -56,8 +56,8 @@ const submit = handleSubmit((values) => {
         </div>
     </section>
     <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3 items-start">
-      <div class="flex justify-end">
-        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="200" height="200">
+      <div class="flex justify-end p-4">
+        <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="200" height="200">
       </div>
       <div class="flex  justify-center px-10">
         <p class="text-white font-semibold text-xl text-center">
