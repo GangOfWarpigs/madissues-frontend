@@ -29,10 +29,18 @@
         content: "Pues mira para solucionar este problema primero deberás hablar con el profesor. Si no te hace caso, deberás hablar con el coordinador, y si no se consigue nada, se tendrá que hablar con la Directora del centro",
         date_time: "1 hour ago",
 	}
+  const goBack = () => {
+    window.history.back();
+  };
 </script>
 
 <template>
-	<FaqDetails :faq="faqData1"/>
+  <div class="flex flex-row">
+    <button @click="goBack" class="flex items-center justify-center h-10 w-10 rounded-full bg-[#F5F5F5] hover:bg-gray-200 focus:outline-none  -translate-x-7">
+      <b-icon-chevron-left class="text-[#828282] text-bg scale-[120%] -translate-x-0.5"/>
+    </button>
+    <FaqDetails :faq="faqData1"/>
+  </div>
 	<FaqComment :comment="faqCommentData1"/>
 	<FaqComment :comment="faqCommentData2"/>
 </template>

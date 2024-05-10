@@ -24,7 +24,7 @@
             <h4 class="text-base font-semibold mt-1">Asked {{ props.faq.date_time }}</h4>
         </section>
         <section class="my-10">
-            <p class="text-lg text-gray-500">
+            <p class="text-lg text-gray-500 text-justify">
                 {{ props.faq.content }}
             </p>
         </section>

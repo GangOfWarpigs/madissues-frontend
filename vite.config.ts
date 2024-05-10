@@ -5,7 +5,7 @@ import vue from "@vitejs/plugin-vue"
 import tailwind from "tailwindcss"
 import autoprefixer from "autoprefixer"
 import vuetify from "vite-plugin-vuetify"
-
+import ckeditor5 from '@ckeditor/vite-plugin-ckeditor5';
 export default defineConfig({
   css: {
     postcss: {
