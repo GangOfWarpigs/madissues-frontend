@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import FaqLanding from './component/FaqLanding.vue'
 
+const router = useRouter()
 
+const navigate = () => router.push({name: "SignUp"})
+const navigateSignUp = () => router.push({name: "SignIn"})
 
 const htmlExample = "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, repellat delectus, autem voluptas optio saepe expedita ea perferendis odio nemo inventore voluptatibus sed? Sint totam iure qui perspiciatis laboriosam!</p>"
 
@@ -21,8 +25,9 @@ const htmlExample = "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
           <div class="mt-10" v-html="htmlExample" ></div>
           <div class="flex justify-center mt-12">
             <div class="flex flex-col max-w-[300px] w-full gap-4">
-              <button class="bg-blue-500 hover:bg-blue-600 py-3 rounded-full font-semibold text-white">Unirme a la comunidad</button>
-              <button class="bg-gray-100 py-3 hover:bg-gray-200 rounded-full font-semibold text-gray-500">Iniciar sesión</button>
+              <button @click="navigate()"  class="bg-blue-500 hover:bg-blue-600 py-3 rounded-full font-semibold text-white">Unirme a la comunidad</button>
+              <p class="text-gray-500 w-full text-center text-sm">¿Ya tienes cuenta?</p>
+              <button @click="navigateSignUp()" class="bg-gray-100 py-3 hover:bg-gray-200 rounded-full font-semibold text-gray-500">Iniciar sesión</button>
             </div>
           </div>
 
