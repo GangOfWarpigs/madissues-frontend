@@ -35,11 +35,11 @@
 </script>
 
 <template>
-    <article @click="goToIssue" class="flex w-full px-8 py-5 bg-gray-100 rounded-lg text-gray-600 cursor-pointer hover:shadow-md transition-all hover:shadow-slate-200">
-        <b-icon-record-circle class="text-teal-500 text-2xl mr-6" v-if="props.issue.status === 'Queued'"/>
-        <b-icon-arrow-right-circle class="text-amber-500 text-2xl mr-6" v-if="props.issue.status === 'In progress'"/>
-        <b-icon-check-circle class="text-emerald-500 text-2xl mr-6" v-if="props.issue.status === 'Solved'"/>
-        <b-icon-x-circle class="text-rose-500 text-2xl mr-6" v-if="props.issue.status === 'Not solved'"/>
+    <article @click="goToIssue" class="flex w-full px-8 py-5 bg-gray-100 rounded-xl text-gray-600 cursor-pointer hover:shadow-md transition-all hover:shadow-slate-200">
+        <vue-icon name="bi-record-circle-fill" scale="1.3" class="text-teal-500 text-2xl mr-6" v-if="props.issue.status === 'Queued'"/>
+        <vue-icon name="bi-arrow-right-circle-fill"  scale="1.3"  class="text-amber-500 text-2xl mr-6" v-if="props.issue.status === 'In progress'"/>
+        <vue-icon name="bi-check-circle-fill"  scale="1.3" class="text-emerald-500 text-2xl mr-6" v-if="props.issue.status === 'Solved'"/>
+        <vue-icon name="bi-x-circle-fill" scale="1.3"  class="text-rose-500 text-2xl mr-6" v-if="props.issue.status === 'Not solved'"/>
         <div class="flex flex-col w-full">
             <section class="flex items-center justify-between w-100">
                 <h3 class="font-semibold text-lg max-w-6xl whitespace-nowrap text-ellipsis overflow-hidden">{{ props.issue.title }}</h3>
