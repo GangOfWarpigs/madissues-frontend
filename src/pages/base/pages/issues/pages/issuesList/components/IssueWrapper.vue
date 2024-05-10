@@ -111,7 +111,7 @@
                 <input 
                     type="text" 
                     v-model="searchQuery" 
-                    class="pl-10 pr-4 py-1 text-base rounded-full focus:outline-none focus:border-blue-500 bg-gray-100 px-2 py-2" 
+                    class="pl-10 pr-4 text-base rounded-full focus:outline-none focus:border-blue-500 bg-gray-100 py-2" 
                     placeholder="Search by title..." 
                 />
             </div>
