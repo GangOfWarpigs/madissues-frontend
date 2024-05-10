@@ -103,24 +103,24 @@
     <div class="w-full flex flex-col">
         <div class="flex items-center mb-5">
             <div class="relative">
-                <b-icon-search class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+                <vue-icon name="io-search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                 <input 
                     type="text" 
                     v-model="searchQuery" 
-                    class="pl-10 pr-4 py-1 text-base rounded-full border border-gray-300 focus:outline-none focus:border-blue-500" 
+                    class="pl-10 pr-4 py-1 text-base rounded-full focus:outline-none focus:border-blue-500 bg-gray-100 px-2 py-2" 
                     placeholder="Search by title..." 
                 />
             </div>
         </div>
-        <div class="flex items-center justify-between px-2 text-gray-500 text-sm font-normal">
+        <div class="flex items-center justify-between px-2 text-gray-400 text-sm font-normal">
             <div class="flex items-center">
                 <div class="flex items-center mr-4">
-                    <b-icon-record-circle class="mr-2"></b-icon-record-circle>
-                    <p>{{ queued.length }} Queued</p>
+                    <vue-icon name="bi-record-circle-fill"/>
+                    <p class="ml-2" >{{ queued.length }} Queued</p>
                 </div>
                 <div class="flex items-center">
-                    <b-icon-check-circle class="mr-2"></b-icon-check-circle>
-                    <p>{{ solved.length }} Solved</p>
+                    <vue-icon name="bi-check-circle-fill"/>
+                    <p class="ml-2">{{ solved.length }} Solved</p>
                 </div>
             </div>
             <div class="flex items-center">

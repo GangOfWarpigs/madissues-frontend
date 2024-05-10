@@ -1,7 +1,7 @@
 import {RouteRecordRaw} from "vue-router";
-import Auth from "../pages/auth/Auth.vue";
 import SignIn from "../pages/auth/pages/SignIn/SignIn.vue";
 import SignUp from "../pages/auth/pages/SignUp/SignUp.vue";
+import Auth from "../pages/auth/Auth.vue";
 
 export const auth : RouteRecordRaw[] =
     [{
@@ -9,10 +9,12 @@ export const auth : RouteRecordRaw[] =
         component: Auth,
         children: [
             {
+                name: "SignIn",
                 path : "signin",
                 component: SignIn,
             },
             {
+                name: "SignUp",
                 path : "signup",
                 component: SignUp
             }
