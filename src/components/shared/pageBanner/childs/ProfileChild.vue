@@ -20,7 +20,7 @@
     <div class="rounded-[50%] border-8 border-white w-[11em]">
       <img src="../../../../assets/images/profile_picture_test.webp"/>
     </div>
-    <div class="ml-3">
+    <div class="ml-3 pb-4">
       <p class="text-2xl font-semibold">{{props.user.first_name}} {{props.user.last_name}}</p>
       <p class="text-xl text-gray-500">{{props.user.degree}}, {{props.user.last_school_year}}º curso</p>
     </div>
