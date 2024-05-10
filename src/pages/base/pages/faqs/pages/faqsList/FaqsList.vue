@@ -88,6 +88,10 @@
         if (selectedLabels.value.length > 0) filteredFaqData.value = filteredBySearch.filter(faq => selectedLabels.value.includes(faq.label));
         else filteredFaqData.value = filteredBySearch;
     };
+
+    function loadMore() {
+        // aquí se escribe la lógica para cargar más faqs
+    }
 </script>
 
 <template>
@@ -104,8 +108,7 @@
     <div class="grid grid-cols-3 gap-4 mt-5">
         <FaqCard v-for="faq in filteredFaqData" :key="faq.id" :faq="faq"/>
     </div>
-    <div class="w-full flex justify-center">
-      <button class="self-center mt-10 border rounded-lg px-5 py-2 font-semibold">Load more</button>
+    <div class="w-full flex justify-center items-center mt-10">
+      <button class="border rounded-lg px-5 py-2 font-semibold" @click="loadMore">Load more</button>
     </div>
-
 </template>
