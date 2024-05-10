@@ -37,26 +37,30 @@ const submit = handleSubmit((values) => {
 
 <template>
   <main class="w-full h-[100vh] grid grid-cols-2">
-
-    <section class="h-[100vh] flex flex-col justify-center items-center">
-      <div class="flex w-full flex-col max-w-[500px] gap-2">
+    <section class="w-full h-full col-span-1 grid grid-rows-3 items-start">
+      <div class="flex justify-end">
+        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="200" height="200">
+      </div>
+      <div class="flex  justify-center flex-col items-center px-2 gap-4">
         <div>
           <h1 class="text-center  font-semibold text-xl text-gray-500">Welcome back</h1>
           <p class="text-center  font-medium text-sm text-gray-400">Please enter your data for log in</p>
         </div>
+        <div class="flex flex-col max-w-[600px] w-full gap-2">
+          <FormInput class="" name="email" type="email" placeholder="Email"/>
+          <FormInput name="password" type="password" placeholder="Password"/>
+          <FormButton text="Sign up" type="submit" @click="submit"/>
+          <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
 
-        <FormInput name="email" type="email" placeholder="Email"/>
-        <FormInput name="password" type="password" placeholder="Password"/>
-        <FormButton text="Sign up" type="submit" @click="submit"/>
-        <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
-      </div>
+        </div>
+        </div>
     </section>
-    <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3">
-      <div class="flex w-full  p-4 justify-end">
-        <img src="../../../src/assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="150" height="150">
+    <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3 items-start">
+      <div class="flex justify-end">
+        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="200" height="200">
       </div>
-      <div class="flex  justify-center px-10 justify-center">
-        <p class="text-white font-semibold text-xl">
+      <div class="flex  justify-center px-10">
+        <p class="text-white font-semibold text-xl text-center">
           Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
         </p>
       </div>
