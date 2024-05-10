@@ -2,9 +2,7 @@
 import InfoDialog from "../../../../../../components/shared/InfoDialog.vue";
 import {ref} from "vue";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import IssueTagSelector from "../../../../../../pages/base/pages/issues/pages/issuesCreate/components/IssueTagsInput.vue";
-import FaqTagsInput from "@/pages/base/pages/faqs/pages/faqsCreate/components/FaqTagsInput.vue";
-
+import FaqTagsInput from "./components/FaqTagsInput.vue";
 
 const showInfoDialog = ref(true);
 
@@ -17,7 +15,6 @@ const goBack = () => {
 const editor = ClassicEditor;
 const editorValue = ref('');
 const editorConfig = {
-  // Editor configuration can be added here
   height: 500
 };
 </script>
