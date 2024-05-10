@@ -2,6 +2,7 @@
 import FaqLanding from './component/FaqLanding.vue'
 
 
+
 const htmlExample = "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, repellat delectus, autem voluptas optio saepe expedita ea perferendis odio nemo inventore voluptatibus sed? Sint totam iure qui perspiciatis laboriosam!</p>"
 
 </script>
@@ -9,9 +10,8 @@ const htmlExample = "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
 <template>
   <body class="bg-blue-500 min-h-[100vh] flex justify-center w-full">
     <div class="w-full max-w-[1380px] flex flex-col h-full">
-      <div class="bg-transparent min-h-[250px]">
-
-        hola soy pepe
+      <div class="bg-transparent min-h-[250px] flex justify-center items-center">
+        <img width="400" src="../../assets/icons/madissues/transparent_logo_rectangle.svg">
       </div>
       <div class="bg-white flex-1 h-full p-10 px-20 rounded-2xl m-2">
         <img class="w-[130px] h-[130px] mt-[-100px] bg-gray-200 rounded-full">
