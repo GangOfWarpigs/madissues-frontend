@@ -35,7 +35,7 @@
     <div class="flex flex-col items-center">
         <h2 class="text-2xl font-semibold text-slate-700 select-none">Search by course</h2>
         <nav class="bg-gray-100 rounded-full px-5 py-2 mt-8 relative overflow-hidden">
-            <ul class="flex items-center z-10 relative"> <!-- Ensure the ul has a position of relative -->
+            <ul class="flex items-center z-10 relative">
                 <li class="mr-6 cursor-pointer nav-item" :key="0" @click="handleClick(0)">
                     <p @click="$emit('updatedFilter', 0)" class="hover:text-slate-700 font-medium text-slate-500 transition duration-300 select-none">All courses</p>
                 </li>
