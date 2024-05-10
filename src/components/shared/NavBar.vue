@@ -57,12 +57,12 @@
                         <vue-icon name="fa-chevron-down" scale="1" class="text-white"/>
                     </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent class="w-56 mt-5 py-4 px-6 border-2 border-blue-500 rounded-xl h-60 bg-white text-blue-600 shadow-lg">
+                <DropdownMenuContent class=" w-64 mt-6 py-4  px-4 border-2 border-blue-500 rounded-xl bg-white text-blue-600 shadow-lg">
                   <DropdownMenuLabel class="text-base">Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator class="mb-3"/>
-                  <DropdownMenuItem class="cursor-pointer mb-1"><b-icon-person-circle class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class="cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class="cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
+                  <DropdownMenuSeparator class="mb-2"/>
+                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base text-lg"/><p class=" text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base text-lg"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base text-lg"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
