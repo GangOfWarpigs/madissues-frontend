@@ -27,6 +27,7 @@ const schema = yup.object({
   phone_number: yup.string().required("Phone number is required*"),
   started_studies_date: yup.string().required("Date is required*"),
   degree: yup.string().required("A degree must be selected*"),
+
   password : yup
       .string()
       .required("Password is required*")
@@ -53,6 +54,7 @@ const { handleSubmit } = useForm<{organization_id:string, first_name:string, las
     degreeId: ""
   }
 })
+
 
 const { mutate, error } = useMutation({
   mutationFn: (req: {organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }) => signUpStudent(req),
