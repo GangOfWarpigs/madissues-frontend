@@ -1,21 +1,31 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import FaqLanding from './component/FaqLanding.vue'
+import {useQuery} from "@tanstack/vue-query";
+import {getOrganizationById} from "../../api/organizations.ts";
 
 const router = useRouter()
-
 const navigate = () => router.push({name: "SignUp"})
 const navigateSignUp = () => router.push({name: "SignIn"})
 
 const htmlExample = "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, repellat delectus, autem voluptas optio saepe expedita ea perferendis odio nemo inventore voluptatibus sed? Sint totam iure qui perspiciatis laboriosam!</p>"
 
+const route = useRoute()
+const organizationId = route.params["organization_id"] as string
 
+const { data, isSuccess, isLoading } = useQuery({
+  queryKey: ["organization", organizationId],
+  queryFn: () => getOrganizationById(organizationId)
+})
 
 
 </script>
 
 <template>
-  <body class="bg-blue-500 min-h-[100vh] flex justify-center w-full">
+  <div v-if="isLoading">
+    loading...
+  </div>
+  <body v-if="isSuccess" class="bg-blue-500 min-h-[100vh] flex justify-center w-full">
     <div class="w-full max-w-[1380px] flex flex-col h-full">
       <div class="bg-transparent min-h-[250px] flex justify-center items-center">
         <img width="400" src="../../assets/icons/madissues/transparent_logo_rectangle.svg">

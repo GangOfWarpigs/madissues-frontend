@@ -7,7 +7,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes : [
         {
-            path : '/organizations/:id',
+            path : '/organizations/:organization_id',
             children: [
                 ...auth,
                 ...landing,
