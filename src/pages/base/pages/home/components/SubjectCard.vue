@@ -19,9 +19,11 @@
 <template>
     <div :style="gradientStyle" class="flex flex-col justify-center relative rounded-xl p-5 py-6 overflow-hidden cursor-pointer hover:shadow-lg transition-all hover:shadow-blue-100 hover:scale-105">
         <!-- <img src="../../../../../assets/icons/subjects/subject_card_icon.svg" class="w-10 mb-1"/> -->
-        <vue-icon :name="props.subjectCard.icon" class="w-10 mb-1 text-white"></vue-icon>
+        <vue-icon :name="props.subjectCard.icon" class="w-10 h-10 mb-1 text-white"></vue-icon>
         <p class="text-white text-xl mb-1 font-semibold mt-4">{{ props.subjectCard.code }}</p>
-        <p class="text-white">{{ props.subjectCard.name }}</p>
+        <div class="w-full min-h-12">
+            <p class="text-white line-clamp-2">{{ props.subjectCard.name }}</p>
+        </div>
         <img src="../../../../../assets/images/subject_bg.webp" class="absolute bottom-0 left-0 z-0 w-full">
     </div>
 </template>
