@@ -4,6 +4,8 @@ import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
+import {useMutation} from "@tanstack/vue-query";
+import {signInStudent} from "../../../../api/organizations.ts";
 
 
 const router = useRouter()
@@ -29,8 +31,12 @@ const { handleSubmit } = useForm<{email : string, password : string}>({
   }
 })
 
+const { mutate, error } = useMutation({
+  mutationFn: (req: {email: string, password: string}) => signInStudent(req),
+})
+
 const submit = handleSubmit((values) => {
-  console.log(values.email, values.password)
+  mutate(values)
 });
 
 </script>
@@ -51,6 +57,8 @@ const submit = handleSubmit((values) => {
           <FormInput name="password" type="password" placeholder="Password"/>
           <FormButton text="Sign up" type="submit" @click="submit"/>
           <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
+          <p class="text-red-500">{{error}}</p>
+
 
         </div>
         </div>
