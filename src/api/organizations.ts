@@ -19,13 +19,6 @@ export const getOrganizationById = async function (organizationId : string) {
     return response.data.success
 };
 
-export async function getOrganizationById(id: string){
-    const request = await api.get<apiCall<OrganizationReadModel>>(`/organizations/${id}`)
-    if(request.data.error !== null){
-        throw Error(request.data.error.error_message)
-    }
-    return request.data.success
-}
 export interface StudentSign{
     token: string,
     student_id : string

@@ -10,7 +10,7 @@ import {
   getOrganizationDegrees,
   signUpStudent
 } from "../../../../api/organizations.ts";
-import FormSelect from "@/pages/auth/components/FormSelect.vue";
+import FormSelect from "../../components/FormSelect.vue";
 
 const router = useRouter()
 // const routeId = useRoute().params.id;
@@ -96,7 +96,7 @@ const { data } = useQuery<Degree[]>({
           <FormInput name="phone_number" type="text" placeholder="Phone number"/>
           <FormInput name="started_studies_date" type="date" placeholder=""/>
         </div>
-        <FormSelect name="degree" :data="data" />
+        <FormSelect name="degree" :data="data" v-if="data"/>
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
         <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>

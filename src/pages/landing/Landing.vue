@@ -14,7 +14,7 @@ const navigate = () => router.push({name: "signUp"})
 const navigateSignUp = () => router.push({name: "signIn"})
 
 const route = useRoute()
-const id = route.params["id"] as string
+const id = route.params["organization_id"] as string
 
 const {data, isLoading, error, isSuccess, isError} = useQuery({
   queryKey: ["organizations", id],
