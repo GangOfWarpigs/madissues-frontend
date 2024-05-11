@@ -21,7 +21,6 @@ const {data, isLoading, error, isSuccess, isError} = useQuery({
   queryFn: async () => await getOrganizationById(id)
   })
 
-
 </script>
 
 <template>
@@ -49,18 +48,9 @@ const {data, isLoading, error, isSuccess, isError} = useQuery({
               <button @click="navigateSignUp()" class="bg-gray-100 py-3 hover:bg-gray-200 rounded-full font-semibold text-gray-500">Iniciar sesión</button>
             </div>
           </div>
-
           <FaqLanding/>
-
         </section>
-          
       </div>
     </div>
-
   </body>
-
 </template>
-
-<style scoped>
-
-</style>

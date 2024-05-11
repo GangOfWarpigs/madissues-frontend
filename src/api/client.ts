@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const baseURL = 'http://localhost:8000'
 const api = axios.create({
     baseURL: baseURL
@@ -15,8 +14,6 @@ export interface apiCall<Type>{
     }
 }
 
-
-// Add an interceptor to include the token from localStorage in every request
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
