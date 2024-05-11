@@ -9,6 +9,7 @@ import * as FaIcons from "oh-vue-icons/icons/fa";
 import * as BiIcons from "oh-vue-icons/icons/bi";
 import * as IoIcons from "oh-vue-icons/icons/io";
 import CKEditor from '@ckeditor/ckeditor5-vue';
+import {VueQueryPlugin} from "@tanstack/vue-query";
 
 const icons = Object.values({ ...FaIcons, ...BiIcons, ...IoIcons });
 addIcons(...icons);
@@ -17,5 +18,6 @@ createApp(App)
     .component("vue-icon", OhVueIcon)
     .use(BootstrapIconsPlugin)
     .use(CKEditor)
+    .use(VueQueryPlugin)
     .use(routes.router)
     .mount('#base')
