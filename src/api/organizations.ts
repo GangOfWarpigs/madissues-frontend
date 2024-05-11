@@ -80,6 +80,12 @@ export async function getOrganizationCourses(id: string) {
     return request.data.success as Course[];
 }
 
+export async function getOrganizationElement(id: string, name : string): Promise<{name: string, id: string}[]> {
+    const request = await api.get<apiCall<{name: string, id: string}[]>>(`/organizations/${id}/${name}`);
+    if (request.data.error !== null) throw Error(request.data.error.error_message)
+    console.log(request.data.success as {name: string, id: string}[]);
+    return request.data.success as {name: string, id: string}[];
+}
 
 
 export interface IssueCreateRequest{

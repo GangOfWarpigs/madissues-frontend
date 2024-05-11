@@ -16,7 +16,7 @@ const { value, errorMessage } = useField(() => name);
 <template>
     <div>
         <label class="font-semibold text-gray-500 ">{{ label }}</label>
-        <input :type="type" v-model="value" class="bg-gray-100 w-full px-3 py-2 rounded-full" :class="className" :placeholder="placeholder">
+        <input :type="type" v-model="value" class="bg-white w-full px-3 py-2 rounded-full" :class="className" :placeholder="placeholder">
         <p v-if="errorMessage" class="text-red-500 mt-2">{{errorMessage}}</p>
     </div>
 </template>

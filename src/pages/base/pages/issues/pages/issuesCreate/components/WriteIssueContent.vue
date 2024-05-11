@@ -4,6 +4,8 @@
     import IssueTagSelector from "../components/IssueTagsInput.vue";
     import SmallInput from "@/pages/auth/components/SmallInput.vue";
     import InputRichText from "@/pages/auth/components/InputRichText.vue";
+    import FormMultiselect from "@/pages/auth/components/FormMultiselect.vue";
+    import FormSelect from "@/pages/auth/components/FormSelect.vue";
 </script>
 
 <template>
@@ -13,12 +15,20 @@
             <SmallInput name="title" placeholder="e.g. It is possible to vote to change the date of an exam?"/>
         </div>
         <div class="w-full flex flex-col">
+          <h4 class="text-gray-700 mb-2 text-base">Teachers Implicated</h4>
+          <FormMultiselect path="teachers" name="teachers"></FormMultiselect>
+        </div>
+      <div class="w-full flex flex-col">
+        <h4 class="text-gray-700 mb-2 text-base">Course</h4>
+        <FormSelect path="courses" name="course"></FormSelect>
+      </div>
+        <div class="w-full flex flex-col">
             <h4 class="text-gray-700 mb-2 text-base">Description</h4>
             <InputRichText name="description" placeholder="e.g. It is possible to vote to change the date of an exam?"></InputRichText>
         </div>
-        <div class="w-full flex flex-col">
-            <h4 class="text-gray-700 mb-2 text-base">Teachers Implicated</h4>
-            <IssueTagSelector></IssueTagSelector>
+      <div class="w-full flex flex-col">
+        <h4 class="text-gray-700 mb-2 text-base">Details</h4>
+          <InputRichText name="details" placeholder="e.g. It is possible to vote to change the date of an exam?"></InputRichText>
         </div>
     </section>
 </template>

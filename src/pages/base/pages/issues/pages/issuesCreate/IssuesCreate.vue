@@ -26,14 +26,17 @@
       mutationFn: async (req : IssueCreateRequest) => await createIssue(req)
     })
 
-    const {values} = useForm<IssueCreateRequest>({
+    const {values, handleSubmit} = useForm<IssueCreateRequest>({
       initialValues: {
         organization_id: id,
         teachers : [],
         proofs: [],
         student: id,
+        course: "",
       }
     })
+
+    const submit = handleSubmit((values) => mutate(values))
 
 </script>
 
@@ -48,7 +51,7 @@
       <button @click="goBack" class="rounded bg-rose-500 py-1 px-3">
         Discard
       </button>
-      <button class="rounded bg-blue-500 py-1 px-3">
+      <button @click="submit" class="rounded bg-blue-500 py-1 px-3">
         Post the issue
       </button>
     </div>

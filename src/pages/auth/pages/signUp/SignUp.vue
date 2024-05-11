@@ -94,7 +94,7 @@ const { data } = useQuery<Degree[]>({
           <FormInput name="phone_number" type="text" placeholder="Phone number"/>
           <FormInput name="started_studies_date" type="date" placeholder=""/>
         </div>
-        <FormSelect name="degreeId" :data="data"/>
+        <FormSelect class-name="!bg-gray-100" path="degrees" name="degreeId"/>
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
         <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>

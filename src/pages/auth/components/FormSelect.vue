@@ -1,29 +1,53 @@
+
+
 <script setup lang="ts">
-import {Degree} from "@/api/organizations.ts";
-import {useField} from "vee-validate";
+import { ref } from 'vue';
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
+import { useField } from 'vee-validate';
+import {getOrganizationElement} from "@/api/organizations.ts";
+import {useRoute} from "vue-router";
+import {useQuery} from "@tanstack/vue-query";
 
-const props = defineProps<{
-  name: string,
-  data: Degree[],
-}>()
+// Define props received from parent
+const props = defineProps({
+  name: String,
+  path: String,
+  className: String | null,
+});
 
-const { value, setValue, errorMessage } = useField<string>(() => props.name);
 
-function selectValue(event : InputEvent){
-  setValue(event.target.value)
-}
+const route = useRoute()
+const id = route.params["organization_id"]
+
+const {data : people, isSuccess} = useQuery({
+  queryKey: ["organizations", id, props.path],
+  queryFn: () => getOrganizationElement(id, props.path),
+})
+
+// Setup the field with the input name from props
+const { value: selectedPeople, errorMessage, } = useField<number[]>(props.name);
+
+// Define the list of people
+
 
 </script>
 
 <template>
-  <div class="flex flex-col w-full text-gray-500">
-      <select v-model="value" @input="selectValue" class="flex space-x-2 items-center rounded-full px-3 font-semibold bg-gray-100 py-1 h-10 text-gray-400 text-sm">
-        <option v-for="degree in props.data" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
-      </select>
-      <span class="text-red-500" v-if="errorMessage">{{ errorMessage }}</span>
-  </div>
+  <Listbox v-if="isSuccess"  v-model="selectedPeople">
+    <ListboxButton :class="'bg-white text-gray-500 rounded-full p-2 text-left flex justify-between px-4 ' + props.className">
+      <div>
+        {{ people?.find((x) => x.id == selectedPeople )?.name ?? "Select a course "}}
+      </div>
+      <vue-icon class="mt-1" scale="0.9" name="bi-chevron-down"></vue-icon>
+    </ListboxButton>
+    <ListboxOptions class="absolute mt-20 w-[200px] bg-white shadow-lg max-h-60 rounded-md overflow-auto z-20">
+      <ListboxOption v-for="person in people" :key="person.id" :value="person.id" class="cursor-pointer select-none relative p-2 hover:bg-gray-100 flex items-center">
+        <div v-if="selectedPeople == person.id">
+          <vue-icon class="mt-1 text-green-500" scale="0.9" name="bi-check"></vue-icon>
+        </div>
+        {{ person.name }}
+      </ListboxOption>
+    </ListboxOptions>
+  </Listbox>
+  <span class="text-red-500" v-if="errorMessage">{{ errorMessage }}</span>
 </template>
-
-<style scoped>
-
-</style>
