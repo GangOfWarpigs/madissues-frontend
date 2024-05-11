@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 const router = useRouter()
 const basePath = "/organizations/" + useRoute().params.id
@@ -55,42 +56,36 @@ const submit = handleSubmit((values) => {
 </script>
 
 <template>
-
-  <main class="w-full h-[100vh] grid grid-cols-2">
-    <section class="w-full h-full bg-blue-400 col-span-1 grid grid-rows-3 items-start">
-      <div class="flex w-full p-4 justify-start">
-        <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo" width="250" height="250">
-      </div>
-      <div class="flex  justify-center px-10">
-        <p class="text-white font-semibold text-xl">
+  <main class="w-full h-screen grid grid-cols-2 relative">
+      <section class="w-full h-full bg-blue-500 col-span-1 flex flex-col items-center justify-center">
+        <p class="text-white font-semibold text-xl text-center max-w-[40rem]">
           Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
         </p>
-      </div>
-    </section>
-    <section class="w-full h-full col-span-1 grid grid-rows-3 items-start">
-      <div class="flex justify-end">
-        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo" width="300" height="300">
-      </div>
-      <div class="flex  justify-center flex-col items-center gap-4">
-        <div>
-          <h1 class="text-center  font-semibold text-xl text-gray-500">Join our community of MadIssues</h1>
+      </section>
+      <section class="w-full h-full col-span-1 flex flex-col items-center justify-center">
+        <div class="flex flex-col mb-14">
+          <h1 class="text-center font-semibold text-gray-700 text-3xl mb-1">Join our community of MadIssues</h1>
         </div>
-        <div class="flex flex-col max-w-[700px] w-full px-2  gap-2">
-
+        <div class="flex flex-col gap-3 w-[30rem]">
           <div class="grid grid-cols-2 gap-4">
             <FormInput name="first_name" type="text" placeholder="First name"/>
             <FormInput name="last_name" type="text" placeholder="Last name"/>
             <FormInput name="phone_number" type="text" placeholder="Phone number"/>
             <FormInput name="started_studies_date" type="date" placeholder="Date you started your studies"/>
           </div>
-          <FormInput name="degree" type="text" placeholder="Degree"/>
+          <!-- AQUÍ VA EL SELECT -->
           <FormInput name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>
           <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
           <FormButton text="Sign up" type="submit" @click="submit"/>
-          <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Log in</button>
+          <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">
+            Sign in
+          </button>
         </div>
+      </section>
+      <div class="absolute w-full pr-3 pl-10 pt-1 top-0 left-0 flex justify-between items-center">
+        <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo MadIssues" width="200" height="200">
+        <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo Organización" width="300" height="300">
       </div>
-    </section>
   </main>
 </template>
