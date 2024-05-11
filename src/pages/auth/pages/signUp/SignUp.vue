@@ -10,20 +10,24 @@ const basePath = "/organizations/" + useRoute().params.id
 const routeId = useRoute().params.id;
 const organizationId = Array.isArray(routeId) ? routeId[0] : routeId || "";
 
-const degrees = [
-  { id: '1', name: 'Grado en Ingeniería Informática' },
-  { id: '2', name: 'Grado en Ciencias de Datos' },
-];
 
 const schema = yup.object({
   email: yup.string().required().email(),
+  first_name: yup.string().required("First name is required*"),
+  last_name: yup.string().required("Last name is required*"),
+  phone_number: yup.string().required("Phone number is required*"),
+  started_studies_date: yup.date().required("Date is required*"),
+  degree: yup.string().required("A degree must be selected*"),
   password : yup
       .string()
-      .required()
+      .required("Password is required*")
       .matches(
           /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/,
           'Password must contain at least one uppercase letter, one number and must be at least 8 characters'
-      )
+      ),
+  verify_password: yup
+      .string()
+      .oneOf([yup.ref('password'), ''], 'Passwords must match')
 });
 
 const { handleSubmit } = useForm<{organization_id:string, firstName:string, lastName:string, phoneNumber:string, startedStudiesDate:string, email : string, password : string, passwordConfirmation: string }>({
@@ -74,17 +78,15 @@ const submit = handleSubmit((values) => {
         <div class="flex flex-col max-w-[700px] w-full px-2  gap-2">
 
           <div class="grid grid-cols-2 gap-4">
-            <FormInput name="firstName" type="text" placeholder="First name"/>
-            <FormInput name="lastName" type="text" placeholder="Last name"/>
-            <FormInput name="phoneNumber" type="text" placeholder="Phone number"/>
-            <FormInput name="startedStudiesDate" type="date" placeholder="Date you started your studies"/>
+            <FormInput name="first_name" type="text" placeholder="First name"/>
+            <FormInput name="last_name" type="text" placeholder="Last name"/>
+            <FormInput name="phone_number" type="text" placeholder="Phone number"/>
+            <FormInput name="started_studies_date" type="date" placeholder="Date you started your studies"/>
           </div>
-          <select id="degreeSelect" v-model="selectedDegree" @change="handleChange" class="flex space-x-2 items-center rounded-3xl bg-gray-100 py-1 text-[#7C7C7C]">
-            <option v-for="degree in degrees" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
-          </select>
+          <FormInput name="degree" type="text" placeholder="Degree"/>
           <FormInput name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>
-          <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
+          <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
           <FormButton text="Sign up" type="submit" @click="submit"/>
           <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Log in</button>
         </div>

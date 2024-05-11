@@ -10,10 +10,10 @@ const router = useRouter()
 const basePath = "/organizations/" + useRoute().params.id
 
 const schema = yup.object({
-  email: yup.string().required().email(),
+  email: yup.string().required("Email is required").email(),
   password : yup
       .string()
-      .required()
+      .required("Password is required")
       .matches(
           /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/,
           'Password must contain at least one uppercase letter, one number and must be at least 8 characters'
@@ -49,8 +49,8 @@ const submit = handleSubmit((values) => {
         <div class="flex flex-col max-w-[600px] w-full gap-2">
           <FormInput class="" name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>
-          <FormButton text="Sign up" type="submit" @click="submit"/>
-          <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
+          <FormButton text="Log in" type="submit" @click="submit"/>
+          <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Sign up</button>
 
         </div>
         </div>
