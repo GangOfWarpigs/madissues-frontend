@@ -10,7 +10,6 @@ const basePath = "/organizations/" + useRoute().params.id
 const routeId = useRoute().params.id;
 const organizationId = Array.isArray(routeId) ? routeId[0] : routeId || "";
 
-
 const schema = yup.object({
   email: yup.string().required().email(),
   first_name: yup.string().required("First name is required*"),
