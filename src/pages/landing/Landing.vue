@@ -9,6 +9,9 @@ const navigateSignUp = () => router.push({name: "SignIn"})
 
 const htmlExample = "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, repellat delectus, autem voluptas optio saepe expedita ea perferendis odio nemo inventore voluptatibus sed? Sint totam iure qui perspiciatis laboriosam!</p>"
 
+
+
+
 </script>
 
 <template>
