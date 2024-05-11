@@ -6,6 +6,7 @@
     import InputRichText from "@/pages/auth/components/InputRichText.vue";
     import FormMultiselect from "@/pages/auth/components/FormMultiselect.vue";
     import FormSelect from "@/pages/auth/components/FormSelect.vue";
+    import AreaInput from "@/pages/auth/components/AreaInput.vue";
 </script>
 
 <template>
@@ -24,7 +25,7 @@
       </div>
         <div class="w-full flex flex-col">
             <h4 class="text-gray-700 mb-2 text-base">Description</h4>
-            <InputRichText name="description" placeholder="e.g. It is possible to vote to change the date of an exam?"></InputRichText>
+            <AreaInput name="description" placeholder="e.g. It is possible to vote to change the date of an exam?"></AreaInput>
         </div>
       <div class="w-full flex flex-col">
         <h4 class="text-gray-700 mb-2 text-base">Details</h4>
