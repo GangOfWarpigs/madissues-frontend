@@ -21,7 +21,7 @@ export interface SignUpRequest {
     degreeId: string;
 };
 
-export const t signUpFn = async function (request: SignUpRequest ) {
+export const signUpFn = async function (request: SignUpRequest ) {
     const response = await api.post<apiCall<{ token: string; }>>("/students/signup/", {
         ...request
     });
