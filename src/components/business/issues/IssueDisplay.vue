@@ -1,52 +1,16 @@
 <script setup lang="ts">
     import { ref, watch, onMounted } from 'vue';
     import IssueCard from './IssueCard.vue';
+    import { Issue } from '../../../api/organizations';
+    import Empty from '../../shared/Empty.vue';
 
-    const issues = [
-        {
-            id: "1",
-            title: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-            description: "hola caracola",
-            details: "",
-            proofs: [],
-            status: "Solved",
-            date_time: "a minute ago",
-            course: "Arquitectura de Computadores",    
-            teachers: ["Domingo"],
-            student: "josepenaseco101",
-            comments_id: ["1", "2", "3", "4"]
-        }, {
-            id: "2",
-            title: "El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-            description: "hola caracola",
-            details: "",
-            proofs: [],
-            status: "Queued",
-            date_time: "a minute ago",
-            course: "Arquitectura de Computadores",    
-            teachers: ["Domingo", "Ricardo"],
-            student: "josepenaseco101",
-            comments_id: []
-        },
-        {
-            id: "3",
-            title: "El profesor es tonto",
-            description: "hola caracola",
-            details: "",
-            proofs: [],
-            status: "In progress",
-            date_time: "a minute ago",
-            course: "Estructura de Computadores",    
-            teachers: ["Ricardo"],
-            student: "josepenaseco101",
-            comments_id: []
-        }
-    ];
+
+    const {issues} = defineProps<{issues: Issue[]}>()
 
     const queued = issues.filter(issue => issue.status === 'Queued');
     const solved = issues.filter(issue => issue.status === 'Solved');
-    const statusOrder = ['Queued', 'In progress', 'Not solved', 'Solved'];
 
+    const statusOrder = ['Queued', 'In progress', 'Not solved', 'Solved'];
     const isCourseDesc = ref(true);
     const isTeacherDesc = ref(true);
     const isStatusDesc = ref(true);
@@ -101,11 +65,12 @@
     function loadMore() {
         // aquí se escribe la lógica para cargar más issues
     }
+
 </script>
 
 <template>
     <div class="w-full flex flex-col">
-        <div class="flex items-center mb-5">
+        <div class="flex items-center mb-4">
             <div class="relative">
                 <vue-icon name="io-search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                 <input 
@@ -148,8 +113,9 @@
         <div class="w-full flex flex-col space-y-4 mt-4">
             <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
         </div>
-        <div class="w-full flex flex-col justify-center items-center mt-10">
+        <div class="w-full flex flex-col justify-center items-center mt-10" v-if="filteredIssues.length > 10">
             <button class="border rounded-lg px-5 py-2 font-semibold" @click="loadMore">Load more</button>
         </div>
+        <Empty item="issues" v-if="filteredIssues.length == 0"></Empty>
     </div>
 </template>
