@@ -10,7 +10,7 @@ import {
   getOrganizationDegrees,
   signUpStudent
 } from "../../../../api/organizations.ts";
-import FormSelect from "@/pages/auth/components/FormSelect.vue";
+import FormSelect from "../../components/FormSelect.vue";
 
 const router = useRouter()
 // const routeId = useRoute().params.id;
@@ -25,7 +25,7 @@ const schema = yup.object({
   last_name: yup.string().required("Last name is required*"),
   phone_number: yup.string().required("Phone number is required*"),
   started_studies_date: yup.string().required("Date is required*"),
-  degree: yup.string().required("A degree must be selected*"),
+  degreeId: yup.string().required("A degree must be selected*"),
 
   password : yup
       .string()
@@ -60,7 +60,7 @@ const { mutate, error } = useMutation({
     if (response && response.token) {
       const token = response.token;
       localStorage.setItem("token", token);
-      router.replace(basePath + '/auth/signin');
+      router.push({name:"Home"});
     }
   },
 })
@@ -94,7 +94,7 @@ const { data } = useQuery<Degree[]>({
           <FormInput name="phone_number" type="text" placeholder="Phone number"/>
           <FormInput name="started_studies_date" type="date" placeholder=""/>
         </div>
-        <FormSelect name="degree" :data="data"/>
+        <FormSelect name="degreeId" :data="data"/>
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
         <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
