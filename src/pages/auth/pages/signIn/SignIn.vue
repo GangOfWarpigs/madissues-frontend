@@ -8,7 +8,9 @@ import {useMutation} from "@tanstack/vue-query";
 import {signInStudent} from "../../../../api/organizations.ts";
 
 const router = useRouter()
-const basePath = "/organizations/" + useRoute().params.id
+const route = useRoute()
+const organizationId = route.params["organization_id"] as string
+const basePath = "/organizations/" + organizationId
 
 const schema = yup.object({
   email: yup.string().required("Email is required").email(),
@@ -31,6 +33,13 @@ const { handleSubmit } = useForm<{email : string, password : string}>({
 
 const { mutate, error } = useMutation({
   mutationFn: (req: {email: string, password: string}) => signInStudent(req),
+  onSuccess: (response) => {
+    if (response && response.token){
+      const token = response.token;
+      localStorage.setItem("token", token);
+      router.replace(basePath + '/base/home');
+    }
+  },
 })
 
 const submit = handleSubmit((values) => {
