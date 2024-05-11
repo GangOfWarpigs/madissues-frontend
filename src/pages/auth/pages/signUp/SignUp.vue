@@ -19,14 +19,13 @@ const organizationId = route.params["organization_id"] as string
 console.log(organizationId)
 const basePath = "/organizations/" + organizationId
 
-
 const schema = yup.object({
   email: yup.string().required().email(),
   first_name: yup.string().required("First name is required*"),
   last_name: yup.string().required("Last name is required*"),
   phone_number: yup.string().required("Phone number is required*"),
   started_studies_date: yup.string().required("Date is required*"),
-  degree: yup.string().required("A degree must be selected*"),
+  degreeId: yup.string().required("A degree must be selected*"),
 
   password : yup
       .string()
@@ -55,21 +54,20 @@ const { handleSubmit } = useForm<{organization_id:string, first_name:string, las
   }
 })
 
-
 const { mutate, error } = useMutation({
   mutationFn: (req: {organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }) => signUpStudent(req),
   onSuccess: (response) => {
     if (response && response.token) {
       const token = response.token;
       localStorage.setItem("token", token);
-      router.replace(basePath + '/auth/signin');
+      router.push({name:"Home"});
     }
   },
 })
 
 const submit = handleSubmit((values) => {
   // Incluir degreeId en los valores enviados a la función mutate
-  mutate({ ...values })
+  mutate({ ...values, })
 });
 
 const { data } = useQuery<Degree[]>({
@@ -96,7 +94,7 @@ const { data } = useQuery<Degree[]>({
           <FormInput name="phone_number" type="text" placeholder="Phone number"/>
           <FormInput name="started_studies_date" type="date" placeholder=""/>
         </div>
-        <FormSelect name="degree" :data="data" v-if="data"/>
+        <FormSelect name="degreeId" :data="data"/>
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
         <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
