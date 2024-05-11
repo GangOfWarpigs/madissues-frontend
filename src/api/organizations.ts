@@ -1,5 +1,6 @@
 import api, {apiCall} from "./client.ts";
 
+
 export interface OrganizationReadModel{
     id: string,
     owner_id: string,
@@ -10,6 +11,13 @@ export interface OrganizationReadModel{
     primary_color: string,
     secondary_color: string
 }
+export const getOrganizationById = async function (organizationId : string) {
+    const response = await api.get<apiCall<OrganizationReadModel>>("/organizations/" + organizationId);
+    if (response.data.error) {
+        throw Error(response.data.error.error_message);
+    }
+    return response.data.success
+};
 
 export async function getOrganizationById(id: string){
     const request = await api.get<apiCall<OrganizationReadModel>>(`/organizations/${id}`)
