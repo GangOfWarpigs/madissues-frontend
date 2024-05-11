@@ -60,7 +60,7 @@ const { mutate, error } = useMutation({
     if (response && response.token) {
       const token = response.token;
       localStorage.setItem("token", token);
-      router.replace(basePath + '/auth/signin');
+      router.push({name:"Home"});
     }
   },
 })
