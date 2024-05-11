@@ -23,9 +23,9 @@
     const basePath = "/organizations/" + useRoute().params.id + "/base/";
 
     const paths = [
-        { path: "home", name : "Home" },
-        { path: "issues", name : "Issues" },
-        { path: "faqs", name : "Faqs" }
+        { path: "Home", name : "Home" },
+        { path: "Issues", name : "Issues" },
+        { path: "Faqs", name : "Faqs" }
     ];
 </script>
 
@@ -40,7 +40,7 @@
                 <nav>
                     <ul class="flex gap-12">
                         <li v-for="path in paths">
-                            <router-link active-class="!text-white" class=" text-gray-300 text-lg font-semibold" :to="{ path: basePath + path.path }" replace>{{ path.name }}</router-link>
+                            <router-link active-class="!text-white" class=" text-gray-300 text-lg font-semibold" :to="{ name: path.name }">{{ path.name }}</router-link>
                         </li>
                     </ul>
                 </nav>
@@ -56,9 +56,9 @@
                 <DropdownMenuContent class=" w-64 mt-6 py-4  px-4 border-2 border-blue-500 rounded-xl bg-white text-blue-600 shadow-lg">
                   <DropdownMenuLabel class="text-base">Account</DropdownMenuLabel>
                   <DropdownMenuSeparator class="mb-2"/>
-                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold"><router-link :to="{ name: 'ProfileInformation' }" replace>Profile</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ name: 'ProfileIssues' }" replace>My Issues</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ name: 'ProfileFaqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
