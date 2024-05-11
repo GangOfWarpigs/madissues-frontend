@@ -6,6 +6,7 @@
     import { useRoute } from "vue-router";
     import { useQuery } from "@tanstack/vue-query";
     import { getOrganizationCourses, Course } from "../../../../api/organizations";
+    import Spinner from "@/components/Spinner.vue";
 
     const route = useRoute();
     const organizationId = route.params["organization_id"] as string;
@@ -41,8 +42,8 @@
                 <SubjectCard v-for="subject in filteredSubjects" :key="subject.id" :subjectCard="subject"/>
             </div>
         </section>
-        <section v-if="isLoading">
-            hola
+        <section v-if="isLoading" class="flex w-full justify-center mt-10">
+          <Spinner size="10px"></Spinner>
         </section>
     </main>
 </template>

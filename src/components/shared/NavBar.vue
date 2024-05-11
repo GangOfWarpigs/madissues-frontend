@@ -24,9 +24,9 @@ import {useRoute, useRouter} from 'vue-router';
     const authPath = "/organizations/" + useRoute().params.id + "/auth/";
 
     const paths = [
-        { path: "home", name : "Home" },
-        { path: "issues", name : "Issues" },
-        { path: "faqs", name : "Faqs" }
+        { path: "Home", name : "Home" },
+        { path: "Issues", name : "Issues" },
+        { path: "Faqs", name : "Faqs" }
     ];
 
     function logout(){
@@ -45,7 +45,7 @@ import {useRoute, useRouter} from 'vue-router';
                 <nav>
                     <ul class="flex gap-12">
                         <li v-for="path in paths">
-                            <router-link active-class="!text-white" class=" text-gray-300 text-lg font-semibold" :to="{ path: basePath + path.path }" replace>{{ path.name }}</router-link>
+                            <router-link active-class="!text-white" class=" text-gray-300 text-lg font-semibold" :to="{ name: path.name }">{{ path.name }}</router-link>
                         </li>
                     </ul>
                 </nav>
