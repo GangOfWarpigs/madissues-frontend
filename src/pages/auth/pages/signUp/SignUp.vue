@@ -12,12 +12,11 @@ import {
 } from "../../../../api/organizations.ts";
 
 const router = useRouter()
-const basePath = "/organizations/" + useRoute().params.id
 // const routeId = useRoute().params.id;
 const route = useRoute()
 const organizationId = route.params["organization_id"] as string
 console.log(organizationId)
-
+const basePath = "/organizations/" + organizationId
 
 
 const schema = yup.object({
@@ -26,7 +25,7 @@ const schema = yup.object({
   last_name: yup.string().required("Last name is required*"),
   phone_number: yup.string().required("Phone number is required*"),
   started_studies_date: yup.date().required("Date is required*"),
-  degree: yup.string().required("A degree must be selected*"),
+  //degree: yup.string().required("A degree must be selected*"),
   password : yup
       .string()
       .required("Password is required*")
@@ -61,7 +60,6 @@ let selectedDegree = '';
 const handleChange = (event: Event) => {
   // Accede al valor seleccionado del select y asígnalo a selectedDegree
   selectedDegree = (event.target as HTMLSelectElement).value;
-  console.log(selectedDegree)
 };
 
 const { mutate, error } = useMutation({
