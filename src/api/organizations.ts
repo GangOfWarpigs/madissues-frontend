@@ -79,3 +79,25 @@ export async function getOrganizationCourses(id: string) {
     console.log(request.data.success as Course[]);
     return request.data.success as Course[];
 }
+
+
+
+export interface IssueCreateRequest{
+    title: string,
+    description: string,
+    details: string,
+    proofs: [],
+    status: string,
+    date_time: string,
+    course: string,
+    teachers: string[],
+    student: string,
+    organization_id: string
+}
+
+
+export async function createIssue(req: IssueCreate){
+    const request = await api.post<apiCall<IssueCreate>>("/issues/", req);
+    if (request.data.error !== null) throw Error(request.data.error.error_message)
+    return request.data.success as IssueCreate
+}
