@@ -2,9 +2,10 @@
     import {useRoute} from "vue-router";
     import {onMounted, ref, watch} from "vue";
 
-    const basePath = "/organizations/" + useRoute().params.id + "/base/";
-
     const route = useRoute()
+    const organizationId = route.params["organization_id"] as string
+    const basePath = "/organizations/" + organizationId + "/base/";
+
     const currentPath = ref('')
     const endpointName = ref('')
 
