@@ -1,24 +1,11 @@
 <script setup lang="ts">
     import { PropType } from 'vue';
     import { useRouter, useRoute } from 'vue-router';
-
-    export interface IssueCardProps {
-        //id: string,
-        title: string,
-        description: string,
-        details: string,
-        proofs: string[],
-        status: string,
-        date_time: string,
-        course: string,
-        teachers: string[],
-        student: string,
-        //comments_id: string[]
-    }
+    import { Issue } from '../../../api/organizations';
 
     const props = defineProps({
         issue: {
-            type: Object as PropType<IssueCardProps>,
+            type: Object as PropType<Issue>,
             required: true
         }
     });

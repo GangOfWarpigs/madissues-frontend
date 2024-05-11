@@ -1,10 +1,11 @@
 <script setup lang="ts">
     import { ref, watch, onMounted } from 'vue';
     import IssueCard from './IssueCard.vue';
+    import { Issue } from '../../../api/organizations';
+    import Empty from '../../shared/Empty.vue';
 
 
-    const {issues} = defineProps<{issues: any[]}>()
-
+    const {issues} = defineProps<{issues: Issue[]}>()
 
     const queued = issues.filter(issue => issue.status === 'Queued');
     const solved = issues.filter(issue => issue.status === 'Solved');
@@ -69,7 +70,7 @@
 
 <template>
     <div class="w-full flex flex-col">
-        <div class="flex items-center mb-5">
+        <div class="flex items-center mb-4">
             <div class="relative">
                 <vue-icon name="io-search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                 <input 
@@ -112,8 +113,9 @@
         <div class="w-full flex flex-col space-y-4 mt-4">
             <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
         </div>
-        <div class="w-full flex flex-col justify-center items-center mt-10">
+        <div class="w-full flex flex-col justify-center items-center mt-10" v-if="filteredIssues.length > 10">
             <button class="border rounded-lg px-5 py-2 font-semibold" @click="loadMore">Load more</button>
         </div>
+        <Empty item="issues" v-if="filteredIssues.length == 0"></Empty>
     </div>
 </template>

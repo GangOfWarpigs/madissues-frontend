@@ -65,6 +65,7 @@ export async function getOrganizationDegrees(id: string){
 }
 
 export interface Issue {
+    id: string,
     title: string,
     description: string,
     details: string,
@@ -75,12 +76,9 @@ export interface Issue {
     teachers: string[],
     student_id: string
 }
-
 export async function getOrganizationIssues(id: string){
-    const request = await api.get<apiCall<Issue[]>>(`/organizations/${id}/issues/`)
-    if(request.data.error !== null){
-        throw Error(request.data.error.error_message)
-    }
+    const request = await api.get<apiCall<Issue[]>>(`/organizations/${id}/issues/`);
+    if (request.data.error !== null) throw Error(request.data.error.error_message);
     console.log(request.data.success as Issue[])
     return request.data.success as Issue[];
 }
