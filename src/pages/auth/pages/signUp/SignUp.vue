@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 const router = useRouter()
 const basePath = "/organizations/" + useRoute().params.id
