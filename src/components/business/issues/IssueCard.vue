@@ -3,7 +3,7 @@
     import { useRouter, useRoute } from 'vue-router';
 
     export interface IssueCardProps {
-        id: string,
+        //id: string,
         title: string,
         description: string,
         details: string,
@@ -13,7 +13,7 @@
         course: string,
         teachers: string[],
         student: string,
-        comments_id: string[]
+        //comments_id: string[]
     }
 
     const props = defineProps({
@@ -45,7 +45,7 @@
                 <h3 class="font-semibold text-lg max-w-6xl whitespace-nowrap text-ellipsis overflow-hidden">{{ props.issue.title }}</h3>
                 <div class="flex text-gray-400 items-center text-center justify-center">
                     <b-icon-chat-left-text-fill/>
-                    <p class="ml-2 mb-1">{{ props.issue.comments_id.length }}</p>
+                    <!--<p class="ml-2 mb-1">{{ props.issue.comments_id.length }}</p>-->
                 </div>
             </section>
             <section class="flex items-end justify-between w-100 mt-4">
