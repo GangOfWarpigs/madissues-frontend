@@ -10,7 +10,7 @@ import {
   getOrganizationDegrees,
   signUpStudent
 } from "../../../../api/organizations.ts";
-import FormSelect from "@/pages/auth/components/FormSelect.vue";
+import FormSelect from "../../components/FormSelect.vue";
 
 const router = useRouter()
 // const routeId = useRoute().params.id;

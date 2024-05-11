@@ -1,5 +1,6 @@
 import api, {apiCall} from "./client.ts";
 
+
 export interface OrganizationReadModel{
     id: string,
     owner_id: string,
@@ -10,14 +11,14 @@ export interface OrganizationReadModel{
     primary_color: string,
     secondary_color: string
 }
-
-export async function getOrganizationById(id: string){
-    const request = await api.get<apiCall<OrganizationReadModel>>(`/organizations/${id}`)
-    if(request.data.error !== null){
-        throw Error(request.data.error.error_message)
+export const getOrganizationById = async function (organizationId : string) {
+    const response = await api.get<apiCall<OrganizationReadModel>>("/organizations/" + organizationId);
+    if (response.data.error) {
+        throw Error(response.data.error.error_message);
     }
-    return request.data.success
-}
+    return response.data.success
+};
+
 export interface StudentSign{
     token: string,
     student_id : string
@@ -62,4 +63,19 @@ export async function getOrganizationDegrees(id: string){
     }
     console.log(request.data.success as Degree[])
     return request.data.success as Degree[];
+}
+
+export interface Course {
+    id: string,
+    name: string,
+    code: string,
+    icon: string,
+    primary_color: string,
+    secondary_color: string
+}
+export async function getOrganizationCourses(id: string) {
+    const request = await api.get<apiCall<Course[]>>(`/organizations/${id}/courses`);
+    if (request.data.error !== null) throw Error(request.data.error.error_message)
+    console.log(request.data.success as Course[]);
+    return request.data.success as Course[];
 }
