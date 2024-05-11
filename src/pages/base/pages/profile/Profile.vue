@@ -1,15 +1,7 @@
 <script setup lang="ts">
     import PageBanner from '../../../../components/shared/pageBanner/PageBanner.vue';
     import ProfileNavBar from './components/ProfileNavBar.vue';
-    import ProfileChild from '../../../../components/shared/pageBanner/childs/ProfileChild.vue';
-
-    const userData1 = {
-        first_name: "Jose Ricardo",
-        last_name: "Peña Seco",
-        degree: "Ingeniería informatica",
-        last_school_year: "4",
-        email: "jose.pena101@alu.ulpgc.es"
-    }
+    import ProfileChild from './components/ProfileHeader.vue';
 
     const profilePageData = {
         title: "",
@@ -29,8 +21,8 @@
 </script>
 
 <template>
-    <PageBanner :data="profilePageData" :user="userData1">
-        <div class="w-full flex justify-start translate-y-36 pl-10">
+    <PageBanner :data="profilePageData">
+        <div class="w-full flex justify-start translate-y-24 pl-12">
             <ProfileChild :user="user"/>
         </div>
     </PageBanner>

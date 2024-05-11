@@ -1,11 +1,7 @@
 <script setup lang="ts">
-
+    import IssueDisplay from '../../../../../../components/business/issues/IssueDisplay.vue';
 </script>
 
 <template>
-  this is profile issues
+    <IssueDisplay></IssueDisplay>
 </template>
-
-<style scoped>
-
-</style>

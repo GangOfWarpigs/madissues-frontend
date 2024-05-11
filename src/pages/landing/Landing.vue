@@ -6,8 +6,9 @@ import {getOrganizationById, OrganizationReadModel} from "../../api/organization
 import {apiCall, baseUrl} from "../../api/client.ts";
 
 const router = useRouter()
-const navigate = () => router.push({name: "SignUp"})
-const navigateSignUp = () => router.push({name: "SignIn"})
+
+const navigate = () => router.push({name: "signUp"})
+const navigateSignUp = () => router.push({name: "signIn"})
 
 const route = useRoute()
 const organizationId = route.params["organization_id"] as string
@@ -42,18 +43,9 @@ const { data, isSuccess, isLoading } = useQuery<OrganizationReadModel>({
               <button @click="navigateSignUp()" class="bg-gray-100 py-3 hover:bg-gray-200 rounded-full font-semibold text-gray-500">Iniciar sesión</button>
             </div>
           </div>
-
           <FaqLanding/>
-
         </section>
-          
       </div>
     </div>
-
   </body>
-
 </template>
-
-<style scoped>
-
-</style>
