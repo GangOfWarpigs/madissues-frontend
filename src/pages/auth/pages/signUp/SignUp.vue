@@ -104,7 +104,7 @@ const { data } = useQuery<Degree[]>({
             <FormInput name="phone_number" type="text" placeholder="Phone number"/>
             <FormInput name="started_studies_date" type="date" placeholder="Date you started your studies"/>
           </div>
-          <select id="degreeSelect" v-model="selectedDegree" @change="handleChange" class="flex space-x-2 items-center rounded-3xl bg-gray-100 py-1 text-[#7C7C7C]">
+          <select id="degreeSelect" v-model="selectedDegree" @change="handleChange" class="flex space-x-2 items-center rounded-full px-3 font-semibold bg-gray-100 py-1 h-10 text-gray-400 text-sm">
             <option v-for="degree in data" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
           </select>
           <FormInput name="email" type="email" placeholder="Email"/>

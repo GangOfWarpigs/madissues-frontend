@@ -21,7 +21,6 @@ const schema = yup.object({
       )
 });
 
-
 const { handleSubmit } = useForm<{email : string, password : string}>({
   validationSchema: schema,
   initialValues: {
@@ -37,7 +36,6 @@ const { mutate, error } = useMutation({
 const submit = handleSubmit((values) => {
   mutate(values)
 });
-
 </script>
 
 <template>
@@ -58,9 +56,9 @@ const submit = handleSubmit((values) => {
       </div>
     </section>
     <section class="w-full h-full bg-blue-500 col-span-1 flex flex-col items-center justify-center">
-      <P class="text-white font-semibold text-xl text-center max-w-[40rem]">
+      <p class="text-white font-semibold text-xl text-center max-w-[40rem]">
         Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
-      </P>
+      </p>
     </section>
     <div class="absolute w-full pl-3 pr-10 pt-1 top-0 left-0 flex justify-between items-center">
       <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo Organización" width="300" height="300">
