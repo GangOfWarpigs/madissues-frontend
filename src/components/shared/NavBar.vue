@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { useRoute } from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
     import {
         DropdownMenu,
         DropdownMenuContent,
@@ -19,14 +19,20 @@
             required: true
         }
     });
-    
+
     const basePath = "/organizations/" + useRoute().params.id + "/base/";
+    const authPath = "/organizations/" + useRoute().params.id + "/auth/";
 
     const paths = [
         { path: "home", name : "Home" },
         { path: "issues", name : "Issues" },
         { path: "faqs", name : "Faqs" }
     ];
+
+    function logout(){
+        localStorage.removeItem("token");
+        console.log("Logged out")
+    }
 </script>
 
 <template>
@@ -59,6 +65,7 @@
                   <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
                   <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
                   <DropdownMenuItem class=" hover:bg-gray-100 rounded-xl  py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
+                  <DropdownMenuItem @click="logout()" class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-log-out" scale="1.2" class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: authPath + 'signin' }" replace>Log out</router-link></p></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
