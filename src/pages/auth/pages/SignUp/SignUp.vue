@@ -5,7 +5,11 @@ import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
 import {useMutation, useQuery} from "@tanstack/vue-query";
-import {signUpStudent} from "../../../../api/organizations.ts";
+import {
+  Degree,
+  getOrganizationDegrees,
+  signUpStudent
+} from "../../../../api/organizations.ts";
 
 const router = useRouter()
 const basePath = "/organizations/" + useRoute().params.id
@@ -54,6 +58,13 @@ const handleChange = (event: Event) => {
 
 const { mutate, error } = useMutation({
   mutationFn: (req: {organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }) => signUpStudent(req),
+  onSuccess: (response) => {
+      if (response && response.token) {
+        const token = response.token;
+        localStorage.setItem("token", token);
+        router.replace(basePath + '/auth/signin');
+      }
+  },
 })
 
 const submit = handleSubmit((values) => {
@@ -61,6 +72,10 @@ const submit = handleSubmit((values) => {
   mutate({ ...values, degreeId: selectedDegree })
 });
 
+const { data } = useQuery<Degree[]>({
+  queryKey: ["organization", organizationId],
+  queryFn: async () => await getOrganizationDegrees(organizationId)
+})
 
 
 </script>
@@ -95,7 +110,7 @@ const submit = handleSubmit((values) => {
             <FormInput name="started_studies_date" type="date" placeholder="Date you started your studies"/>
           </div>
           <select id="degreeSelect" v-model="selectedDegree" @change="handleChange" class="flex space-x-2 items-center rounded-3xl bg-gray-100 py-1 text-[#7C7C7C]">
-            <option v-for="degree in degrees" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
+            <option v-for="degree in data" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
           </select>
           <FormInput name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>

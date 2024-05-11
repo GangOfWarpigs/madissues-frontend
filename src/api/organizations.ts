@@ -50,3 +50,16 @@ export async function signUpStudent(req : { organization_id: string, first_name:
     }
     return request.data.success
 }
+
+export interface Degree{
+    id: string,
+    name : string
+}
+export async function getOrganizationDegrees(id: string){
+    const request = await api.get<apiCall<Degree[]>>(`/organizations/${id}/degrees`)
+    if(request.data.error !== null){
+        throw Error(request.data.error.error_message)
+    }
+    console.log(request.data.success as Degree[])
+    return request.data.success as Degree[];
+}
