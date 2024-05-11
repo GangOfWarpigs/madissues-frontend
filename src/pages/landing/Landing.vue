@@ -3,7 +3,7 @@ import { useRoute, useRouter } from 'vue-router';
 import FaqLanding from './component/FaqLanding.vue'
 import {useQuery} from "@tanstack/vue-query";
 import {getOrganizationById, OrganizationReadModel} from "../../api/organizations.ts";
-import {apiCall, baseUrl} from "@/api/client.ts";
+import {apiCall, baseUrl} from "../../api/client.ts";
 
 const router = useRouter()
 const navigate = () => router.push({name: "SignUp"})

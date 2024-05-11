@@ -4,16 +4,17 @@ import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
+import {useMutation, useQuery} from "@tanstack/vue-query";
+import {signUpStudent} from "../../../../api/organizations.ts";
 
 const router = useRouter()
 const basePath = "/organizations/" + useRoute().params.id
 const routeId = useRoute().params.id;
-const organizationId = Array.isArray(routeId) ? routeId[0] : routeId || "";
+const route = useRoute()
+const organizationId = route.params["organization_id"] as string
+console.log(organizationId)
 
-const degrees = [
-  { id: '1', name: 'Grado en Ingeniería Informática' },
-  { id: '2', name: 'Grado en Ciencias de Datos' },
-];
+
 
 const schema = yup.object({
   email: yup.string().required().email(),
@@ -26,27 +27,41 @@ const schema = yup.object({
       )
 });
 
-const { handleSubmit } = useForm<{organization_id:string, firstName:string, lastName:string, phoneNumber:string, startedStudiesDate:string, email : string, password : string, passwordConfirmation: string }>({
+const { handleSubmit } = useForm<{organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }>({
   validationSchema: schema,
   initialValues: {
     organization_id: organizationId,
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    startedStudiesDate: "",
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    started_studies_date: "",
     email: "",
     password: "",
-    passwordConfirmation: ""
+    verify_password: "",
+    degreeId: ""
   }
 })
 
+// Variable para almacenar el valor seleccionado del grado
+let selectedDegree = '';
+
+// Función para manejar el cambio en el select
+const handleChange = (event: Event) => {
+  // Accede al valor seleccionado del select y asígnalo a selectedDegree
+  selectedDegree = (event.target as HTMLSelectElement).value;
+  console.log(selectedDegree)
+};
+
+const { mutate, error } = useMutation({
+  mutationFn: (req: {organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }) => signUpStudent(req),
+})
+
 const submit = handleSubmit((values) => {
-  try{
-  console.log(values)
-  }catch(error){
-    console.log(error)
-  }
+  // Incluir degreeId en los valores enviados a la función mutate
+  mutate({ ...values, degreeId: selectedDegree })
 });
+
+
 
 </script>
 
@@ -74,19 +89,20 @@ const submit = handleSubmit((values) => {
         <div class="flex flex-col max-w-[700px] w-full px-2  gap-2">
 
           <div class="grid grid-cols-2 gap-4">
-            <FormInput name="firstName" type="text" placeholder="First name"/>
-            <FormInput name="lastName" type="text" placeholder="Last name"/>
-            <FormInput name="phoneNumber" type="text" placeholder="Phone number"/>
-            <FormInput name="startedStudiesDate" type="date" placeholder="Date you started your studies"/>
+            <FormInput name="first_name" type="text" placeholder="First name"/>
+            <FormInput name="last_name" type="text" placeholder="Last name"/>
+            <FormInput name="phone_number" type="text" placeholder="Phone number"/>
+            <FormInput name="started_studies_date" type="date" placeholder="Date you started your studies"/>
           </div>
           <select id="degreeSelect" v-model="selectedDegree" @change="handleChange" class="flex space-x-2 items-center rounded-3xl bg-gray-100 py-1 text-[#7C7C7C]">
             <option v-for="degree in degrees" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
           </select>
           <FormInput name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>
-          <FormInput name="passwordConfirmation" type="password" placeholder="Confirm Password"/>
+          <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
           <FormButton text="Sign up" type="submit" @click="submit"/>
           <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Log in</button>
+          <p class="text-red-500">{{error}}</p>
         </div>
       </div>
     </section>

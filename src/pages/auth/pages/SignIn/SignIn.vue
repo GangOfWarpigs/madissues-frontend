@@ -55,7 +55,7 @@ const submit = handleSubmit((values) => {
         <div class="flex flex-col max-w-[600px] w-full gap-2">
           <FormInput class="" name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>
-          <FormButton text="Sign up" type="submit" @click="submit"/>
+          <FormButton text="Sign in" type="submit" @click="submit"/>
           <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">Register</button>
           <p class="text-red-500">{{error}}</p>
 
