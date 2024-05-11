@@ -4,11 +4,20 @@ import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
+import {useMutation, useQuery} from "@tanstack/vue-query";
+import {
+  Degree,
+  getOrganizationDegrees,
+  signUpStudent
+} from "../../../../api/organizations.ts";
 
 const router = useRouter()
 const basePath = "/organizations/" + useRoute().params.id
-const routeId = useRoute().params.id;
-const organizationId = Array.isArray(routeId) ? routeId[0] : routeId || "";
+// const routeId = useRoute().params.id;
+const route = useRoute()
+const organizationId = route.params["organization_id"] as string
+console.log(organizationId)
+
 
 
 const schema = yup.object({
@@ -30,28 +39,51 @@ const schema = yup.object({
       .oneOf([yup.ref('password'), ''], 'Passwords must match')
 });
 
-const { handleSubmit } = useForm<{organization_id:string, firstName:string, lastName:string, phoneNumber:string, startedStudiesDate:string, email : string, password : string, passwordConfirmation: string }>({
+const { handleSubmit } = useForm<{organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }>({
   validationSchema: schema,
   initialValues: {
     organization_id: organizationId,
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    startedStudiesDate: "",
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    started_studies_date: "",
     email: "",
     password: "",
-    passwordConfirmation: ""
+    verify_password: "",
+    degreeId: ""
   }
 })
 
+// Variable para almacenar el valor seleccionado del grado
+let selectedDegree = '';
+
+// Función para manejar el cambio en el select
+const handleChange = (event: Event) => {
+  // Accede al valor seleccionado del select y asígnalo a selectedDegree
+  selectedDegree = (event.target as HTMLSelectElement).value;
+  console.log(selectedDegree)
+};
+
+const { mutate, error } = useMutation({
+  mutationFn: (req: {organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }) => signUpStudent(req),
+  onSuccess: (response) => {
+      if (response && response.token) {
+        const token = response.token;
+        localStorage.setItem("token", token);
+        router.replace(basePath + '/auth/signin');
+      }
+  },
+})
+
 const submit = handleSubmit((values) => {
-  try{
-  console.log(values)
-  }catch(error){
-    console.log(error)
-  }
+  // Incluir degreeId en los valores enviados a la función mutate
+  mutate({ ...values, degreeId: selectedDegree })
 });
 
+const { data } = useQuery<Degree[]>({
+  queryKey: ["organization", organizationId],
+  queryFn: async () => await getOrganizationDegrees(organizationId)
+})
 </script>
 
 <template>
@@ -72,7 +104,9 @@ const submit = handleSubmit((values) => {
             <FormInput name="phone_number" type="text" placeholder="Phone number"/>
             <FormInput name="started_studies_date" type="date" placeholder="Date you started your studies"/>
           </div>
-          <!-- AQUÍ VA EL SELECT -->
+          <select id="degreeSelect" v-model="selectedDegree" @change="handleChange" class="flex space-x-2 items-center rounded-3xl bg-gray-100 py-1 text-[#7C7C7C]">
+            <option v-for="degree in data" :key="degree.id" :value="degree.id">{{ degree.name }}</option>
+          </select>
           <FormInput name="email" type="email" placeholder="Email"/>
           <FormInput name="password" type="password" placeholder="Password"/>
           <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
@@ -80,6 +114,7 @@ const submit = handleSubmit((values) => {
           <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">
             Sign in
           </button>
+          <p class="text-red-500">{{error}}</p>
         </div>
       </section>
       <div class="absolute w-full pr-3 pl-10 pt-1 top-0 left-0 flex justify-between items-center">
