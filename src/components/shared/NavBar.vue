@@ -31,7 +31,6 @@ import {useRoute, useRouter} from 'vue-router';
 
     function logout(){
         localStorage.removeItem("token");
-        console.log("Logged out")
     }
 </script>
 
