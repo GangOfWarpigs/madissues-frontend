@@ -19,7 +19,6 @@ const organizationId = route.params["organization_id"] as string
 console.log(organizationId)
 const basePath = "/organizations/" + organizationId
 
-
 const schema = yup.object({
   email: yup.string().required().email(),
   first_name: yup.string().required("First name is required*"),
@@ -55,7 +54,6 @@ const { handleSubmit } = useForm<{organization_id:string, first_name:string, las
   }
 })
 
-
 const { mutate, error } = useMutation({
   mutationFn: (req: {organization_id:string, first_name:string, last_name:string, phone_number:string, started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string }) => signUpStudent(req),
   onSuccess: (response) => {
@@ -69,7 +67,7 @@ const { mutate, error } = useMutation({
 
 const submit = handleSubmit((values) => {
   // Incluir degreeId en los valores enviados a la función mutate
-  mutate({ ...values })
+  mutate({ ...values, })
 });
 
 const { data } = useQuery<Degree[]>({
@@ -96,7 +94,7 @@ const { data } = useQuery<Degree[]>({
           <FormInput name="phone_number" type="text" placeholder="Phone number"/>
           <FormInput name="started_studies_date" type="date" placeholder=""/>
         </div>
-        <FormSelect name="degree" :data="data" />
+        <FormSelect name="degree" :data="data"/>
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
         <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
