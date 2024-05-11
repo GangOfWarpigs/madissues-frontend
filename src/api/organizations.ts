@@ -63,3 +63,18 @@ export async function getOrganizationDegrees(id: string){
     console.log(request.data.success as Degree[])
     return request.data.success as Degree[];
 }
+
+export interface Course {
+    id: string,
+    name: string,
+    code: string,
+    icon: string,
+    primary_color: string,
+    secondary_color: string
+}
+export async function getOrganizationCourses(id: string) {
+    const request = await api.get<apiCall<Course[]>>(`/organizations/${id}/courses`);
+    if (request.data.error !== null) throw Error(request.data.error.error_message)
+    console.log(request.data.success as Course[]);
+    return request.data.success as Course[];
+}
