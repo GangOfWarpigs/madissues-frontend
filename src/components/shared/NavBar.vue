@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useRoute, useRouter} from 'vue-router';
+import {useRoute} from 'vue-router';
     import {
         DropdownMenu,
         DropdownMenuContent,
@@ -20,8 +20,10 @@ import {useRoute, useRouter} from 'vue-router';
         }
     });
 
-    const basePath = "/organizations/" + useRoute().params.id + "/base/";
-    const authPath = "/organizations/" + useRoute().params.id + "/auth/";
+    const route = useRoute()
+    const organizationId = route.params["organization_id"] as string
+    const basePath = "/organizations/" + organizationId + "/base/";
+    const authPath = "/organizations/" + organizationId + "/auth/";
 
     const paths = [
         { path: "Home", name : "Home" },
@@ -30,6 +32,7 @@ import {useRoute, useRouter} from 'vue-router';
     ];
 
     function logout(){
+      console.log(authPath)
         localStorage.removeItem("token");
     }
 </script>
