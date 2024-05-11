@@ -21,6 +21,7 @@ export const base = [
         children: [
             {
                 path: "home",
+                name: "Home",
                 component: Home,
             },
             {
@@ -29,14 +30,17 @@ export const base = [
                 children: [
                     {
                         path: "",
+                        name: "Issues",
                         component: IssuesList,
                     },
                     {
                         path: ":id",
+                        name: "IssueDetailed",
                         component: IssuesDetailed,
                     },
                     {
                         path: "create",
+                        name: "IssueCreated",
                         component : IssuesCreate
                     }
                 ]
@@ -47,32 +51,39 @@ export const base = [
                 children: [
                     {
                         path: "",
+                        name: "Faqs",
                         component: FaqsList,
                     },
                     {
                         path: ":id",
+                        name: "FaqsDetailed",
                         component: FaqsDetailed,
                     },
                     {
                         path: "create",
+                        name: "FaqsCreate",
                         component : FaqsCreate
                     }
                 ]
             },
             {
                 path: "profile",
+                name:"Profile",
                 component: Profile,
                 children: [
                     {
                         path: "information",
+                        name: "ProfileInformation",
                         component: ProfileInformation,
                     },
                     {
                         path: "issues",
+                        name: "ProfileIssues",
                         component: ProfileIssues,
                     },
                     {
                         path: "faqs",
+                        name: "ProfileFaqs",
                         component: ProfileFaqs,
                     }
                 ]

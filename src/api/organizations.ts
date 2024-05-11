@@ -1,5 +1,6 @@
 import api, {apiCall} from "./client.ts";
 
+
 export interface OrganizationReadModel{
     id: string,
     owner_id: string,
@@ -10,14 +11,14 @@ export interface OrganizationReadModel{
     primary_color: string,
     secondary_color: string
 }
-
-export async function getOrganizationById(id: string){
-    const request = await api.get<apiCall<OrganizationReadModel>>(`/organizations/${id}`)
-    if(request.data.error !== null){
-        throw Error(request.data.error.error_message)
+export const getOrganizationById = async function (organizationId : string) {
+    const response = await api.get<apiCall<OrganizationReadModel>>("/organizations/" + organizationId);
+    if (response.data.error) {
+        throw Error(response.data.error.error_message);
     }
-    return request.data.success
-}
+    return response.data.success
+};
+
 export interface StudentSign{
     token: string,
     student_id : string
@@ -64,6 +65,47 @@ export async function getOrganizationDegrees(id: string){
     return request.data.success as Degree[];
 }
 
+export interface Course {
+    id: string,
+    name: string,
+    code: string,
+    icon: string,
+    primary_color: string,
+    secondary_color: string
+}
+export async function getOrganizationCourses(id: string) {
+    const request = await api.get<apiCall<Course[]>>(`/organizations/${id}/courses`);
+    if (request.data.error !== null) throw Error(request.data.error.error_message)
+    console.log(request.data.success as Course[]);
+    return request.data.success as Course[];
+}
+
+export async function getOrganizationElement(id: string, name : string): Promise<{name: string, id: string}[]> {
+    const request = await api.get<apiCall<{name: string, id: string}[]>>(`/organizations/${id}/${name}`);
+    if (request.data.error !== null) throw Error(request.data.error.error_message)
+    console.log(request.data.success as {name: string, id: string}[]);
+    return request.data.success as {name: string, id: string}[];
+}
+
+export interface IssueCreateRequest{
+    title: string,
+    description: string,
+    details: string,
+    proofs: [],
+    status: string,
+    date_time: string,
+    course: string,
+    teachers: string[],
+    student: string,
+    organization_id: string
+}
+export async function createIssue(req: IssueCreate) {
+    const request = await api.post<apiCall<IssueCreate>>("/issues/", req);
+    if (request.data.error !== null) throw Error(request.data.error.error_message)
+    return request.data.success as IssueCreate
+}
+
+
 export interface Issue {
     id: string,
     title: string,
@@ -76,7 +118,7 @@ export interface Issue {
     teachers: string[],
     student_id: string
 }
-export async function getOrganizationIssues(id: string){
+export async function getOrganizationIssues(id: string) {
     const request = await api.get<apiCall<Issue[]>>(`/organizations/${id}/issues/`);
     if (request.data.error !== null) throw Error(request.data.error.error_message);
     console.log(request.data.success as Issue[])
