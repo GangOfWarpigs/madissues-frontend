@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref, watch, onMounted } from 'vue';
-    import IssueCard from '../../../../../../../components/business/IssueCard.vue';
+    import IssueCard from './IssueCard.vue';
 
     const issues = [
         {
@@ -97,6 +97,10 @@
         handleTeacherOrder(false);
         handleStatusOrder(false);
     });
+
+    function loadMore() {
+        // aquí se escribe la lógica para cargar más issues
+    }
 </script>
 
 <template>
@@ -107,7 +111,7 @@
                 <input 
                     type="text" 
                     v-model="searchQuery" 
-                    class="pl-10 pr-4 py-1 text-base rounded-full focus:outline-none focus:border-blue-500 bg-gray-100 px-2 py-2" 
+                    class="pl-10 pr-4 text-base rounded-full focus:outline-none focus:border-blue-500 bg-gray-100 py-2" 
                     placeholder="Search by title..." 
                 />
             </div>
@@ -143,6 +147,9 @@
         </div>
         <div class="w-full flex flex-col space-y-4 mt-4">
             <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
+        </div>
+        <div class="w-full flex flex-col justify-center items-center mt-10">
+            <button class="border rounded-lg px-5 py-2 font-semibold" @click="loadMore">Load more</button>
         </div>
     </div>
 </template>
