@@ -2,63 +2,22 @@
     import 'vue3-carousel/dist/carousel.css';
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
     import IssueCardSmall from './IssueCarouselCard.vue';
+    import { useRoute } from "vue-router";
+    import { useQuery } from "@tanstack/vue-query";
+    import { getOrganizationIssues, Issue } from "../../../../../../api/organizations.ts";
 
-    const issuesData = [
-        {
-            id: "1",
-            title: "1) El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-            description: "hola caracola",
-            details: "",
-            proofs: [],
-            status: "Solved",
-            date_time: "a minute ago",
-            course: "Arquitectura de Computadores",    
-            teachers: ["Domingo"],
-            student: "josepenaseco101",
-            comments_id: ["1", "2", "3", "4"]
-        }, {
-            id: "2",
-            title: "2) El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-            description: "hola caracola",
-            details: "",
-            proofs: [],
-            status: "Queued",
-            date_time: "a minute ago",
-            course: "Arquitectura de Computadores",    
-            teachers: ["Domingo", "Ricardo"],
-            student: "josepenaseco101",
-            comments_id: []
-        }, {
-            id: "3",
-            title: "3) El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-            description: "hola caracola",
-            details: "",
-            proofs: [],
-            status: "Queued",
-            date_time: "a minute ago",
-            course: "Arquitectura de Computadores",    
-            teachers: ["Domingo", "Ricardo"],
-            student: "josepenaseco101",
-            comments_id: []
-        }, {
-            id: "4",
-            title: "4) El profesor no me deja realizar la revisión del examen de arquitectura de computadores",
-            description: "hola caracola",
-            details: "",
-            proofs: [],
-            status: "Queued",
-            date_time: "a minute ago",
-            course: "Arquitectura de Computadores",    
-            teachers: ["Domingo", "Ricardo"],
-            student: "josepenaseco101",
-            comments_id: []
-        }
-    ];
+    const route = useRoute();
+    const organizationId = route.params["organization_id"] as string;
+
+    const { data:issues, isSuccess } = useQuery<Issue[]>({
+        queryKey: ["organization", organizationId, "issues"],
+        queryFn: async () => await getOrganizationIssues(organizationId),
+    });
 </script>
 
 <template>
     <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
-        <Slide v-for="issue in issuesData" :key="issue.id">
+        <Slide v-for="issue in issues.slice(0, 4)" :key="issue.id" v-if="isSuccess && issues !== undefined">
             <div class="carousel__item">
                 <IssueCardSmall :issue="issue"></IssueCardSmall>
             </div>
