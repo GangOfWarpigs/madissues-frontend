@@ -65,9 +65,9 @@ import {useRoute, useRouter} from 'vue-router';
                 <DropdownMenuContent class=" w-64 mt-6 py-4 px-4 border-2 rounded-xl bg-white shadow-lg">
                   <DropdownMenuLabel class="text-base">Account</DropdownMenuLabel>
                   <DropdownMenuSeparator class="mb-2"/>
-                  <router-link :to="{ name: 'ProfileInformation' }" replace><DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold">Profile</p></DropdownMenuItem></router-link>
-                  <router-link :to="{ name: 'ProfileIssues' }" replace><DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold">My Issues</p></DropdownMenuItem></router-link>
-                  <router-link :to="{ name: 'ProfileFaqs' }" replace><DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold">My FAQs</p></DropdownMenuItem></router-link>
+                  <router-link :to="{ name: 'ProfileInformation' }" replace><DropdownMenuItem class="w-full hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold">Profile</p></DropdownMenuItem></router-link>
+                  <router-link :to="{ name: 'ProfileIssues' }" replace><DropdownMenuItem class="w-full hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold">My Issues</p></DropdownMenuItem></router-link>
+                  <router-link :to="{ name: 'ProfileFaqs' }" replace><DropdownMenuItem class="w-full hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold">My FAQs</p></DropdownMenuItem></router-link>
                   <DropdownMenuItem @click="logout()" class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-log-out" scale="1.2" class="text-base"/><p class="text-gray-600 ml-3 font-semibold">Log out</p></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
