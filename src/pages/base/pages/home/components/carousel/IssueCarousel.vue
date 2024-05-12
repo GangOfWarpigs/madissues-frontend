@@ -16,7 +16,22 @@
 </script>
 
 <template>
-    <Carousel :items-to-show="3" :wrap-around="true" :transition="500">
+    <section v-if="issues?.length" class="w-full justify-center flex flex-col items-center">
+
+      <div class="w-[350px]  mt-14 rounded-xl opacity-[0.8]">
+        <img src="../../../../../../assets/idle.png">
+
+      </div>
+
+      <h1 class="font-semibold text-2xl text-gray-600 mt-5">
+        There are no recent issues
+      </h1>
+      <h2 class="text-lg text-gray-400 mt-2">
+        Wait a little bit until a student post some new content
+      </h2>
+
+    </section>
+    <Carousel v-if="!isSuccess && issues?.length" :items-to-show="3" :wrap-around="true" :transition="500">
         <Slide v-for="issue in issues.slice(0, 4)" :key="issue.id" v-if="isSuccess && issues !== undefined">
             <div class="carousel__item">
                 <IssueCardSmall :issue="issue"></IssueCardSmall>
