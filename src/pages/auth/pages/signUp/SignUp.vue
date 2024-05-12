@@ -80,9 +80,7 @@ const { data } = useQuery({
 <template>
   <main class="w-full h-screen grid grid-cols-2 relative">
     <section :style="calculateGradient(data?.primary_color!, data?.secondary_color!)" class="w-full h-full col-span-1 flex flex-col items-center justify-center">
-      <p class="text-white font-semibold text-xl text-center max-w-[40rem]">
-        Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
-      </p>
+      <div class="text-white font-semibold text-xl text-center max-w-[40rem]" v-html="data?.description" ></div>
     </section>
     <section class="w-full h-full col-span-1 flex flex-col items-center justify-center">
       <div class="flex flex-col mb-14">
