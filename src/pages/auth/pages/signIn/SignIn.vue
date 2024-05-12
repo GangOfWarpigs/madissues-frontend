@@ -8,6 +8,7 @@ import {useMutation, useQuery} from "@tanstack/vue-query";
 import {signInStudent} from "../../../../api/organizations.ts";
 import { getOrganizationById } from "../../../../api/organizations.ts";
 import { calculateGradient } from "../../../../helpers.ts";
+import { baseURL } from "../../../../api/client.ts";
 
 const router = useRouter()
 
@@ -78,8 +79,11 @@ const { data } = useQuery({
         Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
       </p>
     </section>
-    <div class="absolute w-full pl-3 pr-10 pt-1 top-0 left-0 flex justify-between items-center">
-      <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo Organización" width="300" height="300">
+    <div class="absolute w-full px-10 pt-5 top-0 left-0 flex justify-between items-center">
+      <div class="flex items-center text-gray-700">
+        <img :src="baseURL + '/media/' + data?.logo " class="bg-gray-200 rounded-full mr-4" alt="Logo Organization" width="50" height="50">
+        <p class="font-semibold text-lg">{{ data?.name }}</p>
+      </div>
       <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo MadIssues" width="200" height="200">
     </div>
   </main>
