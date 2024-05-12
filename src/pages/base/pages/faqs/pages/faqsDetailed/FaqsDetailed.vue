@@ -3,7 +3,8 @@
 	import FaqComment from './components/FaqComment.vue';
   import {useRoute} from "vue-router";
 
-  const route = useRoute()
+  const route = useRoute();
+  const faqsId = route.params["faqs_id"] as string;  
 
 	const faqData1 = {
 		id: "1",
@@ -124,7 +125,7 @@
 </script>
 
 <template>
-  <div v-if="route.params.id === '1'">
+  <div v-if="faqsId === '1'">
     <div class="flex flex-row">
       <button @click="goBack" class="flex items-center justify-center h-10 w-10 rounded-full bg-[#F5F5F5] hover:bg-gray-200 focus:outline-none  -translate-x-7">
         <b-icon-chevron-left class="text-[#828282] text-bg scale-[120%] -translate-x-0.5"/>
@@ -136,7 +137,7 @@
   </div>
 
 
-  <div v-if="route.params.id === '2'">
+  <div v-if="faqsId === '2'">
     <div class="flex flex-row">
       <button @click="goBack" class="flex items-center justify-center h-10 w-10 rounded-full bg-[#F5F5F5] hover:bg-gray-200 focus:outline-none  -translate-x-7">
         <b-icon-chevron-left class="text-[#828282] text-bg scale-[120%] -translate-x-0.5"/>
@@ -146,7 +147,7 @@
     <FaqComment :comment="faqCommentData3"/>
   </div>
 
-  <div v-if="route.params.id === '3'">
+  <div v-if="faqsId === '3'">
     <div class="flex flex-row">
       <button @click="goBack" class="flex items-center justify-center h-10 w-10 rounded-full bg-[#F5F5F5] hover:bg-gray-200 focus:outline-none  -translate-x-7">
         <b-icon-chevron-left class="text-[#828282] text-bg scale-[120%] -translate-x-0.5"/>
@@ -156,7 +157,7 @@
     <FaqComment :comment="faqCommentData4"/>
   </div>
 
-  <div v-if="route.params.id === '4'">
+  <div v-if="faqsId === '4'">
     <div class="flex flex-row">
       <button @click="goBack" class="flex items-center justify-center h-10 w-10 rounded-full bg-[#F5F5F5] hover:bg-gray-200 focus:outline-none  -translate-x-7">
         <b-icon-chevron-left class="text-[#828282] text-bg scale-[120%] -translate-x-0.5"/>
@@ -166,7 +167,7 @@
     <FaqComment :comment="faqCommentData5"/>
   </div>
 
-  <div v-if="route.params.id === '5'">
+  <div v-if="faqsId === '5'">
     <div class="flex flex-row">
       <button @click="goBack" class="flex items-center justify-center h-10 w-10 rounded-full bg-[#F5F5F5] hover:bg-gray-200 focus:outline-none  -translate-x-7">
         <b-icon-chevron-left class="text-[#828282] text-bg scale-[120%] -translate-x-0.5"/>
@@ -176,7 +177,7 @@
     <FaqComment :comment="faqCommentData6"/>
   </div>
 
-  <div v-if="route.params.id === '6'">
+  <div v-if="faqsId === '6'">
     <div class="flex flex-row">
       <button @click="goBack" class="flex items-center justify-center h-10 w-10 rounded-full bg-[#F5F5F5] hover:bg-gray-200 focus:outline-none  -translate-x-7">
         <b-icon-chevron-left class="text-[#828282] text-bg scale-[120%] -translate-x-0.5"/>

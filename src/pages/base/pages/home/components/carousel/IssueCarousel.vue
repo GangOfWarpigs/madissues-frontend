@@ -16,7 +16,7 @@
 </script>
 
 <template>
-    <section v-if="issues?.length" class="w-full justify-center flex flex-col items-center">
+    <section v-if="!issues?.length" class="w-full justify-center flex flex-col items-center">
 
       <div class="w-[350px]  mt-14 rounded-xl opacity-[0.8]">
         <img src="../../../../../../assets/idle.png">
