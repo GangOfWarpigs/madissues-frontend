@@ -30,3 +30,22 @@ export const signUpFn = async function (request: SignUpRequest ) {
     }
     return response.data.success
 };
+
+export interface Profile {
+    id: string,
+    organization_id: string,
+    email: string,
+    first_name: string,
+    last_name: string,
+    started_studies_date: string,
+    is_banned: boolean,
+    degree: string,
+    theme: string,
+    language: string
+}
+export async function getProfile() {
+    const request = await api.get<apiCall<Profile[]>>(`/students/me/`)
+    if (request.data.error !== null) throw Error(request.data.error.error_message);
+    console.log(request.data.success as Profile);
+    return request.data.sucess as Profile;
+} 
