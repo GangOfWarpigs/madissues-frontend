@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { PropType } from 'vue';
-
+    
     interface FaqDetailsProps {
         id: string,
         date_time: string,

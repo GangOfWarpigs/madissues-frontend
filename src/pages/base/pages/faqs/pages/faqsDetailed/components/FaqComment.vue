@@ -1,5 +1,16 @@
 <script setup lang="ts">
     import { PropType, ref } from 'vue';
+    import { useRoute } from 'vue-router';
+    import { useQuery } from '@tanstack/vue-query';
+    import { getOrganizationById } from '../../../../../../../api/organizations';
+
+    const route = useRoute();
+    const organizationId = route.params["organization_id"] as string;
+
+    const { data } = useQuery({
+        queryKey: ["organizations", organizationId],
+        queryFn: async () => await getOrganizationById(organizationId)
+    });
 
     interface FaqCommentProps {
         id: string,
@@ -43,8 +54,8 @@
 </script>
 
 <template>
-    <article class="rounded-2xl flex flex-col w-full mt-8 px-10 py-5 bg-gray-100 text-gray-500" :class="[ props.comment.isOfficial == true ? 'border-2 border-blue-600' : '']">
-        <section class="flex items-center text-blue-600 mb-3" v-if="props.comment.isOfficial">
+    <article class="rounded-2xl flex flex-col w-full mt-8 px-10 py-5 bg-gray-100 text-gray-500" :class="[ props.comment.isOfficial == true ? 'border-2' : '']" :style="{ borderColor: data?.primary_color }">
+        <section class="flex items-center mb-3" v-if="props.comment.isOfficial" :style="{ color: data?.primary_color }">
             <b-icon-star-fill></b-icon-star-fill>
             <p class="ml-3 font-semibold">Official answer</p>
         </section>

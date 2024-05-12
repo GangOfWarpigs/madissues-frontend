@@ -1,6 +1,8 @@
 <script setup lang="ts">
     import {PropType} from "vue";
     import { useRouter, useRoute } from 'vue-router';
+    import { useQuery } from "@tanstack/vue-query"; 
+    import { getOrganizationById } from "../../../api/organizations";
 
     interface Faq {
         id: string,
@@ -18,16 +20,23 @@
     })
     
     const router = useRouter();
-    const currentRoute = useRoute().fullPath;
+    const route = useRoute()
+    const currentRoute = route.fullPath;
+    const organizationId = route.params["organization_id"] as string;
 
     function goToFaq() {
         router.push({ path: currentRoute + "/" + props.faq.id })
     }
+
+    const { data } = useQuery({
+        queryKey: ["organizations", organizationId],
+        queryFn: async () => await getOrganizationById(organizationId)
+    });
 </script>
 
 <template>
   <article @click="goToFaq" class="faq-card flex flex-col w-full py-5 px-6 bg-gray-100 text-gray-500 rounded-lg cursor-pointer hover:shadow-lg hover:shadow-gray-200">
-    <section class="flex text-center text-sm space-x-2 items-center text-blue-500">
+    <section class="flex text-center text-sm space-x-2 items-center" :style="{ color: data?.primary_color }">
         <b-icon-star-fill/>
         <p class="font-semibold">Official answer</p>
     </section>
