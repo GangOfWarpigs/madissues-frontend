@@ -7,11 +7,11 @@ import IssuesCreate from "../pages/base/pages/issues/pages/issuesCreate/IssuesCr
 import Faqs from "../pages/base/pages/faqs/Faqs.vue";
 import FaqsList from "../pages/base/pages/faqs/pages/faqsList/FaqsList.vue";
 import FaqsDetailed from "../pages/base/pages/faqs/pages/faqsDetailed/FaqsDetailed.vue";
-import FaqsCreate from "../pages/base/pages/faqs/pages/faqsCreate/FaqsCreate.vue";
+// import FaqsCreate from "../pages/base/pages/faqs/pages/faqsCreate/FaqsCreate.vue";
 import Profile from "../pages/base/pages/profile/Profile.vue";
 import ProfileInformation from "../pages/base/pages/profile/pages/profileInformation/ProfileInformation.vue";
 import ProfileIssues from "../pages/base/pages/profile/pages/profileIssues/ProfileIssues.vue";
-import ProfileFaqs from "../pages/base/pages/profile/pages/profileFaqs/ProfileFaqs.vue";
+// import ProfileFaqs from "../pages/base/pages/profile/pages/profileFaqs/ProfileFaqs.vue";
 
 
 export const base = [
@@ -34,7 +34,7 @@ export const base = [
                         component: IssuesList,
                     },
                     {
-                        path: ":id",
+                        path: ":issue_id",
                         name: "IssueDetailed",
                         component: IssuesDetailed,
                     },
@@ -55,7 +55,7 @@ export const base = [
                         component: FaqsList,
                     },
                     {
-                        path: ":id",
+                        path: ":faqs_id",
                         name: "FaqsDetailed",
                         component: FaqsDetailed,
                     },
