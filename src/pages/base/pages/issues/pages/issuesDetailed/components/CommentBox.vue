@@ -43,7 +43,7 @@
             placeholder="Put your content here"
             name="content"
         ></AreaInput>
-        <div class="w-full flex justify-between items-center">
+        <div class="w-full flex justify-end items-center">
             <button @click="submit" class="text-sm font-semibold text-white px-3 py-1 rounded bg-blue-500 cursor-pointer active:scale-95">Publish</button>
         </div>
     </div>
