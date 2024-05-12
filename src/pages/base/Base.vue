@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <NavBar name="Delegación de Estudiantes EII" username="Jose Peña Seco"/>
+  <NavBar username="Jose Peña Seco"/>
   <div class="flex justify-center w-full">
   <body class="w-full box-border max-w-[1200px] min-h-screen py-12 px-2">
     <RouterView/>

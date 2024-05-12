@@ -8,12 +8,10 @@ import {useRoute} from 'vue-router';
         DropdownMenuSeparator,
         DropdownMenuTrigger,
     } from '../../../@/components/ui/dropdown-menu';
+    import { useQuery } from "@tanstack/vue-query";
+    import { getOrganizationById } from "../../api/organizations.ts";
 
     const props = defineProps({
-        name: {
-            type: String,
-            required: true    
-        },
         username: {
             type: String,
             required: true
@@ -35,15 +33,20 @@ import {useRoute} from 'vue-router';
       console.log(authPath)
         localStorage.removeItem("token");
     }
+
+    const { data } = useQuery({
+        queryKey: ["organizations", organizationId],
+        queryFn: async () => await getOrganizationById(organizationId)
+    })
 </script>
 
 <template>
     <header class="w-full bg-white px-4 pt-3 z-50 sticky top-0 left-0">
-        <div class="px-7 py-6 box-border bg-blue-500 rounded-lg flex items-center justify-between">
+        <div class="px-7 py-6 box-border rounded-lg flex items-center justify-between" :style="{ backgroundColor: data?.primary_color }">
             <div class="flex items-center">
                 <div class="mr-20 flex items-center">
                     <img class="w-10 mr-5" src="../../assets/icons/madissues/logo_hamster.svg" alt="Logo de MadIssues">
-                    <h1 class="font-semibold text-white text-lg">{{ props.name }}</h1>
+                    <h1 class="font-semibold text-white text-lg">{{ data?.name }}</h1>
                 </div>
                 <nav>
                     <ul class="flex gap-12">
