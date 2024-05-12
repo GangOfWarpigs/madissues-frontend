@@ -69,6 +69,7 @@ export interface Course {
     id: string,
     name: string,
     code: string,
+    year: number,
     icon: string,
     primary_color: string,
     secondary_color: string
