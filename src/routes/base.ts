@@ -59,11 +59,11 @@ export const base = [
                         name: "FaqsDetailed",
                         component: FaqsDetailed,
                     },
-                    {
-                        path: "create",
-                        name: "FaqsCreate",
-                        component : FaqsCreate
-                    }
+                    // {
+                    //     path: "create",
+                    //     name: "FaqsCreate",
+                    //     component : FaqsCreate
+                    // }
                 ]
             },
             {
@@ -81,11 +81,11 @@ export const base = [
                         name: "ProfileIssues",
                         component: ProfileIssues,
                     },
-                    {
-                        path: "faqs",
-                        name: "ProfileFaqs",
-                        component: ProfileFaqs,
-                    }
+                    // {
+                    //     path: "faqs",
+                    //     name: "ProfileFaqs",
+                    //     component: ProfileFaqs,
+                    // }
                 ]
             },
         ]
