@@ -15,8 +15,7 @@
     
     const links = [
         { path: 'profile/information', label: 'Information' },
-        { path: 'profile/issues', label: 'My Issues' },
-        { path: 'profile/faqs', label: 'My Faqs' }
+        { path: 'profile/issues', label: 'My Issues' }
     ];
     
     const isActive = (path: string) => {
