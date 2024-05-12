@@ -40,9 +40,9 @@ import {useRoute} from 'vue-router';
         queryFn: async () => await getOrganizationById(organizationId)
     });
 
-    const { data:profile, isSuccess } = useQuery({
+    const { data:profile } = useQuery<Profile>({
         queryKey: ["profile"],
-        queryFn: async() => await getProfile()
+        queryFn: async () => await getProfile()
     });
 </script>
 
@@ -66,7 +66,7 @@ import {useRoute} from 'vue-router';
                 <DropdownMenuTrigger>
                     <div class="flex items-center cursor-pointer box-border">
                         <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.webp" alt="Foto de Perfil"> 
-                        <p class="text-white font-semibold mr-3">{{ profile?.first_name }}</p>
+                        <p class="text-white font-semibold mr-3">{{ profile?.first_name }} {{ profile?.last_name }}</p>
                         <vue-icon name="fa-chevron-down" scale="1" class="text-white"/>
                     </div>
                 </DropdownMenuTrigger>

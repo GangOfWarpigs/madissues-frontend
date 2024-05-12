@@ -37,15 +37,19 @@ export interface Profile {
     email: string,
     first_name: string,
     last_name: string,
+    password: string,
     started_studies_date: string,
+    is_site_admin: true,
+    is_council_member: true,
     is_banned: boolean,
     degree: string,
+    joined_courses: string[],
     theme: string,
     language: string
 }
 export async function getProfile() {
-    const request = await api.get<apiCall<Profile[]>>(`/students/me/`)
+    const request = await api.get<apiCall<Profile>>("/students/me/");
     if (request.data.error !== null) throw Error(request.data.error.error_message);
     console.log(request.data.success as Profile);
-    return request.data.sucess as Profile;
+    return request.data.success as Profile;
 } 
