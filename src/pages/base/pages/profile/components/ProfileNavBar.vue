@@ -1,36 +1,57 @@
 <script setup lang="ts">
-    import {useRoute} from "vue-router";
-    import {onMounted, ref, watch} from "vue";
-
-    const route = useRoute()
-    const organizationId = route.params["organization_id"] as string
+    import { useRoute } from "vue-router";
+    import { onMounted, ref, watch } from "vue";
+    import { useQuery } from "@tanstack/vue-query";
+    import { getOrganizationById } from "../../../../../api/organizations";
+    
+    const route = useRoute();
+    const organizationId = route.params["organization_id"] as string;
     const basePath = "/organizations/" + organizationId + "/base/";
-
-    const currentPath = ref('')
-    const endpointName = ref('')
-
-    const updateEndpointName = (path:string) => {
+    
+    const { data } = useQuery({
+        queryKey: ["organizations", organizationId],
+        queryFn: async () => await getOrganizationById(organizationId)
+    });
+    
+    const links = [
+        { path: 'profile/information', label: 'Information' },
+        { path: 'profile/issues', label: 'My Issues' },
+        { path: 'profile/faqs', label: 'My Faqs' }
+    ];
+    
+    const isActive = (path: string) => {
+        return route.path.includes(path);
+    };
+    
+    const currentPath = ref("");
+    const endpointName = ref("");
+    
+    const updateEndpointName = (path: string) => {
         const parts = path.split("/");
         endpointName.value = parts[parts.length - 1];
     };
-
-    onMounted(() => {
-        currentPath.value = route.path
-        updateEndpointName(currentPath.value)
-    })
     
-    watch(() => route.path, (newPath) => {
-        currentPath.value = newPath;
-        updateEndpointName(currentPath.value)
+    onMounted(() => {
+        watch(() => route.path, (newPath) => {
+            currentPath.value = newPath;
+            updateEndpointName(currentPath.value);
+        });
     });
 </script>
 
 <template>
     <nav class="w-full text-gray-400 text-lg my-5 font-normal">
         <ul class="flex border-b-2 border-gray-200 gap-8">
-            <router-link class="text-center" active-class="font-semibold pb-1.5 text-blue-500 border-b-2 border-blue-500" :to="{ path: basePath + 'profile/information' }" replace>Information</router-link>
-            <router-link class="text-center" active-class="font-semibold pb-1.5 text-blue-500 border-b-2 border-blue-500" :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link>
-            <router-link class="text-center" active-class="font-semibold pb-1.5 text-blue-500 border-b-2 border-blue-500" :to="{ path: basePath + 'profile/faqs' }" replace>My Faqs</router-link>
+            <router-link 
+                v-for="link in links" 
+                :key="link.path" 
+                :to="{ path: basePath + link.path }" 
+                :class="{ 'font-semibold pb-1.5 border-b-2 ': isActive(link.path) }" 
+                :style="{ color: isActive(link.path) ? data?.primary_color : '', borderBottomColor: isActive(link.path) ? data?.primary_color : ''}" 
+                replace
+            >
+                {{ link.label }}
+            </router-link>
         </ul>
     </nav>
 </template>
