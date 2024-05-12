@@ -31,7 +31,7 @@
       </h2>
 
     </section>
-    <Carousel v-if="!isSuccess && issues?.length" :items-to-show="3" :wrap-around="true" :transition="500">
+    <Carousel v-if="isSuccess && issues?.length" :items-to-show="3" :wrap-around="true" :transition="500">
         <Slide v-for="issue in issues.slice(0, 4)" :key="issue.id" v-if="isSuccess && issues !== undefined">
             <div class="carousel__item">
                 <IssueCardSmall :issue="issue"></IssueCardSmall>
