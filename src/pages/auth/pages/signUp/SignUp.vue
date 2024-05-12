@@ -11,6 +11,7 @@ import {
 } from "../../../../api/organizations.ts";
 import FormSelect from "../../components/FormSelect.vue";
 import { calculateGradient } from "../../../../helpers.ts";
+import { baseURL } from "../../../../api/client.ts";
 
 const router = useRouter()
 // const routeId = useRoute().params.id;
@@ -105,9 +106,12 @@ const { data } = useQuery({
         <p class="text-red-500">{{error}}</p>
       </div>
     </section>
-    <div class="absolute w-full pr-3 pl-10 pt-1 top-0 left-0 flex justify-between items-center">
+    <div class="absolute w-full px-10 pt-5 top-0 left-0 flex justify-between items-center">
       <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo MadIssues" width="200" height="200">
-      <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo Organización" width="300" height="300">
+      <div class="flex items-center text-gray-700">
+        <img :src="baseURL + '/media/' + data?.logo " class="bg-gray-200 rounded-full mr-4" alt="Logo Organization" width="50" height="50">
+        <p class="font-semibold text-lg">{{ data?.name }}</p>
+      </div>
     </div>
   </main>
 </template>
