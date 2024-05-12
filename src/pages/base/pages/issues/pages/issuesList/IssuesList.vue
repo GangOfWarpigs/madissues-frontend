@@ -7,13 +7,6 @@
     import { getOrganizationIssues, Issue } from "../../../../../../api/organizations.ts";
     import { ref, watch } from "vue";
 
-    const pageProps = {
-        title: "Incidents",
-        subtitle: "Here you can report an incident",
-        primaryColor: "#1986E3",
-        secondaryColor: "#978EFF", 
-    }
-
     const route = useRoute();
     const organizationId = route.params["organization_id"] as string;
     const issues = ref();
@@ -32,7 +25,7 @@
 </script>
 
 <template>
-    <PageBanner :data="pageProps">
+    <PageBanner title="Incidents" subtitle="Here you can report an incident">
         <ButtonChild route="./issues/create" text="I have an incident"/>
     </PageBanner>
     <div class="w-full mt-10">

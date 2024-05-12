@@ -3,14 +3,6 @@
     import ProfileNavBar from './components/ProfileNavBar.vue';
     import ProfileChild from './components/ProfileHeader.vue';
 
-    const profilePageData = {
-        title: "",
-        subtitle: "",
-        primaryColor: "#1986E3",
-        secondaryColor:"#978EFF",
-        currentPage: "profile"
-    }
-
     const user = {
         first_name: "pepe",
         last_name: "adios",
@@ -21,7 +13,7 @@
 </script>
 
 <template>
-    <PageBanner :data="profilePageData">
+    <PageBanner title="" subtitle="">
         <div class="w-full flex justify-start translate-y-24 pl-12">
             <ProfileChild :user="user"/>
         </div>
