@@ -1,18 +1,10 @@
 <script setup lang="ts">
     import { PropType, ref } from 'vue';
-
-    interface IssueCommentProps {
-        id: string,
-        author: string,
-        likes: string[],
-        content: string,
-        date_time: string,
-        response_to: string | null
-    } 
+    import { IssueComment } from '../../../../../../../api/issues';
 
     const props = defineProps({
         comment: {
-            type: Object as PropType<IssueCommentProps>,
+            type: Object as PropType<IssueComment>,
             required: true
         }
     })
@@ -52,6 +44,3 @@
         </div>
     </article>
 </template>
-
-<style scoped>
-</style>

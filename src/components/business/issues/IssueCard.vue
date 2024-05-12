@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { PropType } from 'vue';
+    import { PropType, computed } from 'vue';
     import { useRouter, useRoute } from 'vue-router';
     import { Issue } from '../../../api/organizations';
 
@@ -13,8 +13,15 @@
     const router = useRouter();
     const currentRoute = useRoute().fullPath;
 
+    const id = computed((() => {
+        if (props.issue.id === undefined) return "";
+        console.log(props.issue.id);
+        return props.issue.id;
+    }))
+
     function goToIssue() {
-        router.push({ path: currentRoute + "/" + props.issue.id })
+        console.log(id.value);
+        router.push({ path: currentRoute + "/" + id.value })
     } 
 </script>
 

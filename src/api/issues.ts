@@ -1,4 +1,5 @@
 import api, { apiCall } from "./client.ts";
+import { Issue } from "./organizations.ts";
 
 export interface IssueCreateRequest {
     title: string,
@@ -28,4 +29,11 @@ export async function getIssueComments(id: string) {
     if (request.data.error !== null) throw Error(request.data.error.error_message);
     console.log(request.data.success as IssueComment[]);
     return request.data.success as IssueComment[];
+}
+
+export async function getIssueById(id: string) {
+    const request = await api.get<apiCall<Issue>>(`/issues/${id}`);
+    if (request.data.error !== null) throw Error(request.data.error.error_message);
+    console.log(request.data.success as Issue);
+    return request.data.success as Issue;
 }
