@@ -46,7 +46,7 @@
     <InfoDialog v-if="showInfoDialog" @close="closeInfoDialog" title="Writing a good question" content="Summarize your problem in a one-line title, describe your
     question in more detail and add tags which help surface your question to members of the organization."></InfoDialog>
     <WriteIssueContent></WriteIssueContent>
-    <IssueProofs></IssueProofs>
+    <IssueProofs name="proofs" label="proofs"></IssueProofs>
     <p class="text-red-500">{{ error }}</p>
     <div class="flex justify-between text-white font-medium text-base">
       <button @click="goBack" class="rounded bg-rose-500 py-1 px-3">
