@@ -4,7 +4,7 @@
     import InfoDialog from "../../../../../../components/shared/InfoDialog.vue";
     import { ref } from 'vue';
     import {useMutation} from "@tanstack/vue-query";
-    import {createIssue, IssueCreateRequest} from "@/api/organizations.ts";
+    import { createIssue, IssueCreateRequest } from "../../../../../../api/issues";
     import {useForm} from "vee-validate";
     import {useRoute, useRouter} from "vue-router";
 
@@ -19,7 +19,7 @@
     };
 
     const route = useRoute()
-    const id = route.params["organization_id"]
+    const id = route.params["organization_id"] as string;
 
     const router = useRouter()
 
@@ -28,18 +28,16 @@
       onSuccess: () => router.push({name: "Issues"})
     })
 
-    const {values, handleSubmit} = useForm<IssueCreateRequest>({
+    const { values, handleSubmit } = useForm<IssueCreateRequest>({
       initialValues: {
         organization_id: id,
         teachers : [],
         proofs: [],
-        student: id,
         course: "",
       }
     })
 
     const submit = handleSubmit((values) => mutate(values))
-
 </script>
 
 <template>
@@ -71,7 +69,3 @@
     </div>
   </main>
 </template>
-
-<style scoped>
-
-</style>
