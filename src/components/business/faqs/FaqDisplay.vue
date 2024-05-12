@@ -98,7 +98,7 @@
                 :key="index" 
                 @click="toggleSelection(index)"
                 :class="[ isSelected(index) ? 'text-white' : 'bg-gray-100 text-gray-500' ]"
-                class="px-4 py-2 text-sm rounded-full transition-colors duration-300 hover:bg-blue-400 hover:text-white focus:outline-none font-semibold"
+                class="px-4 py-2 text-sm rounded-full transition-colors duration-300 hover:bg-gray-400 hover:text-white focus:outline-none font-semibold"
                 :style="{ backgroundColor: isSelected(index) ? data?.secondary_color : '' }"
                 >
                 {{ label }}

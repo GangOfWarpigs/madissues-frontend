@@ -92,11 +92,11 @@ export interface IssueCreateRequest {
     description: string,
     details: string,
     proofs: [],
-    status: string,
-    date_time: string,
+    // status: string,
+    // date_time: string,
     course: string,
     teachers: string[],
-    student: string,
+    // student: string,
     organization_id: string
 }
 export async function createIssue(req: IssueCreateRequest) {

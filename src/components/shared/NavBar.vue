@@ -64,7 +64,7 @@ import {useRoute} from 'vue-router';
                         <vue-icon name="fa-chevron-down" scale="1" class="text-white"/>
                     </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent class=" w-64 mt-6 py-4 px-4 border-2 rounded-xl bg-white shadow-lg" :style="{ borderColor: data?.primary_color, color: data?.primary_color }">
+                <DropdownMenuContent class=" w-64 mt-6 py-4 px-4 border-2 rounded-xl bg-white shadow-lg">
                   <DropdownMenuLabel class="text-base">Account</DropdownMenuLabel>
                   <DropdownMenuSeparator class="mb-2"/>
                   <DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>

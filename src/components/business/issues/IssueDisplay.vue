@@ -1,14 +1,13 @@
 <script setup lang="ts">
-    import { ref, watch, onMounted } from 'vue';
+    import { ref, watch } from 'vue';
     import IssueCard from './IssueCard.vue';
     import { Issue } from '../../../api/organizations';
     import Empty from '../../shared/Empty.vue';
 
+    const {issues} = defineProps<{issues: Issue[]}>()
 
-    const {issues} = defineProps<{issues: Issue[] | undefined}>()
-
-    const queued = issues?.filter(issue => issue.status === 'Queued');
-    const solved = issues?.filter(issue => issue.status === 'Solved');
+    const queued = issues.filter(issue => issue.status === 'Queued');
+    const solved = issues.filter(issue => issue.status === 'Solved');
 
     const statusOrder = ['Queued', 'In progress', 'Not solved', 'Solved'];
     const isCourseDesc = ref(true);
@@ -18,10 +17,11 @@
     const searchQuery = ref('');
 
     const filteredIssues = ref(issues);
+    console.log(filteredIssues.value);
 
     watch(searchQuery, (newValue, _) => {
         const lowerCaseQuery = newValue.toLowerCase();
-        filteredIssues.value = issues?.filter(issue => issue.title.toLowerCase().includes(lowerCaseQuery));
+        filteredIssues.value = issues.filter(issue => issue.title.toLowerCase().includes(lowerCaseQuery));
     });
 
     function handleCourseOrder(toggle: boolean) {
@@ -36,7 +36,7 @@
     }
 
     function handleTeacherOrder(toggle: boolean) {
-        if (filteredIssues === undefined || filteredIssues?.value?.length === 0) return;
+        if (filteredIssues === undefined || filteredIssues.value.length === 0) return;
         if (toggle) isTeacherDesc.value = !isTeacherDesc.value;
         const sortedIssues = [...filteredIssues.value as Issue[]];
         sortedIssues.sort((a, b) => {
@@ -69,12 +69,6 @@
     function loadMore() {
         // aquí se escribe la lógica para cargar más issues
     }
-
-    onMounted(() => {
-        handleCourseOrder(false);
-        handleTeacherOrder(false);
-        handleStatusOrder(false);
-    });
 </script>
 
 <template>
@@ -94,11 +88,11 @@
             <div class="flex items-center">
                 <div class="flex items-center mr-4">
                     <vue-icon name="bi-record-circle-fill"/>
-                    <p class="ml-2" >{{ queued?.length }} Queued</p>
+                    <p class="ml-2" >{{ queued.length }} Queued</p>
                 </div>
                 <div class="flex items-center">
                     <vue-icon name="bi-check-circle-fill"/>
-                    <p class="ml-2">{{ solved?.length }} Solved</p>
+                    <p class="ml-2">{{ solved.length }} Solved</p>
                 </div>
             </div>
             <div class="flex items-center">
@@ -122,9 +116,9 @@
         <div class="w-full flex flex-col space-y-4 mt-4">
             <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
         </div>
-        <div class="w-full flex flex-col justify-center items-center mt-10" v-if="filteredIssues?.length! > 10">
+        <div class="w-full flex flex-col justify-center items-center mt-10" v-if="filteredIssues.length! > 10">
             <button class="border rounded-lg px-5 py-2 font-semibold" @click="loadMore">Load more</button>
         </div>
-        <Empty item="issues" v-if="filteredIssues?.length! == 0"></Empty>
+        <Empty item="issues" v-if="filteredIssues.length! == 0"></Empty>
     </div>
 </template>
