@@ -6,11 +6,12 @@ import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
 import {useMutation, useQuery} from "@tanstack/vue-query";
 import {
-  Degree,
-  getOrganizationDegrees,
+  getOrganizationById,
   signUpStudent
 } from "../../../../api/organizations.ts";
 import FormSelect from "../../components/FormSelect.vue";
+import { calculateGradient } from "../../../../helpers.ts";
+import { baseURL } from "../../../../api/client.ts";
 
 const router = useRouter()
 // const routeId = useRoute().params.id;
@@ -70,18 +71,16 @@ const submit = handleSubmit((values) => {
   mutate({ ...values, })
 });
 
-const { data } = useQuery<Degree[]>({
-  queryKey: ["organization", organizationId],
-  queryFn: async () => await getOrganizationDegrees(organizationId)
+const { data } = useQuery({
+    queryKey: ["organizations", organizationId],
+    queryFn: async () => await getOrganizationById(organizationId)
 })
 </script>
 
 <template>
   <main class="w-full h-screen grid grid-cols-2 relative">
-    <section class="w-full h-full bg-blue-500 col-span-1 flex flex-col items-center justify-center">
-      <p class="text-white font-semibold text-xl text-center max-w-[40rem]">
-        Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
-      </p>
+    <section :style="calculateGradient(data?.primary_color!, data?.secondary_color!)" class="w-full h-full col-span-1 flex flex-col items-center justify-center">
+      <div class="text-white font-semibold text-xl text-center max-w-[40rem]" v-html="data?.description" ></div>
     </section>
     <section class="w-full h-full col-span-1 flex flex-col items-center justify-center">
       <div class="flex flex-col mb-14">
@@ -98,16 +97,19 @@ const { data } = useQuery<Degree[]>({
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
         <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
-        <FormButton text="Sign up" type="submit" @click="submit"/>
+        <FormButton text="Sign up" type="submit" :color="data?.primary_color" @click="submit"/>
         <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">
           Sign in
         </button>
         <p class="text-red-500">{{error}}</p>
       </div>
     </section>
-    <div class="absolute w-full pr-3 pl-10 pt-1 top-0 left-0 flex justify-between items-center">
+    <div class="absolute w-full px-10 pt-5 top-0 left-0 flex justify-between items-center">
       <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo MadIssues" width="200" height="200">
-      <img src="../../../../assets/icons/madissues/transparent_logo_ulpgc_deii.svg" alt="Logo Organización" width="300" height="300">
+      <div class="flex items-center text-gray-700">
+        <img :src="baseURL + '/media/' + data?.logo " class="bg-gray-200 rounded-full mr-4" alt="Logo Organization" width="50" height="50">
+        <p class="font-semibold text-lg">{{ data?.name }}</p>
+      </div>
     </div>
   </main>
 </template>
