@@ -32,6 +32,23 @@ export async function signInStudent(req : {email : string, password : string}){
     return request.data.success
 }
 
+export interface Comment{
+    id: string,
+    issue_id: string,
+    author_id: string,
+    content: string,
+    date_time: string,
+    response_to_id: string
+}
+
+export async function createComment(req : {content : string, issue_id: string}){
+    const request = await api.post<apiCall<Comment>>(`/issues/${req.issue_id}/comments/`, req)
+    if(request.data.error !== null){
+        throw Error(request.data.error.error_message)
+    }
+    return request.data.success
+}
+
 export async function signUpStudent(req : { organization_id: string, first_name: string, last_name:string, phone_number:string,
     started_studies_date:string, email : string, password : string, verify_password: string, degreeId: string}) {
     console.log(req.organization_id)
