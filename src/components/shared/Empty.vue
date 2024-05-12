@@ -11,7 +11,7 @@
                 <vue-icon scale="6" name="bi-inbox-fill"></vue-icon>
             </div>
             <h1 class="mt-6 font-semibold text-3xl">Oh, oh</h1>
-            <h2 class="mt-2 text-gray-500 text-xl">Looks like you don't have {{ item }} yet</h2>
+            <h2 class="mt-2 text-gray-500 text-xl">Looks like there is no {{ item }} yet</h2>
         </div>
     </div>
 </template>

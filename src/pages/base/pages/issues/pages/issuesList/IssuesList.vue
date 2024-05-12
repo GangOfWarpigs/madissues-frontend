@@ -20,6 +20,6 @@
         <ButtonChild route="./issues/create" text="I have an incident"/>
     </PageBanner>
     <div class="w-full mt-10">
-        <IssueDisplay :issues="data"  :key="data ? data?.length : 0" v-if="isSuccess"/>
+        <IssueDisplay :issues="data" :key="data ? data?.length : 0" v-if="isSuccess && data !== undefined"/>
     </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import {computed, ref } from 'vue';
+    import {computed, ref } from 'vue';
     import IssueCard from './IssueCard.vue';
     import { Issue } from '../../../api/organizations';
     import Empty from '../../shared/Empty.vue';
@@ -12,18 +12,17 @@
     const solved = computed((() => issues.filter(((x) => x.status==="Solved")).length))
     const queued = computed((() => issues.filter(((x) => x.status==="Queued")).length))
 
-   const filteredIssues = computed(() => {
-     return orderByMultiplePriorities(filterBySearchQuery(issues, searchQuery.value), orderPriority.value)
-   })
+    const filteredIssues = computed(() => {
+        return orderByMultiplePriorities(filterBySearchQuery(issues, searchQuery.value), orderPriority.value)
+    })
 
-  const handlePriorityChange = (priority: string) => {
-      if(orderPriority.value.includes(priority)) {
-        orderPriority.value = []
-        return;
-      }
-      orderPriority.value = [priority]
-  }
-
+    const handlePriorityChange = (priority: string) => {
+        if(orderPriority.value.includes(priority)) {
+            orderPriority.value = []
+            return;
+        }
+        orderPriority.value = [priority]
+    }
 </script>
 
 <template>
@@ -71,9 +70,9 @@
         <div class="w-full flex flex-col space-y-4 mt-4">
             <IssueCard v-for="issue in filteredIssues" :key="issue.id" :issue="issue" />
         </div>
-        <div class="w-full flex flex-col justify-center items-center mt-10" v-if="0 > 10">
+        <div class="w-full flex flex-col justify-center items-center mt-10" v-if="filteredIssues.length > 10">
             <button class="border rounded-lg px-5 py-2 font-semibold" @click="">Load more</button>
         </div>
-        <Empty item="issues" v-if="false"></Empty>
+        <Empty item="issue" v-if="filteredIssues.length == 0"></Empty>
     </div>
 </template>
