@@ -22,7 +22,7 @@
         </div>
         <div class="ml-3 pb-4">
             <p class="text-2xl font-semibold">{{ profile?.first_name }} {{ profile?.last_name }}</p>
-            <p class="text-xl text-gray-500">since {{ year }}</p>
+            <p class="text-xl text-gray-500">Studying since {{ year }}</p>
         </div>
     </div>
 </template>

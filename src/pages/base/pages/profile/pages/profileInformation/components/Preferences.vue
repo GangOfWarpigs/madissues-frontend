@@ -1,20 +1,11 @@
 <script setup lang="ts">
     import { PropType, ref } from 'vue';
-    import {
-        Card,
-        CardContent,
-        CardHeader,
-        CardTitle,
-    } from '../../../../../../../../@/components/ui/card';
-    import {
-        Select,
-        SelectContent,
-        SelectItem,
-        SelectTrigger,
-        SelectValue,
-    } from '../../../../../../../../@/components/ui/select'
+    import { Card, CardContent, CardHeader, CardTitle } from '../../../../../../../../@/components/ui/card';
+    import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../../../../../../@/components/ui/select'
     import { Label } from '../../../../../../../../@/components/ui/label'
     import { VueToggles } from "vue-toggles";
+    import { useQuery } from '@tanstack/vue-query';
+    import { getProfile, Profile } from '../../../../../../../api/students';
 
     interface preferencesProps {
         dark_theme: boolean,
@@ -46,8 +37,13 @@
     }
 
     function handleLanguageChange() {
-
+        // here goes code to change language
     }
+
+    const { data:profile } = useQuery<Profile>({
+        queryKey: ["profile"],
+        queryFn: async () => await getProfile()
+    })
 </script>
 
 <template>
@@ -61,8 +57,8 @@
                     <div class="flex flex-col items-start">
                         <Label for="theme" class="text-sm font-medium text-gray-400 mb-3">Theme</Label>
                         <div id="theme" class="flex items-center">
-                            <p class="text-base mr-2">Dark Theme</p>
-                            <VueToggles :width="40" :height="20" :value="dark_theme" @click="handleSwitchChange" />
+                            <p class="text-base mr-2">Light Theme</p>
+                            <VueToggles :width="40" :height="20" :value="profile?.theme" @click="handleSwitchChange" />
                         </div>
                     </div>
                 </div>
