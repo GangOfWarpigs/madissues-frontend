@@ -12,13 +12,6 @@ import {useRoute, useRouter} from 'vue-router';
     import { getOrganizationById } from "../../api/organizations.ts";
     import { getProfile, Profile } from "../../api/students";
 
-    const props = defineProps({
-        username: {
-            type: String,
-            required: true
-        }
-    });
-
     const route = useRoute()
     const router = useRouter()
     const organizationId = route.params["organization_id"] as string

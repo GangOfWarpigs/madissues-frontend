@@ -13,12 +13,9 @@
     const router = useRouter();
     const currentRoute = useRoute().fullPath;
 
-    let student_name: string = "Jose Peña Seco"
-    let student_year: string = "3er year"
-
     function goToIssue() {
         router.push({ path: currentRoute + "/" + props.issue.id })
-    }
+    } 
 </script>
 
 <template>
@@ -31,16 +28,16 @@
             <section class="flex items-center justify-between w-100">
                 <h3 class="font-semibold text-lg max-w-6xl whitespace-nowrap text-ellipsis overflow-hidden">{{ props.issue.title }}</h3>
                 <div class="flex text-gray-400 items-center text-center justify-center">
-                    <b-icon-chat-left-text-fill/>
-                    <!--<p class="ml-2 mb-1">{{ props.issue.comments_id.length }}</p>-->
+                    <!-- <b-icon-chat-left-text-fill/> -->
+                    <!-- <p class="ml-2 mb-1">{{ comments?.length }}</p> -->
                 </div>
             </section>
             <section class="flex items-end justify-between w-100 mt-4">
                 <div class="flex items-center text-gray-500">
                     <img class="w-10 rounded-full" src="../../../assets/images/default-avatar.webp" alt="Foto de perfil del usuario"/>
                     <div class="flex flex-col mx-4 mb-2">
-                        <p class="font-semibold text-base">{{ student_name }}</p>
-                        <p class="text-xs">{{ student_year }}</p>
+                        <p class="font-semibold text-base">{{ props.issue.student.name }}</p>
+                        <p class="text-xs">Studying since {{ props.issue.student.year }}</p>
                     </div>
                     <p class="text-xs">{{ props.issue.date_time }}</p>
                 </div>

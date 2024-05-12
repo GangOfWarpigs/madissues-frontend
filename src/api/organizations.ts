@@ -87,24 +87,6 @@ export async function getOrganizationElement(id: string, name : string): Promise
     return request.data.success as {name: string, id: string}[];
 }
 
-export interface IssueCreateRequest {
-    title: string,
-    description: string,
-    details: string,
-    proofs: [],
-    // status: string,
-    // date_time: string,
-    course: string,
-    teachers: string[],
-    // student: string,
-    organization_id: string
-}
-export async function createIssue(req: IssueCreateRequest) {
-    const request = await api.post<apiCall<IssueCreateRequest>>("/issues/", req);
-    if (request.data.error !== null) throw Error(request.data.error.error_message)
-    return request.data.success as IssueCreateRequest
-}
-
 export interface Issue {
     id: string,
     title: string,
@@ -115,7 +97,11 @@ export interface Issue {
     date_time: string,
     course: string,
     teachers: string[],
-    student_id: string
+    student_id: string,
+    student: {
+        name: string,
+        year: string
+    }
 }
 export async function getOrganizationIssues(id: string) {
     const request = await api.get<apiCall<Issue[]>>(`/organizations/${id}/issues/`);
