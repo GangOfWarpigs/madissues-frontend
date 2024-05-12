@@ -2,11 +2,11 @@
     import SubjectCard from "./components/SubjectCard.vue";
     import SearchCourseNav from './components/SearchCourseNav.vue';
     import IssueCarousel from "./components/carousel/IssueCarousel.vue";
-    import { ref } from "vue";
+    import { ref, watch } from "vue";
     import { useRoute } from "vue-router";
     import { useQuery } from "@tanstack/vue-query";
     import { getOrganizationCourses, Course } from "../../../../api/organizations";
-    import Spinner from "@/components/Spinner.vue";
+    import Spinner from "../../../../components/Spinner.vue";
 
     const route = useRoute();
     const organizationId = route.params["organization_id"] as string;
@@ -16,16 +16,20 @@
         queryFn: async () => await getOrganizationCourses(organizationId)
     });
 
-    console.log(data.value);
-
-    const filteredSubjects = ref(data.value);
-    console.log(filteredSubjects);
     const years: number = 4;
+    const selectedCourse = ref(0);
+    const filteredSubjects = ref();
+
+    watch(data, () => {
+        if (data !== undefined) updateFilteredSubjects(selectedCourse.value);
+    });
 
     const updateFilteredSubjects = (course: number) => {
+        if (data === undefined) return;
         if (course === 0) filteredSubjects.value = data.value;
         // else filteredSubjects.value = subjectCardData.filter(subject => subject.course === course);
         else filteredSubjects.value = data.value;
+        selectedCourse.value = course;
     };
 </script>
   
@@ -35,7 +39,7 @@
             <h1 class="text-3xl font-semibold self-center text-gray-700 select-none">Discover the most recent issues</h1>
             <IssueCarousel></IssueCarousel>
         </section>
-        <section v-if="isSuccess" class="w-full flex flex-col justify-start items-center mt-14 min-h-[36rem]">
+        <section v-if="isSuccess && data !== undefined" class="w-full flex flex-col justify-start items-center mt-14 min-h-[36rem]">
             <h1 class="text-3xl font-semibold text-gray-700 select-none">Search by course</h1>
             <SearchCourseNav :years="years" @updatedFilter="updateFilteredSubjects"/>
             <div class="w-full grid grid-cols-4 mt-10 gap-5">
@@ -43,7 +47,7 @@
             </div>
         </section>
         <section v-if="isLoading" class="flex w-full justify-center mt-10">
-          <Spinner size="10px"></Spinner>
+          <Spinner :size="10" color="blue"></Spinner>
         </section>
     </main>
 </template>
