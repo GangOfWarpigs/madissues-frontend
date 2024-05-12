@@ -42,7 +42,7 @@
         <h1 class="font-semibold text-base max-w-full line-clamp-2 min-h-12 text-ellipsis overflow-hidden text-start">{{ props.issue.title }}</h1>
         <section class="my-6 flex items-center justify-between w-full">
             <div class="flex items-center text-start">
-                <img class="w-10 border-2 border-white rounded-full" src="../../../../../../assets/images/profile_picture_test.webp" alt="Foto de perfil del usuario"/>
+                <img class="w-10 rounded-full" src="../../../../../../assets/images/default-avatar.webp" alt="Foto de perfil del usuario"/>
                 <div class="flex flex-col ml-4">
                     <h2 class="font-semibold text-base">{{ student_name }}</h2>
                     <p class="text-xs">{{ student_year }}</p>

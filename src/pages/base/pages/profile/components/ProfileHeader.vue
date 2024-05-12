@@ -17,9 +17,7 @@
 
 <template>
     <div class="flex flex-row items-end ">
-        <div class="rounded-full border-8 border-white w-[11em]">
-            <img src="../../../../../assets/images/profile_picture_test.webp"/>
-        </div>
+        <img src="../../../../../assets/images/default-avatar.webp" class="w-[11em]"/>
         <div class="ml-3 pb-4">
             <p class="text-2xl font-semibold">{{ profile?.first_name }} {{ profile?.last_name }}</p>
             <p class="text-xl text-gray-500">Studying since {{ year }}</p>

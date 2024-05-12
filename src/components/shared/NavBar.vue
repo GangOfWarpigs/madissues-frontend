@@ -64,7 +64,7 @@ import {useRoute, useRouter} from 'vue-router';
             <DropdownMenu>
                 <DropdownMenuTrigger>
                     <div class="flex items-center cursor-pointer box-border">
-                        <img class="w-9 mr-3" src="../../assets/images/profile_picture_test.webp" alt="Foto de Perfil"> 
+                        <img class="w-9 mr-3" src="../../assets/images/default-avatar.webp" alt="Foto de Perfil"> 
                         <p class="text-white font-semibold mr-3">{{ profile?.first_name }} {{ profile?.last_name }}</p>
                         <vue-icon name="fa-chevron-down" scale="1" class="text-white"/>
                     </div>

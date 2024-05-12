@@ -34,7 +34,7 @@
     <article class="flex flex-col w-full mt-5 py-5 px-8 bg-gray-100 rounded-lg text-gray-500 hover:shadow-gray-200 relative">
         <section class="flex items-center">
             <div class="flex items-center mr-4">
-                <img class="w-9 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/profile_picture_test.webp" alt="Foto de perfil del usuario"/>
+                <img class="w-9 border-2 border-white rounded-full mr-3 select-none" src="../../../../../../../assets/images/default-avatar.webp" alt="Foto de perfil del usuario"/>
                 <h3 class="font-semibold text-sm">{{ student }}</h3>
             </div>
             <p class="text-xs">Commented {{ props.comment.date_time }}</p>
