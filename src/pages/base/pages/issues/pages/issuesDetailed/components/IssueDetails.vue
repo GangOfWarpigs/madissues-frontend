@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { PropType, ref, computed } from 'vue';
+    import { PropType, computed } from 'vue';
     import { Issue } from '../../../../../../../api/organizations';
     import { baseURL } from '../../../../../../../api/client';
 
