@@ -10,8 +10,8 @@
     const organizationId = route.params["organization_id"] as string;
 
     const { data, isSuccess } = useQuery<Issue[]>({
-      queryKey: ["organization", organizationId, "issues"],
-      queryFn: async () => await getOrganizationIssues(organizationId),
+        queryKey: ["organization", organizationId, "issues"],
+        queryFn: async () => await getOrganizationIssues(organizationId),
     });
 </script>
 
