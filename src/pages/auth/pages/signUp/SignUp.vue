@@ -6,11 +6,11 @@ import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
 import {useMutation, useQuery} from "@tanstack/vue-query";
 import {
-  Degree,
-  getOrganizationDegrees,
+  getOrganizationById,
   signUpStudent
 } from "../../../../api/organizations.ts";
 import FormSelect from "../../components/FormSelect.vue";
+import { calculateGradient } from "../../../../helpers.ts";
 
 const router = useRouter()
 // const routeId = useRoute().params.id;
@@ -70,15 +70,15 @@ const submit = handleSubmit((values) => {
   mutate({ ...values, })
 });
 
-const { data } = useQuery<Degree[]>({
-  queryKey: ["organization", organizationId],
-  queryFn: async () => await getOrganizationDegrees(organizationId)
+const { data } = useQuery({
+    queryKey: ["organizations", organizationId],
+    queryFn: async () => await getOrganizationById(organizationId)
 })
 </script>
 
 <template>
   <main class="w-full h-screen grid grid-cols-2 relative">
-    <section class="w-full h-full bg-blue-500 col-span-1 flex flex-col items-center justify-center">
+    <section :style="calculateGradient(data?.primary_color!, data?.secondary_color!)" class="w-full h-full col-span-1 flex flex-col items-center justify-center">
       <p class="text-white font-semibold text-xl text-center max-w-[40rem]">
         Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
       </p>
@@ -98,7 +98,7 @@ const { data } = useQuery<Degree[]>({
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
         <FormInput name="verify_password" type="password" placeholder="Confirm Password"/>
-        <FormButton text="Sign up" type="submit" @click="submit"/>
+        <FormButton text="Sign up" type="submit" :color="data?.primary_color" @click="submit"/>
         <button type="button" @click="router.replace(basePath + '/auth/signin')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-3xl h-8 text-sm w-full">
           Sign in
         </button>

@@ -4,8 +4,10 @@ import * as yup from 'yup';
 import {useForm} from "vee-validate";
 import FormButton from "../../components/FormButton.vue"
 import {useRoute, useRouter} from "vue-router";
-import {useMutation} from "@tanstack/vue-query";
+import {useMutation, useQuery} from "@tanstack/vue-query";
 import {signInStudent} from "../../../../api/organizations.ts";
+import { getOrganizationById } from "../../../../api/organizations.ts";
+import { calculateGradient } from "../../../../helpers.ts";
 
 const router = useRouter()
 
@@ -47,6 +49,11 @@ const { mutate, error } = useMutation({
 const submit = handleSubmit((values) => {
   mutate(values)
 });
+
+const { data } = useQuery({
+    queryKey: ["organizations", organizationId],
+    queryFn: async () => await getOrganizationById(organizationId)
+})
 </script>
 
 <template>
@@ -59,14 +66,14 @@ const submit = handleSubmit((values) => {
       <div class="gap-3 flex flex-col w-[30rem]">
         <FormInput name="email" type="email" placeholder="Email"/>
         <FormInput name="password" type="password" placeholder="Password"/>
-        <FormButton text="Sign in" type="submit" @click="submit"/>
+        <FormButton text="Sign in" type="submit" @click="submit" :color="data?.primary_color"/>
         <button type="button" @click="router.replace(basePath + '/auth/signup')" class="bg-gray-100 text-gray-500 font-semibold px-3 py-1 rounded-full h-8 text-sm w-full">
           Sign up
         </button>
         <p class="text-red-500">{{error}}</p>
       </div>
     </section>
-    <section class="w-full h-full bg-blue-500 col-span-1 flex flex-col items-center justify-center">
+    <section :style="calculateGradient(data?.primary_color!, data?.secondary_color!)" class="w-full h-full col-span-1 flex flex-col items-center justify-center">
       <p class="text-white font-semibold text-xl text-center max-w-[40rem]">
         Lorem ipsum dolor sit ¡amet, consectetur adipiscing elit. Aenean maximus metus id justo molestie dictum. Integer vitae commodo enim, vel dapibus ante. Pellentesque et elementum mi.
       </p>
