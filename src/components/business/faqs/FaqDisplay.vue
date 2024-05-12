@@ -1,7 +1,10 @@
 <script setup lang="ts">
     import { ref, watch } from 'vue';
     import FaqCard from './FaqCard.vue';
-    
+    import { useRoute } from 'vue-router';
+    import { useQuery } from '@tanstack/vue-query';
+    import { getOrganizationById } from '../../../api/organizations';
+
     const faqData = [
         {
             id: "1",
@@ -78,6 +81,14 @@
     function loadMore() {
         // aquí se escribe la lógica para cargar más faqs
     }
+
+    const route = useRoute()
+    const organizationId = route.params["organization_id"] as string;
+
+    const { data } = useQuery({
+        queryKey: ["organizations", organizationId],
+        queryFn: async () => await getOrganizationById(organizationId)
+    });
 </script>
 
 <template>
@@ -86,8 +97,10 @@
             <button v-for="(label, index) in labels" 
                 :key="index" 
                 @click="toggleSelection(index)"
-                :class="[ isSelected(index) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-500' ]"
-                class="px-4 py-2 text-sm rounded-full transition-colors duration-300 hover:bg-blue-600 hover:text-white focus:outline-none font-semibold">
+                :class="[ isSelected(index) ? 'text-white' : 'bg-gray-100 text-gray-500' ]"
+                class="px-4 py-2 text-sm rounded-full transition-colors duration-300 hover:bg-blue-400 hover:text-white focus:outline-none font-semibold"
+                :style="{ backgroundColor: isSelected(index) ? data?.secondary_color : '' }"
+                >
                 {{ label }}
             </button>
         </div>
@@ -97,7 +110,7 @@
                 <input 
                     type="text" 
                     v-model="searchQuery" 
-                    class="pl-10 pr-4 text-base rounded-full focus:outline-none focus:border-blue-500 bg-gray-100 py-2" 
+                    class="pl-10 pr-4 text-base rounded-full focus:outline-none bg-gray-100 py-2" 
                     placeholder="Search by title..." 
                 />
             </div>
