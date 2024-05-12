@@ -1,63 +1,34 @@
 <script setup lang="ts">
-    import { PropType, ref } from 'vue';
-    import {
-        Card,
-        CardContent,
-        CardHeader,
-        CardTitle,
-    } from '../../../../../../../../@/components/ui/card';
-    import {
-        Select,
-        SelectContent,
-        SelectItem,
-        SelectTrigger,
-        SelectValue,
-    } from '../../../../../../../../@/components/ui/select'
-    import { Label } from '../../../../../../../../@/components/ui/label'
+    import { computed } from 'vue';
+    import { useRoute } from 'vue-router';
+    import { Card, CardContent, CardHeader, CardTitle } from '../../../../../../../../@/components/ui/card';
+    import { Label } from '../../../../../../../../@/components/ui/label';
+    import { useQuery } from '@tanstack/vue-query';
+    import { getProfile, Profile } from '../../../../../../../api/students';
+    import { getOrganizationDegrees, Degree } from '../../../../../../../api/organizations';
 
-    interface userProps {
-        first_name: string,
-        last_name: string,
-        degree: string,
-        last_school_year: string,
-        email: string 
-    }
+    const organizationId = useRoute().params["organization_id"] as string;
 
-    interface degreeProps {
-        name: string,
-        value: string
-    }
-
-    interface yearsProps {
-        name: string,
-        value: string
-    }
-
-    const props = defineProps({
-        user: {
-            type: Object as PropType<userProps>,
-            required: true
-        },
-        degrees: {
-            type: Object as PropType<degreeProps[]>,
-            required: true
-        },
-        years: {
-            type: Object as PropType<yearsProps[]>,
-            required: true
-        }
+    const { data:profile } = useQuery<Profile>({
+        queryKey: ["profile"],
+        queryFn: async () => await getProfile()
     })
 
-    const degree = ref(props.degrees.find(degree => degree.value === props.user.degree));
-    const year = ref(props.years.find(year => year.value === props.user.last_school_year));
-    
-    function handleDegreeChange(value: string) {
-        console.log(value);
-    }
+    const { data:degrees } = useQuery<Degree[]>({
+        queryKey: ["organization_id", organizationId, "degrees"],
+        queryFn: async () => await getOrganizationDegrees(organizationId)
+    });
 
-    function handleYearChange(value: string) {
-        console.log(value);
-    }
+    const year = computed((() => {
+        if (profile === undefined) return '';
+        const date = new Date(profile.value?.started_studies_date as string);
+        return date.getFullYear().toString();
+    }));
+
+    const degree = computed((() => {
+        if (profile === undefined || degrees === undefined) return '';
+        return degrees.value?.find((degree) => degree.id === profile.value?.degree)?.name
+    }));
 </script>
 
 <template>
@@ -70,47 +41,25 @@
                 <div class="flex flex-col items-start mr-20">
                     <div class="flex flex-col items-start mb-5">
                         <Label for="name" class="text-sm font-medium text-gray-400 mb-1">First Name</Label>
-                        <p id="name" class="text-base">{{ props.user.first_name }}</p>
+                        <p id="name" class="text-base">{{ profile?.first_name }}</p>
                     </div>
                     <div class="flex flex-col items-start mb-5">
                         <Label for="degree" class="text-sm font-medium text-gray-400 mb-1">Degree</Label>
-                        <Select id="degree" :default-value="props.user.degree" :on-update:model-value="handleDegreeChange">
-                            <SelectTrigger class=" bg-white w-60"> 
-                              <SelectValue :placeholder="degree?.name" />
-                            </SelectTrigger>
-                            <SelectContent class="bg-white">
-                                <SelectGroup>
-                                    <SelectItem v-for="(item, _) in props.degrees" :value="item.value" class="bg-white mr-2 cursor-pointer hover:bg-slate-100">
-                                        {{ item.name }}
-                                    </SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
+                        <p id="degree" class="text-base">{{ degree }}</p>
                     </div>
                     <div class="flex flex-col items-start">
                         <Label for="email" class="text-sm font-medium text-gray-400 mb-1">Email Adress</Label>
-                        <p id="email" class="text-base">{{ props.user.email }}</p>
+                        <p id="email" class="text-base">{{ profile?.email }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col items-start">
                     <div class="flex flex-col items-start mb-5">
                         <Label for="last_name" class="text-sm font-medium text-gray-400 mb-1">Last Name</Label>
-                        <p id="last_name" class="text-base">{{ props.user.first_name }}</p>
+                        <p id="last_name" class="text-base">{{ profile?.last_name }}</p>
                     </div>
                     <div class="flex flex-col items-start">
-                        <Label for="year" class="text-sm font-medium text-gray-400 mb-1">Last School Year</Label>
-                        <Select id="year" :default-value="props.user.last_school_year" :on-update:model-value="handleYearChange">
-                            <SelectTrigger class=" bg-white">
-                              <SelectValue :placeholder="year?.name" />
-                            </SelectTrigger>
-                            <SelectContent class="bg-white">
-                                <SelectGroup>
-                                    <SelectItem v-for="(item, _) in props.years" :value="item.value" class="bg-white mr-2 cursor-pointer hover:bg-slate-100">
-                                        {{ item.name }}
-                                    </SelectItem>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
+                        <Label for="year" class="text-sm font-medium text-gray-400 mb-1">First School Year</Label>
+                        <p id="year" class="text-base">{{ year }}</p>
                     </div>
                 </div>
             </form>

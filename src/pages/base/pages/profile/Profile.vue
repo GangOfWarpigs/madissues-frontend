@@ -1,21 +1,13 @@
 <script setup lang="ts">
     import PageBanner from '../../../../components/shared/pageBanner/PageBanner.vue';
     import ProfileNavBar from './components/ProfileNavBar.vue';
-    import ProfileChild from './components/ProfileHeader.vue';
-
-    const user = {
-        first_name: "pepe",
-        last_name: "adios",
-        degree: "cosas",
-        last_school_year: "2023",
-        email: "pepe@pepe.com"
-    }
+    import ProfileHeader from './components/ProfileHeader.vue';
 </script>
 
 <template>
     <PageBanner title="" subtitle="">
         <div class="w-full flex justify-start translate-y-24 pl-12">
-            <ProfileChild :user="user"/>
+            <ProfileHeader/>
         </div>
     </PageBanner>
     <section class="mt-28">

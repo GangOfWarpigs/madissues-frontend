@@ -1,20 +1,18 @@
 <script setup lang="ts">
-    import { PropType } from 'vue';
-    
-    interface userDataProps {
-        first_name: string,
-        last_name: string,
-        degree: string,
-        last_school_year: string,
-        email: string
-    };
+    import { computed } from 'vue';
+    import { useQuery } from '@tanstack/vue-query';
+    import { getProfile, Profile } from '../../../../../api/students';
 
-    const props = defineProps({
-        user: {
-            type: Object as PropType<userDataProps>,
-            required: true
-        }
+    const { data:profile } = useQuery<Profile>({
+        queryKey: ["profile"],
+        queryFn: async () => await getProfile()
     });
+
+    const year = computed((() => {
+        if (profile === undefined) return ''
+        const date = new Date(profile.value?.started_studies_date as string);
+        return date.getFullYear().toString();
+    }));
 </script>
 
 <template>
@@ -23,8 +21,8 @@
             <img src="../../../../../assets/images/profile_picture_test.webp"/>
         </div>
         <div class="ml-3 pb-4">
-            <p class="text-2xl font-semibold">{{ props.user.first_name }} {{ props.user.last_name }}</p>
-            <p class="text-xl text-gray-500">{{ props.user.degree }}, {{ props.user.last_school_year }}º curso</p>
+            <p class="text-2xl font-semibold">{{ profile?.first_name }} {{ profile?.last_name }}</p>
+            <p class="text-xl text-gray-500">Studying since {{ year }}</p>
         </div>
     </div>
 </template>
