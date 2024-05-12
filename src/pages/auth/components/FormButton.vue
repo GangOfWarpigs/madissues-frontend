@@ -2,6 +2,7 @@
 const props = defineProps<{
   text: string,
   type: "button" | "submit" | "reset" | undefined,
+  color: string | undefined
 }>()
 
 const emit = defineEmits(['click'])
@@ -15,7 +16,8 @@ function handleClick() {
   <button
       :type="props.type"
       @click="handleClick"
-      class="bg-blue-500 text-white font-medium px-3 py-1 rounded-3xl h-8 text-sm w-full"
+      class="text-white font-medium px-3 py-1 rounded-3xl h-8 text-sm w-full"
+      :style="{ backgroundColor: color }"
   >
     {{ props.text }}
   </button>
