@@ -36,7 +36,7 @@ const {data, isLoading, error, isSuccess, isError} = useQuery({
         <img width="400" src="../../assets/icons/madissues/transparent_logo_rectangle.svg">
       </div>
       <div class="bg-white flex-1 h-full p-10 px-20 rounded-2xl m-2">
-        <img :src="baseURL + '/media/' + data?.logo " class="w-[130px] h-[130px] mt-[-100px] bg-gray-200 rounded-full">
+        <img :src="baseURL + '/media/organizations/' + data?.logo " class="w-[130px] h-[130px] mt-[-100px] bg-gray-200 rounded-full">
         <section class="mt-5">
           <h1 class="font-semibold text-gray-700 text-3xl ">{{ data?.name }}</h1>
           <h4 class="font-medium text-gray-500 text-lg ">{{ data?.contact_info }}</h4>

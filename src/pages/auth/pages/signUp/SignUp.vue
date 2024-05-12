@@ -107,7 +107,7 @@ const { data } = useQuery({
     <div class="absolute w-full px-10 pt-5 top-0 left-0 flex justify-between items-center">
       <img src="../../../../assets/icons/madissues/transparent_logo_rectangle.svg" alt="Logo MadIssues" width="200" height="200">
       <div class="flex items-center text-gray-700">
-        <img :src="baseURL + '/media/' + data?.logo " class="bg-gray-200 rounded-full mr-4" alt="Logo Organization" width="50" height="50">
+        <img :src="baseURL + '/media/organizations/' + data?.logo " class="h-[50px] w-[50px] bg-gray-200 rounded-full mr-4" alt="Logo Organization" width="50" height="50">
         <p class="font-semibold text-lg">{{ data?.name }}</p>
       </div>
     </div>
