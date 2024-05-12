@@ -8,40 +8,40 @@
     const faqData = [
         {
             id: "1",
-            question: "Hey una pregunta",
-            date: '2024-04-23',
+            question: "¿Tiempo límite para el pago de la matrícula? ¿Que consecuencias tiene si no se paga a tiempo?",
+            date: '2024-05-12',
             label: "Administración",
-            answers: 1
-        }, {
-            id: "2",
-            question: "Otra pregunta interesante",
-            date: '2024-04-25',
-            label: "Exámenes",
             answers: 2
         }, {
+            id: "2",
+            question: "¿Es posible cambiar la fecha de los examenes si una mayoría de alumnos lo solicita?",
+            date: '2024-05-12',
+            label: "Exámenes",
+            answers: 1
+        }, {
             id: "3",
-            question: "¿Cómo puedo hacer esto?",
-            date: '2024-04-28',
+            question: "¿Cuál es el criterio que se siguen para gestionar las solicitudes de cambio de grupo?",
+            date: '2024-05-12',
             label: "Formularios",
             answers: 1
         }, {
             id: "4",
-            question: "Hey una pregunta",
-            date: '2024-04-23',
+            question: "¿Cuantas convocatorias tengo para aprobar una asignatura?",
+            date: '2024-05-12',
             label: "Plazos",
-            answers: 0
+            answers: 1
         }, {
             id: "5",
-            question: "Otra pregunta interesante",
-            date: '2024-04-25',
+            question: "Hay asignaturas con asistencia obligatoria donde no se aceptan justificantes médicos. ¿Es esto legal?",
+            date: '2024-05-12',
             label: "Plazos",
-            answers: 4
+            answers: 1
         }, {
             id: "6",
-            question: "¿Cómo puedo hacer esto?",
-            date: '2024-04-28',
+            question: "Algunos profesores tardan tanto en corregir los exámenes que no hay tiempo a preparar los siguientes.",
+            date: '2024-05-12',
             label: "Administración",
-            answers: 0
+            answers: 1
         }
     ];
     
