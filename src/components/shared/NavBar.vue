@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useRoute} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
     import {
         DropdownMenu,
         DropdownMenuContent,
@@ -19,9 +19,8 @@ import {useRoute} from 'vue-router';
     });
 
     const route = useRoute()
+    const router = useRouter()
     const organizationId = route.params["organization_id"] as string
-    const basePath = "/organizations/" + organizationId + "/base/";
-    const authPath = "/organizations/" + organizationId + "/auth/";
 
     const paths = [
         { path: "Home", name : "Home" },
@@ -30,8 +29,8 @@ import {useRoute} from 'vue-router';
     ];
 
     function logout(){
-      console.log(authPath)
-        localStorage.removeItem("token");
+      localStorage.removeItem("token");
+      router.push({name: "signIn"})
     }
 
     const { data } = useQuery({
@@ -67,10 +66,10 @@ import {useRoute} from 'vue-router';
                 <DropdownMenuContent class=" w-64 mt-6 py-4 px-4 border-2 rounded-xl bg-white shadow-lg">
                   <DropdownMenuLabel class="text-base">Account</DropdownMenuLabel>
                   <DropdownMenuSeparator class="mb-2"/>
-                  <DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/information' }" replace>Profile</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/issues' }" replace>My Issues</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: basePath + 'profile/faqs' }" replace>My FAQs</router-link></p></DropdownMenuItem>
-                  <DropdownMenuItem @click="logout()" class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-log-out" scale="1.2" class="text-base"/><p class="text-gray-600 ml-3 font-semibold"><router-link :to="{ path: authPath + 'signin' }" replace>Log out</router-link></p></DropdownMenuItem>
+                  <router-link :to="{ name: 'ProfileInformation' }" replace><DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-person-circle-sharp" scale="1.2" class="text-base"/><p class=" text-gray-600 ml-3 font-semibold">Profile</p></DropdownMenuItem></router-link>
+                  <router-link :to="{ name: 'ProfileIssues' }" replace><DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-chat-left-text-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold">My Issues</p></DropdownMenuItem></router-link>
+                  <router-link :to="{ name: 'ProfileFaqs' }" replace><DropdownMenuItem class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><b-icon-question-square-fill class="text-base"/><p class="text-gray-600 ml-3 font-semibold">My FAQs</p></DropdownMenuItem></router-link>
+                  <DropdownMenuItem @click="logout()" class="hover:bg-gray-100 rounded-xl py-3 px-6 cursor-pointer mb-1"><vue-icon name="io-log-out" scale="1.2" class="text-base"/><p class="text-gray-600 ml-3 font-semibold">Log out</p></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
