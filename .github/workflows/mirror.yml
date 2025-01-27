@@ -3,31 +3,31 @@ name: Sync to Mirror Repository
 on:
   push:
     branches:
-      - main # Dispara el workflow al realizar cambios en la rama principal.
-  schedule:
-    - cron: "0 0 * * *" # También se ejecutará automáticamente cada día a medianoche.
-  workflow_dispatch: # Permite ejecutar el workflow manualmente.
+      - main
+  workflow_dispatch:
 
 jobs:
- sync:
-  runs-on: ubuntu-latest
-  env:
-    ACCESS_TOKEN: ${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Add mirror remote
-      run: |
-        git remote add mirror https://antonioap101:${ACCESS_TOKEN}@github.com/antonioap101/madissues-frontend.git
+      - name: Configure Git Credentials
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          echo "https://antonioap101:${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}@github.com" > ~/.git-credentials
+          git config --global credential.helper store
 
-    - name: Verify remote configuration
-      run: git remote -v
+      - name: Add mirror remote
+        run: |
+          git remote add mirror https://github.com/antonioap101/madissues-frontend.git
 
-    - name: Push to mirror
-      run: |
-        git push mirror --all --force
-        git push mirror --tags --force
+      - name: Verify remote configuration
+        run: git remote -v
 
-
-          
+      - name: Push to mirror
+        run: |
+          git push mirror --all --force
+          git push mirror --tags --force
