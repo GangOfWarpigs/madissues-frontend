@@ -13,16 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Configure Git Credentials
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          echo "https://antonioap101:${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}@github.com" > ~/.git-credentials
-          git config --global credential.helper store
-
       - name: Add mirror remote
         run: |
-          git remote add mirror https://github.com/antonioap101/madissues-frontend.git
+          git remote add mirror https://antonioap101:${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}@github.com/antonioap101/madissues-frontend.git
 
       - name: Verify remote configuration
         run: git remote -v
