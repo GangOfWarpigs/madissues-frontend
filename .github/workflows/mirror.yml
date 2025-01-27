@@ -20,7 +20,7 @@ jobs:
 
       - name: Push to mirror
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}
         run: |
           git push mirror --all --force
           git push mirror --tags --force
