@@ -11,16 +11,22 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+        ACCESS_TOKEN: ${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Debug Token Length
+        run: |
+          echo "ACCESS_TOKEN length: ${#ACCESS_TOKEN}"
 
       - name: Add mirror remote
         run: git remote add mirror https://github.com/antonioap101/madissues-frontend.git
 
       - name: Push to mirror
-        env:
-          ACCESS_TOKEN: ${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}
+    
         run: |
           git push mirror --all --force
           git push mirror --tags --force
