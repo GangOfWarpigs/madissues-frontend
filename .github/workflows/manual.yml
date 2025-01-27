@@ -1,0 +1,32 @@
+name: Sync to Mirror Repository
+
+on:
+  push:
+    branches:
+      - main # Dispara el workflow al realizar cambios en la rama principal.
+  schedule:
+    - cron: "0 0 * * *" # También se ejecutará automáticamente cada día a medianoche.
+  workflow_dispatch: # Permite ejecutar el workflow manualmente.
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Clona el repositorio original
+      - name: Checkout Source Repository
+        uses: actions/checkout@v3
+
+      # Configura el remoto del mirror
+      - name: Add Mirror Remote
+        run: |
+          git remote add mirror https://github.com/antonioap101/madissues-frontend.git
+          git fetch --unshallow || true # Asegura que el repositorio clonado no sea superficial.
+
+      # Sincroniza todas las ramas y etiquetas
+      - name: Push to Mirror
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}
+        run: |
+          git push mirror --all --force
+          git push mirror --tags --force
