@@ -11,23 +11,18 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-
     steps:
-      # Clona el repositorio original
-      - name: Checkout Source Repository
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      # Configura el remoto del mirror
-      - name: Add Mirror Remote
+      - name: Add mirror remote
+        run: git remote add mirror https://github.com/antonioap101/madissues-frontend.git
+
+      - name: Push to mirror
         env:
-          ACCESS_TOKEN: ${{ secrets.PERSONAL_MADISSUES_ACCESS_TOKEN }}
-        run: |
-          # git remote add mirror https://github.com/antonioap101/madissues-frontend.git
-          git remote add mirror https://antonioap101:${{ env.ACCESS_TOKEN }}@github.com/antonioap101/madissues-frontend.git
-          git fetch --unshallow || true # Asegura que el repositorio clonado no sea superficial.
-
-      # Sincroniza todas las ramas y etiquetas
-      - name: Push to Mirror        
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           git push mirror --all --force
           git push mirror --tags --force
+
+          
